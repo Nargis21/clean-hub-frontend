@@ -14,6 +14,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "antd": "^5.10.0",
     "next": "13.5.4",
+    "next-auth": "^4.23.2",
     "react": "^18",
     "react-dom": "^18",
     "react-redux": "^8.1.3"

@@ -1,5 +1,6 @@
 import Providers from '@/lib/Providers'
 import './globals.css'
+import Navbar from '@/components/shared/Navbar'
 
 export const metadata = {
   title: 'Clean Hub',
@@ -10,7 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <Providers>
       <html lang="en">
-        <body >{children}</body>
+        <body >
+          <Navbar />
+          {children}</body>
       </html>
     </Providers>
   )
