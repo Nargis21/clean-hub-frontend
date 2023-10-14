@@ -6,7 +6,7 @@ const FormInput = ({ name, type, size, value, id, placeholder, validation, label
     const { control } = useFormContext()
     return (
         <>
-            {label ? label : null}
+            {label ? <small className="text-sm pb-2">{label}</small> : null}
             <Controller
                 control={control}
                 name={name}

@@ -1,10 +1,10 @@
 'use client'
 
-import { store } from '@/redux/store';
+import { store } from '../redux/store';
 import { Provider } from 'react-redux'
 import StyledComponentsRegistry from './AntdRegistry';
 
-const Providers = ({ children }) => {
+export const Providers = ({ children }) => {
     return <Provider store={store}>
         <StyledComponentsRegistry>
             {children}
@@ -12,4 +12,3 @@ const Providers = ({ children }) => {
     </Provider>
 };
 
-export default Providers;

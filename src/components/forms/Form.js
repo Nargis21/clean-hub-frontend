@@ -6,7 +6,7 @@ const Form = ({ children, submitHandler, defaultValues }) => {
     const formConfig = {};
     if (!!defaultValues) formConfig['defaultValues'] = defaultValues
 
-    const methods = useForm < FormProps > (formConfig)
+    const methods = useForm(formConfig)
     const { handleSubmit, reset } = methods
 
     const onSubmit = (data) => {

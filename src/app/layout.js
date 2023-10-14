@@ -1,6 +1,7 @@
-import Providers from '@/lib/Providers'
+import { Providers } from '../lib/Providers'
 import './globals.css'
-import Navbar from '@/components/shared/Navbar'
+import Navbar from '../components/shared/Navbar'
+
 
 export const metadata = {
   title: 'Clean Hub',

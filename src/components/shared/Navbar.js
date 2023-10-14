@@ -1,6 +1,6 @@
 "use client";
 
-import { showSidebarDrawer } from "@/redux/slices/sidebarSlice";
+import { showSidebarDrawer } from "../../redux/slices/sidebarSlice";
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Drawer, Layout, Menu, Typography } from "antd";
 import { signOut, useSession } from "next-auth/react";
@@ -9,7 +9,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import logo from '@/assets/images/logo.png'
+import logo from '../../assets/images/logo.png'
 
 
 const { Header, Content } = Layout;
