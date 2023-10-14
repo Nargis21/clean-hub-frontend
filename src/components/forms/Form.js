@@ -16,7 +16,7 @@ const Form = ({ children, submitHandler, defaultValues }) => {
 
     return (
         <FormProvider {...methods}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className="p-6 shadow-lg rounded">
                 {children}
             </form>
         </FormProvider>
