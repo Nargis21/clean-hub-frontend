@@ -1,6 +1,6 @@
 import FilteredServices from "../../components/ui/FilteredServices";
 
-const ServicesPage = async () => {
+const ServicesPage = async ({ searchParams }) => {
     const res = await fetch("http://localhost:5000/services", {
         // cache: "no-cache",
         next: {
@@ -9,11 +9,9 @@ const ServicesPage = async () => {
     });
     const services = await res.json();
 
-
-
     return (
         <div>
-            <FilteredServices services={services}></FilteredServices>
+            <FilteredServices services={services} searchParams={searchParams}></FilteredServices>
         </div>
     );
 };

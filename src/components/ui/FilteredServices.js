@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import Services from './Services';
 import { Button } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons'
+import PaginationControls from "./PaginationControls"
 
-const FilteredServices = ({ services }) => {
+const FilteredServices = ({ services, searchParams }) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedPricing, setSelectedPricing] = useState("");
     const [selectedAvailabilityInfo, setSelectedAvailabilityInfo] = useState("");
@@ -59,6 +60,15 @@ const FilteredServices = ({ services }) => {
         setSelectedAvailabilityInfo("");
     };
 
+    const page = searchParams['page'] ?? '1'
+    const per_page = searchParams['per_page'] ?? '6'
+
+    // mocked, skipped and limited in the real app
+    const start = (Number(page) - 1) * Number(per_page) // 0, 5, 10 ...
+    const end = start + Number(per_page) // 5, 10, 15 ...
+
+    const entries = filteredServicesByPricingAndAvailabilityInfo.slice(start, end)
+
     return (
         <div>
             <div className="grid lg:grid-cols-10 grid-cols-1 gap-4 lg:p-12 p-4 bg-gray-300">
@@ -109,7 +119,12 @@ const FilteredServices = ({ services }) => {
                     </Button>
                 </div>
             </div>
-            <Services services={filteredServicesByPricingAndAvailabilityInfo}></Services>
+            <Services services={entries}></Services>
+            <PaginationControls
+                hasNextPage={end < filteredServicesByPricingAndAvailabilityInfo.length}
+                hasPrevPage={start > 0}
+                totalData={filteredServicesByPricingAndAvailabilityInfo.length}
+            ></PaginationControls>
         </div>
     );
 };
