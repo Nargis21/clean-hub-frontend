@@ -1,0 +1,142 @@
+[
+    {
+        "title": "Office Cleaning",
+        "description": "Regular cleaning services for offices and commercial spaces.",
+        "image": "https://img.freepik.com/premium-photo/workers-cleaning-service-company-carrying-out-their-work-openspace-office_274679-35142.jpg",
+        "pricing": "$200 - $300",
+        "availabilityInfo": "Available 7 days a week",
+        "location": "City, State",
+        "additionalDetails": "Customizable cleaning plans to suit your business needs.",
+        "rating": 4.0
+    },
+    {
+        "title": "Deep Cleaning",
+        "description": "Thorough and detailed cleaning, reaching every nook and cranny.",
+        "image": "https://img.freepik.com/free-photo/disinfecting-home_155003-9129.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1697241600&semt=ais",
+        "pricing": "$150 - $250",
+        "availabilityInfo": "Available on request",
+        "location": "City, State",
+        "additionalDetails": "Perfect for spring cleaning or before special occasions.",
+        "rating": 4.5
+    },
+    {
+        "title": "Carpet Cleaning",
+        "description": "Professional cleaning of carpets and rugs to remove dirt and stains.",
+        "image": "https://img.freepik.com/premium-photo/dry-cleaner-s-employee-removing-dirt-from-carpet-flat_392895-110583.jpg",
+        "pricing": "$80 - $120",
+        "availabilityInfo": "Available on weekdays and weekends",
+        "location": "City, State",
+        "additionalDetails": "We use eco-friendly products for safe and effective cleaning.",
+        "rating": 4.0
+    },
+    {
+        "title": "Outdoor House Washing",
+        "description": "Cleaning and pressure washing the exterior of homes.",
+        "image": "https://img.freepik.com/premium-photo/caucasian-homeowner-pressure-washing-his-garden-paths_906478-16.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1696809600&semt=ais",
+        "pricing": "$150 - $250",
+        "availabilityInfo": "Available on request",
+        "location": "City, State",
+        "additionalDetails": "Removes dirt, mildew, and grime from all exterior surfaces.",
+        "rating": 4.5
+    },
+    {
+        "title": "Green Cleaning Services",
+        "description": "Eco-friendly and sustainable cleaning services for homes and businesses.",
+        "image": "https://img.freepik.com/premium-photo/green-cleaning-bucket-with-cleaning-products-white-background-generative-ai_894067-7607.jpg",
+        "pricing": "$100 - $150",
+        "availabilityInfo": "Available on weekdays and weekends",
+        "location": "City, State",
+        "additionalDetails": "We prioritize green and sustainable cleaning practices.",
+        "rating": 4.0
+    },
+    {
+        "title": "Window Cleaning",
+        "description": "Professional window cleaning for residential and commercial properties.",
+        "image": "https://img.freepik.com/free-photo/medium-shot-people-cleaning-building_23-2150454559.jpg",
+        "pricing": "$80 - $120",
+        "availabilityInfo": "Available on weekdays and weekends",
+        "location": "City, State",
+        "additionalDetails": "We guarantee streak-free, sparkling windows.",
+        "rating": 4.5
+    },
+    {
+        "title": "Gutter Cleaning",
+        "description": "Cleaning and maintenance of gutters to prevent clogs and water damage.",
+        "image": "https://img.freepik.com/premium-photo/man-worker-is-cleaning-clogged-roof-gutter-from-dirt_488220-25535.jpg",
+        "pricing": "$100 - $150",
+        "availabilityInfo": "Available on request",
+        "location": "City, State",
+        "additionalDetails": "Prevent water damage with our professional gutter cleaning.",
+        "rating": 4.5
+    },
+    {
+        "title": "Rug Cleaning",
+        "description": "Professional rug cleaning services for various rug types and sizes.",
+        "image": "https://img.freepik.com/premium-photo/professional-carpet-cleaning-service-with-janitor-using-vacuum-cleaner_60438-3005.jpg",
+        "pricing": "$60 - $100",
+        "availabilityInfo": "Available on weekdays and weekends",
+        "location": "City, State",
+        "additionalDetails": "Extend the life of your rugs with our expert cleaning.",
+        "rating": 4.0
+    },
+    {
+        "title": "Janitorial Services",
+        "description": "Customized janitorial services for businesses and commercial facilities.",
+        "image": "https://img.freepik.com/premium-photo/professional-cleaning-service-team-cleans-living-room-modern-apartment_130111-3877.jpg",
+        "pricing": "$200 - $300",
+        "availabilityInfo": "Available 7 days a week",
+        "location": "City, State",
+        "additionalDetails": "We provide reliable janitorial services tailored to your needs.",
+        "rating": 4.0
+    },
+    {
+        "title": "Car Interior Cleaning",
+        "description": "Thorough cleaning of car interiors, including seats, carpets, and surfaces.",
+        "image": "https://img.freepik.com/premium-photo/man-cleans-car-door-handle-with-cloth-car-detailing_151013-38440.jpg",
+        "pricing": "$80 - $120",
+        "availabilityInfo": "Available on weekdays and weekends",
+        "location": "City, State",
+        "additionalDetails": "Refresh your car's interior with our professional cleaning.",
+        "rating": 4.5
+    },
+    {
+        "title": "Mold Remediation",
+        "description": "Safe and effective mold removal and remediation services.",
+        "image": "https://img.freepik.com/free-photo/man-spreading-disinfectant-against-covid-19-wearing-biohazard-costume_482257-20390.jpg",
+        "pricing": "$200 - $300",
+        "availabilityInfo": "Available on request",
+        "location": "City, State",
+        "additionalDetails": "We ensure complete mold removal and prevention.",
+        "rating": 4.5
+    },
+    {
+        "title": "Biohazard Cleanup",
+        "description": "Professional cleanup of biohazardous materials and crime scenes.",
+        "image": "https://img.freepik.com/free-photo/disinfectant-worker-cleaning-city-streets-during-covid19-pandemic_637285-7916.jpg",
+        "pricing": "$250 - $350",
+        "availabilityInfo": "Available 24/7 for emergencies",
+        "location": "City, State",
+        "additionalDetails": "We handle biohazard cleanup with the utmost care and professionalism.",
+        "rating": 4.0
+    },
+    {
+        "title": "Kitchen Cleaning",
+        "description": "Thorough cleaning of residential and commercial kitchens and food preparation areas.",
+        "image": "https://img.freepik.com/free-photo/young-woman-cleaning-kitchen-furniture-rubber-gloves_651396-2883.jpg",
+        "pricing": "$100 - $150",
+        "availabilityInfo": "Available on weekdays and weekends",
+        "location": "City, State",
+        "additionalDetails": "We ensure a clean and hygienic kitchen environment.",
+        "rating": 4.5
+    },
+    {
+        "title": "House Cleaning",
+        "description": "Comprehensive cleaning of all rooms, bathrooms, and common areas in a typical house.",
+        "image": "https://img.freepik.com/premium-photo/professional-cleaning-service-team-cleans-living-room-modern-apartment_130111-3783.jpg",
+        "pricing": "$120 - $180",
+        "availabilityInfo": "Available on weekdays and weekends",
+        "location": "City, State",
+        "additionalDetails": "We make your home spotless and comfortable.",
+        "rating": 4.0
+    }
+]
