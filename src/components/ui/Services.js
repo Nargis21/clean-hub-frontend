@@ -10,13 +10,15 @@ const Services = ({ services }) => {
     return (
         <div className="p-10 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 bg-gray-200 ">
             {services?.map((service) => (
-                <div key={service._id} onClick={() => router.push(`services/${service._id}`)} className="rounded-lg flex flex-col items-center justify-between p-5 shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white text-black underline-none cursor-pointer">
+                <div key={service._id} className="rounded-lg flex flex-col items-center justify-between p-5 shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white text-black underline-none">
                     <Image
+                        onClick={() => router.push(`services/${service._id}`)}
                         src={service?.image}
                         width={300}
                         height={200}
                         responsive
                         alt="service image"
+                        className='cursor-pointer'
                     />
                     <p className="text-xl font-semibold my-3 flex items-start w-full">{service?.title}</p>
 
@@ -26,7 +28,7 @@ const Services = ({ services }) => {
                     </div>
                     <div className='flex justify-between w-full items-center mb-4'>
                         <p>Location: <span className='font-semibold'>{service?.location}</span></p>
-                        <Link className='text-sky-500' href='/'>Book Now</Link>
+                        <Link className='text-sky-500' href={`/booking/${service._id}`}>Book Now</Link>
                     </div>
                     <p className='px-4 py-2 rounded-full bg-indigo-300 font-semibold'>{service?.availabilityInfo}</p>
                 </div>
