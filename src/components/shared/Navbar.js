@@ -55,7 +55,7 @@ const Navbar = ({
                 {hasSider && (
                     <Button
                         type="primary"
-                        className="lg:hidden"
+                        className="lg:hidden mr-2"
                         onClick={() => {
                             dispatch(showSidebarDrawer());
                         }}

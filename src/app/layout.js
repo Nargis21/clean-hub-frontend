@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <Providers>
       <html lang="en">
         <body >
-          <Navbar />
+          <Navbar hasSider />
           {children}
           <ToastContainer theme="dark" />
         </body>
