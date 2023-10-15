@@ -8,6 +8,8 @@ import { useForm } from 'react-hook-form';
 import auth from '../../firebase/firebase.auth';
 import { useRouter } from 'next/navigation';
 import useToken from '../../hooks/useToken'
+import { toast } from 'react-toastify';
+import Link from "next/link";
 
 const LoginPage = () => {
     const router = useRouter();
@@ -29,13 +31,12 @@ const LoginPage = () => {
     );
 
     const [token] = useToken(user || googleUser)
-    console.log(token);
 
     const handleResetPassword = async () => {
         const email = getValues('email')
         if (email) {
             await sendPasswordResetEmail(email);
-            // toast.success('Email Send!')
+            toast.success('Email Send!')
         }
     }
 
@@ -45,9 +46,6 @@ const LoginPage = () => {
         }
     }, [token, router])
 
-    // if (user || googleUser) {
-    //     router.push("/");
-    // }
 
     let signInError
     if (error || googleError || resetError) {
@@ -69,7 +67,7 @@ const LoginPage = () => {
             <Col sm={24} md={10} lg={8}>
                 <div className="p-6 shadow-lg rounded ">
                     <form onSubmit={handleSubmit(onSubmit)} >
-                        <h1 className='text-2xl pb-6 text-center'>Login</h1>
+                        <h1 className='text-2xl pb-6 text-center'>Sign In</h1>
                         <div className='mb-4'>
                             <label>Email Address</label>
                             <input
@@ -125,12 +123,19 @@ const LoginPage = () => {
                                     {errors.password.message}
                                 </span>
                             )}
+
+                            <Button
+                                type='link'
+                                onClick={handleResetPassword}
+                            ><p>Forget Password?</p></Button>
+
                         </div>
                         <div className='mb-2'>
                             {signInError}
                         </div>
-                        <Button type='primary' block size='large' htmlType='submit'>Submit</Button>
+                        <Button type='primary' block size='large' htmlType='submit'>Sign In</Button>
                     </form>
+                    <p className='text-sm pt-2 text-center'>New to Clean Hub? <Link className='text-sky-500' href='/register'>Create new account</Link></p>
                     <Divider plain>or</Divider>
                     <Button onClick={() => signInWithGoogle()} type='primary' block size='large' htmlType='submit' className='flex items-center justify-center gap-2 font-semibold w-full text-black' ghost>
                         <Image

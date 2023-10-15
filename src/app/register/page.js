@@ -1,6 +1,6 @@
 'use client'
-import { Button, Col, Divider, Input, Row } from 'antd';
-import React, { useEffect } from 'react';
+import { Button, Checkbox, Col, Divider, Input, Row } from 'antd';
+import React, { useEffect, useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import loginImage from '../../assets/images/login.png'
 import Image from 'next/image';
@@ -8,8 +8,14 @@ import { useForm } from 'react-hook-form';
 import auth from '../../firebase/firebase.auth';
 import { useRouter } from 'next/navigation';
 import useToken from '../../hooks/useToken';
+import Link from 'next/link';
 
 const LoginPage = () => {
+    const [agreed, setAgreed] = useState(false);
+
+    const handleAgreedChange = (e) => {
+        setAgreed(e.target.checked);
+    };
     const router = useRouter();
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
@@ -36,9 +42,7 @@ const LoginPage = () => {
             router.push("/");
         }
     }, [token, router])
-    // if (user || googleUser) {
-    //     router.push("/");
-    // }
+
     let signInError
     if (error || googleError || updateError) {
         signInError = <span className='text-red-500' >{error?.message || googleError?.message}</span>
@@ -57,9 +61,9 @@ const LoginPage = () => {
                     }} />
             </Col>
             <Col sm={24} md={10} lg={8}>
-                <div>
-                    <form onSubmit={handleSubmit(onSubmit)} className="p-6 shadow-lg rounded ">
-                        <h1 className='text-2xl pb-6 text-center'>Login</h1>
+                <div className="p-6 shadow-lg rounded ">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <h1 className='text-2xl pb-6 text-center'>Sign Up</h1>
                         <div className='mb-4'>
                             <label>Your Name</label>
                             <input
@@ -138,19 +142,27 @@ const LoginPage = () => {
                         <div className='mb-2'>
                             {signInError}
                         </div>
-                        <Button type='primary' block size='large' htmlType='submit'>Submit</Button>
-                        <Divider plain>or</Divider>
-                        <Button onClick={() => signInWithGoogle()} type='primary' block size='large' htmlType='submit' className='flex items-center justify-center gap-2 font-semibold w-full text-black' ghost>
-                            <Image
-                                src='https://cdn-icons-png.flaticon.com/512/2965/2965278.png'
-                                sizes="100vw"
-                                width={30}
-                                height={30}
-                                alt="product image"
-                            />
-                            <p>Continue With Google</p>
-                        </Button>
+                        <Checkbox
+                            checked={agreed}
+                            onChange={handleAgreedChange}
+                            className='mb-4'
+                        >
+                            I agree to the <Link href='/'>Terms and Conditions</Link> and <Link href='/'>Privacy Policy</Link>
+                        </Checkbox>
+                        <Button type='primary' block size='large' disabled={!agreed} htmlType='submit'>Sign Up</Button>
                     </form>
+                    <p className='text-sm pt-2'>Already have an Account? <Link className='text-sky-500' href='/login'>Please Login</Link></p>
+                    <Divider plain>or</Divider>
+                    <Button onClick={() => signInWithGoogle()} type='primary' block size='large' htmlType='submit' className='flex items-center justify-center gap-2 font-semibold w-full text-black' ghost>
+                        <Image
+                            src='https://cdn-icons-png.flaticon.com/512/2965/2965278.png'
+                            sizes="100vw"
+                            width={30}
+                            height={30}
+                            alt="product image"
+                        />
+                        <p>Continue With Google</p>
+                    </Button>
                 </div>
             </Col>
         </Row>
