@@ -3,13 +3,16 @@
 import { showSidebarDrawer } from "../../redux/slices/sidebarSlice";
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Drawer, Layout, Menu, Typography } from "antd";
-import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from '../../assets/images/logo.png'
+import { signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase/firebase.auth";
+import useAdmin from "../../hooks/useAdmin"
 
 
 const { Header, Content } = Layout;
@@ -21,10 +24,15 @@ const items = [
 ];
 
 const Navbar = ({
-    hasSider,
-    session,
+    hasSider
 }) => {
-    console.log(session, "session");
+    const [user] = useAuthState(auth)
+    const [admin] = useAdmin(user)
+    const handleSignOut = () => {
+        signOut(auth)
+        localStorage.removeItem('accessToken')
+    }
+
     const pathname = usePathname();
     const router = useRouter();
     const [open, setOpen] = useState(false);
@@ -81,15 +89,13 @@ const Navbar = ({
                         </Menu.Item>
                     ))}
 
-                    {session ? (
+                    {user ? (
                         <Button
                             className="ml-4"
                             ghost
                             size="large"
                             type="primary"
-                            onClick={() => {
-                                signOut();
-                            }}
+                            onClick={handleSignOut}
                         >
                             Logout
                         </Button>
@@ -106,6 +112,16 @@ const Navbar = ({
                             Login
                         </Button>
                     )}
+                    {
+                        admin && <Button
+                            className="ml-4"
+                            ghost
+                            size="large"
+                            type="primary"
+                        >
+                            Dashboard
+                        </Button>
+                    }
                 </Menu>
 
                 <Button type="primary" className="lg:hidden" onClick={showDrawer}>

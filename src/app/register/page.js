@@ -1,59 +1,49 @@
 'use client'
 import { Button, Col, Divider, Input, Row } from 'antd';
 import React, { useEffect } from 'react';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import loginImage from '../../assets/images/login.png'
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase/firebase.auth';
 import { useRouter } from 'next/navigation';
-import useToken from '../../hooks/useToken'
+import useToken from '../../hooks/useToken';
 
 const LoginPage = () => {
     const router = useRouter();
-
-    const { register, formState: { errors }, handleSubmit, getValues } = useForm();
-    const onSubmit = data => {
-        signInWithEmailAndPassword(data.email, data.password)
-    };
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useSignInWithEmailAndPassword(auth);
-    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(
-        auth
-    );
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    const { register, formState: { errors }, handleSubmit } = useForm();
 
     const [token] = useToken(user || googleUser)
-    console.log(token);
 
-    const handleResetPassword = async () => {
-        const email = getValues('email')
-        if (email) {
-            await sendPasswordResetEmail(email);
-            // toast.success('Email Send!')
-        }
-    }
+    const onSubmit = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password)
+        await updateProfile({ displayName: data.name });
+    };
 
     useEffect(() => {
         if (token) {
             router.push("/");
         }
     }, [token, router])
-
     // if (user || googleUser) {
     //     router.push("/");
     // }
-
     let signInError
-    if (error || googleError || resetError) {
-        signInError = <span className='text-red-500'>{error?.message || googleError?.message}</span>
+    if (error || googleError || updateError) {
+        signInError = <span className='text-red-500' >{error?.message || googleError?.message}</span>
     }
-    // if (loading || googleLoading || sending) {
+    // if (loading || googleLoading || updating) {
     //     return <Loading></Loading>
     // }
 
@@ -67,9 +57,28 @@ const LoginPage = () => {
                     }} />
             </Col>
             <Col sm={24} md={10} lg={8}>
-                <div className="p-6 shadow-lg rounded ">
-                    <form onSubmit={handleSubmit(onSubmit)} >
+                <div>
+                    <form onSubmit={handleSubmit(onSubmit)} className="p-6 shadow-lg rounded ">
                         <h1 className='text-2xl pb-6 text-center'>Login</h1>
+                        <div className='mb-4'>
+                            <label>Your Name</label>
+                            <input
+                                type="name"
+                                placeholder="Name"
+                                className="w-full mt-2  p-3 border border-gray-500 rounded-md"
+                                {...register("name", {
+                                    required: {
+                                        value: true,
+                                        message: "Name is required",
+                                    },
+                                })}
+                            />
+                            {errors.name?.type === "required" && (
+                                <span className="label-text-alt text-red-500 text-sm">
+                                    {errors.name.message}
+                                </span>
+                            )}
+                        </div>
                         <div className='mb-4'>
                             <label>Email Address</label>
                             <input
@@ -130,18 +139,18 @@ const LoginPage = () => {
                             {signInError}
                         </div>
                         <Button type='primary' block size='large' htmlType='submit'>Submit</Button>
+                        <Divider plain>or</Divider>
+                        <Button onClick={() => signInWithGoogle()} type='primary' block size='large' htmlType='submit' className='flex items-center justify-center gap-2 font-semibold w-full text-black' ghost>
+                            <Image
+                                src='https://cdn-icons-png.flaticon.com/512/2965/2965278.png'
+                                sizes="100vw"
+                                width={30}
+                                height={30}
+                                alt="product image"
+                            />
+                            <p>Continue With Google</p>
+                        </Button>
                     </form>
-                    <Divider plain>or</Divider>
-                    <Button onClick={() => signInWithGoogle()} type='primary' block size='large' htmlType='submit' className='flex items-center justify-center gap-2 font-semibold w-full text-black' ghost>
-                        <Image
-                            src='https://cdn-icons-png.flaticon.com/512/2965/2965278.png'
-                            sizes="100vw"
-                            width={30}
-                            height={30}
-                            alt="product image"
-                        />
-                        <p>Continue With Google</p>
-                    </Button>
                 </div>
             </Col>
         </Row>
