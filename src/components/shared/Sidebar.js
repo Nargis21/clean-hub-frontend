@@ -5,24 +5,36 @@ import { Drawer, Layout, Menu } from "antd";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector, } from "react-redux";
+import auth from "../../firebase/firebase.auth";
+import useAdmin from "../../hooks/useAdmin";
 const { Content, Sider } = Layout;
 
-const items = [
-    { key: "1", label: "My Profile", href: "/dashboard/my-profile" },
-    { key: "2", label: "My Bookings", href: "/dashboard/my-bookings" },
-    { key: "2", label: "My Reviews", href: "/dashboard/my-reviews" },
+const userItems = [
+    { key: "1", label: "My Profile", href: "/user/my-profile" },
+    { key: "2", label: "My Bookings", href: "/user/my-bookings" },
+    { key: "3", label: "My Reviews", href: "/user/my-reviews" },
+];
+const adminItems = [
+    { key: "1", label: "My Profile", href: "/user/my-profile" },
+    { key: "2", label: "Manage User", href: "/admin/manage-user" },
+    { key: "3", label: "Manage Bookings", href: "/admin/manage-bookings" },
+    { key: "4", label: "Manage Services", href: "/admin/manage-services" },
 ];
 
 const Sidebar = ({
     children,
 }) => {
+    const [user] = useAuthState(auth)
+    const [admin] = useAdmin(user)
     const open = useSelector((state) => state.sidebar.open)
-    console.log(open);
     const dispatch = useDispatch();
     const pathname = usePathname();
     const getSelectedKey = () => {
-        return items.find((item) => item.href === pathname)?.key || "";
+        return (
+            !admin ? userItems.find((item) => item.href === pathname)?.key || "" : adminItems.find((item) => item.href === pathname)?.key || ""
+        )
     };
     return (
         <Layout>
@@ -35,11 +47,17 @@ const Sidebar = ({
                             defaultSelectedKeys={[getSelectedKey()]}
                             selectedKeys={[getSelectedKey()]}
                         >
-                            {items?.map((item) => (
-                                <Menu.Item key={item.key}>
-                                    <Link href={item.href}>{item.label}</Link>
-                                </Menu.Item>
-                            ))}
+                            {
+                                !admin ? userItems?.map((item) => (
+                                    <Menu.Item key={item.key}>
+                                        <Link href={item.href}>{item.label}</Link>
+                                    </Menu.Item>
+                                )) : adminItems?.map((item) => (
+                                    <Menu.Item key={item.key}>
+                                        <Link href={item.href}>{item.label}</Link>
+                                    </Menu.Item>
+                                ))
+                            }
                         </Menu>
                     </Sider>
                     <Content className="bg-white p-4">{children}</Content>
@@ -59,11 +77,17 @@ const Sidebar = ({
                             defaultSelectedKeys={["1"]}
                             defaultOpenKeys={["sub1"]}
                         >
-                            {items?.map((item) => (
-                                <Menu.Item key={item.key}>
-                                    <Link href={item.href}>{item.label}</Link>
-                                </Menu.Item>
-                            ))}
+                            {
+                                !admin ? userItems?.map((item) => (
+                                    <Menu.Item key={item.key}>
+                                        <Link href={item.href}>{item.label}</Link>
+                                    </Menu.Item>
+                                )) : adminItems?.map((item) => (
+                                    <Menu.Item key={item.key}>
+                                        <Link href={item.href}>{item.label}</Link>
+                                    </Menu.Item>
+                                ))
+                            }
                         </Menu>
                     </Drawer>
                     <Content className="bg-white p-4">{children}</Content>

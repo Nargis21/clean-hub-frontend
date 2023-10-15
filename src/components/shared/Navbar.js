@@ -12,7 +12,6 @@ import logo from '../../assets/images/logo.png'
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.auth";
-import useAdmin from "../../hooks/useAdmin"
 
 
 const { Header, Content } = Layout;
@@ -27,14 +26,15 @@ const Navbar = ({
     hasSider
 }) => {
     const [user] = useAuthState(auth)
-    const [admin] = useAdmin(user)
+    const router = useRouter();
     const handleSignOut = () => {
         signOut(auth)
         localStorage.removeItem('accessToken')
+        router.push('/')
     }
 
     const pathname = usePathname();
-    const router = useRouter();
+
     const [open, setOpen] = useState(false);
     const showDrawer = () => {
         setOpen(true);
@@ -90,15 +90,20 @@ const Navbar = ({
                     ))}
 
                     {user ? (
-                        <Button
-                            className="ml-4"
-                            ghost
-                            size="large"
-                            type="primary"
-                            onClick={handleSignOut}
-                        >
-                            Logout
-                        </Button>
+                        <>
+                            <Menu.Item>
+                                <Link href='/user/my-profile'>Dashboard</Link>
+                            </Menu.Item>
+                            <Button
+                                className="ml-4"
+                                ghost
+                                size="large"
+                                type="primary"
+                                onClick={handleSignOut}
+                            >
+                                Logout
+                            </Button>
+                        </>
                     ) : (
                         <Button
                             className="ml-4"
@@ -112,16 +117,6 @@ const Navbar = ({
                             Login
                         </Button>
                     )}
-                    {
-                        admin && <Button
-                            className="ml-4"
-                            ghost
-                            size="large"
-                            type="primary"
-                        >
-                            Dashboard
-                        </Button>
-                    }
                 </Menu>
 
                 <Button type="primary" className="lg:hidden" onClick={showDrawer}>
