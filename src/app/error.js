@@ -1,8 +1,8 @@
 'use client'
 const ErrorPage = () => {
     return (
-        <div>
-            <h1>Something went wrong</h1>
+        <div className="h-screen flex justify-center items-center">
+            <h1 className="lg:text-4xl md:text-2xl text-xl">Something went wrong</h1>
         </div>
     );
 };

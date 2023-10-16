@@ -1,11 +1,12 @@
-import React from 'react';
+import { Spin } from "antd";
+import React from "react";
 
-const Loading = () => {
+const Loader = () => {
     return (
-        <div>
-            <h1>Loading...</h1>
+        <div className="h-screen flex justify-center items-center">
+            <Spin size="large" />
         </div>
     );
 };
 
-export default Loading;
+export default Loader;

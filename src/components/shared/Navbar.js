@@ -134,6 +134,34 @@ const Navbar = ({
                                 <Link href={item.href}>{item.label}</Link>
                             </Menu.Item>
                         ))}
+                        {user ? (
+                            <>
+                                <Menu.Item>
+                                    <Link href='/user/my-profile'>Dashboard</Link>
+                                </Menu.Item>
+                                <Button
+                                    className="ml-4"
+                                    ghost
+                                    size="large"
+                                    type="primary"
+                                    onClick={handleSignOut}
+                                >
+                                    Logout
+                                </Button>
+                            </>
+                        ) : (
+                            <Button
+                                className="ml-4"
+                                ghost
+                                size="large"
+                                type="primary"
+                                onClick={() => {
+                                    router.push("/login");
+                                }}
+                            >
+                                Login
+                            </Button>
+                        )}
                     </Menu>
                 </Drawer>
             </Header>
