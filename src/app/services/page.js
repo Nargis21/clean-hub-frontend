@@ -1,14 +1,10 @@
 import FilteredServices from "../../components/ui/FilteredServices";
+import getAllServices from '../../apiServices/services/getAllServices'
 
 const ServicesPage = async ({ searchParams }) => {
-    const res = await fetch("http://localhost:5000/services", {
-        // cache: "no-cache",
-        next: {
-            tags: ["services"],
-        },
-    });
-    const services = await res.json();
 
+    const services = await getAllServices()
+    console.log(services);
     return (
         <div>
             <FilteredServices services={services} searchParams={searchParams}></FilteredServices>

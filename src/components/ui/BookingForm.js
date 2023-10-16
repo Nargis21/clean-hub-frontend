@@ -1,11 +1,13 @@
 "use client";
 
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, DatePicker, Form, Input } from "antd";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase/firebase.auth";
+import moment from "moment/moment";
 
 const BookingForm = () => {
-    //   const router = useRouter();
+    const user = useAuthState(auth)
     const onFinish = async (values) => {
-
         console.log(values, "values");
         // await createDoctor({
         //     ...values,
@@ -23,7 +25,7 @@ const BookingForm = () => {
                 name="basic"
                 // labelCol={{ span: 8 }}
                 // wrapperCol={{ span: 18 }}
-                initialValues={{ remember: true }}
+                initialValues={{ fullName: user[0]?.displayName, email: user[0]?.email }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
@@ -32,17 +34,15 @@ const BookingForm = () => {
                 <Form.Item
                     label="Full Name"
                     name="fullName"
-                    rules={[{ required: true, message: "Please input your Full Name!" }]}
                 >
-                    <Input type="text" />
+                    <Input type="text" disabled />
                 </Form.Item>
 
                 <Form.Item
                     label="Email"
                     name="email"
-                    rules={[{ required: true, message: "Please input your email!" }]}
                 >
-                    <Input type="email" />
+                    <Input type="email" disabled />
                 </Form.Item>
 
                 <Form.Item
@@ -54,40 +54,15 @@ const BookingForm = () => {
                 </Form.Item>
 
                 <Form.Item
-                    label="Role"
-                    name="role"
-                    rules={[{ required: true, message: "Please input your Role!" }]}
+                    label='Date'
+                    name='date'
+                    rules={[{ required: true, message: "Please select your desired date!" }]}
+                    getValueFromEvent={(onChange) => moment(onChange).format('YYYY-MM-DD')}
+                    getValueProps={(i) => moment(i)}
                 >
-                    <Input type="text" />
+                    <DatePicker format='YYYY-MM-DD' style={{ width: '100%' }} />
                 </Form.Item>
 
-                <Form.Item
-                    label="Qualification"
-                    name="qualification"
-                    rules={[
-                        { required: true, message: "Please input your Qualification!" },
-                    ]}
-                >
-                    <Input type="text" />
-                </Form.Item>
-
-                <Form.Item
-                    label="Specialization Id"
-                    name="specializationId"
-                    rules={[
-                        { required: true, message: "Please input your Specialization Id!" },
-                    ]}
-                >
-                    <Input type="text" />
-                </Form.Item>
-
-                <Form.Item
-                    label="Password"
-                    name="password"
-                    rules={[{ required: true, message: "Please input your password!" }]}
-                >
-                    <Input.Password />
-                </Form.Item>
                 <Form.Item
                     label="Is Password Reset"
                     valuePropName="checked"
