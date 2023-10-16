@@ -8,16 +8,17 @@ import { useEffect, useState } from "react";
 import Link from 'next/link'
 import { useAddBookingMutation } from "../../redux/slices/booking/bookingApi";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 
 const BookingForm = ({ service }) => {
-
+    const router = useRouter()
     const [agreed, setAgreed] = useState(false);
     const handleAgreedChange = (e) => {
         setAgreed(e.target.checked);
     };
 
-    const user = useAuthState(auth)
+    const [user] = useAuthState(auth)
     const [addBooking, data] = useAddBookingMutation()
 
     const onFinish = async (values) => {
@@ -30,8 +31,9 @@ const BookingForm = ({ service }) => {
     useEffect(() => {
         if (data?.isSuccess) {
             toast.success(`Booking Successful!`);
+            router.push('/')
         }
-    }, [data])
+    }, [data, router])
 
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);
@@ -46,7 +48,7 @@ const BookingForm = ({ service }) => {
                     name="basic"
                     // labelCol={{ span: 8 }}
                     // wrapperCol={{ span: 18 }}
-                    initialValues={{ fullName: user[0]?.displayName, email: user[0]?.email, serviceName: service.title, servicePricing: service.pricing, status: 'Pending' }}
+                    initialValues={{ fullName: user?.displayName, email: user?.email, serviceName: service.title, servicePricing: service.pricing, status: 'Pending' }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                     autoComplete="off"
