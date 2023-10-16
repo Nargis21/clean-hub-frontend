@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.auth";
 import moment from "moment/moment";
 
-const BookingForm = () => {
+const BookingForm = ({ service }) => {
     const user = useAuthState(auth)
     const onFinish = async (values) => {
         console.log(values, "values");
@@ -25,24 +25,36 @@ const BookingForm = () => {
                 name="basic"
                 // labelCol={{ span: 8 }}
                 // wrapperCol={{ span: 18 }}
-                initialValues={{ fullName: user[0]?.displayName, email: user[0]?.email }}
+                initialValues={{ fullName: user[0]?.displayName, email: user[0]?.email, serviceName: service.title, servicePricing: service.pricing }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
                 className=" lg:w-[40%] md:[60%] w-[90%] shadow-lg rounded p-5"
             >
                 <Form.Item
+                    label="Service Name"
+                    name="serviceName"
+                >
+                    <Input type="text" disabled className="text-black" />
+                </Form.Item>
+                <Form.Item
+                    label="Service Pricing"
+                    name="servicePricing"
+                >
+                    <Input type="text" disabled className="text-black" />
+                </Form.Item>
+                <Form.Item
                     label="Full Name"
                     name="fullName"
                 >
-                    <Input type="text" disabled />
+                    <Input type="text" disabled className="text-black" />
                 </Form.Item>
 
                 <Form.Item
                     label="Email"
                     name="email"
                 >
-                    <Input type="email" disabled />
+                    <Input type="email" disabled className="text-black" />
                 </Form.Item>
 
                 <Form.Item

@@ -1,13 +1,9 @@
+import getSingleService from "../../../apiServices/services/getSingleService";
 import ServiceDetails from "../../../components/ui/ServiceDetails";
 
-const ServiceDetailsPage = async (params) => {
-    const serviceId = params.params.serviceId;
-
-    const res = await fetch(`http://localhost:5000/services/${serviceId}`, {
-        // cache: "no-cache",
-    });
-    const service = await res.json();
-    console.log(service);
+const ServiceDetailsPage = async ({ params }) => {
+    const serviceId = params.serviceId;
+    const service = await getSingleService(serviceId)
     return (
         <div>
             <ServiceDetails service={service}></ServiceDetails>
