@@ -22,7 +22,7 @@ const Sidebar = ({
     const userItems = [
         { key: "1", label: "My Profile", href: "/user/my-profile" },
         { key: "2", label: "My Bookings", href: `/user/my-booking/${user?.email}` },
-        { key: "3", label: "My Reviews", href: "/user/my-review" },
+        { key: "3", label: "My Reviews", href: `/user/my-review/${user?.email}` },
     ];
     const adminItems = [
         { key: "1", label: "My Profile", href: "/user/my-profile" },
