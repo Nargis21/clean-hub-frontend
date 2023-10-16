@@ -4,8 +4,10 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { SmallDashOutlined } from '@ant-design/icons'
 import { useDeleteServiceMutation, } from "../../redux/slices/service/serviceApi";
+import { useRouter } from "next/navigation";
 
 const ManageServiceTable = ({ services }) => {
+    const router = useRouter()
     const [deleteService, data] = useDeleteServiceMutation()
 
     const handleDelete = (id) => {
@@ -76,6 +78,9 @@ const ManageServiceTable = ({ services }) => {
     ];
     return (
         <div>
+            <div className="text-center py-6">
+                <Button type="primary" size="large" onClick={() => router.push('/add-service')}>Add New Service</Button>
+            </div>
             <Table dataSource={services} columns={columns} />;
         </div>
     );
