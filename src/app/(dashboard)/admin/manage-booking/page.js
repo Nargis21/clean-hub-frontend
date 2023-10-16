@@ -1,7 +1,7 @@
 import ManageBookingTable from '../../../../components/tables/ManageBookingTable'
 
 const ManageBooking = async () => {
-    const res = await fetch("http://localhost:5000/bookings", {
+    const res = await fetch("https://clean-hub-backend.vercel.app/bookings", {
         cache: "no-cache",
     });
     const bookings = await res.json();

@@ -3,7 +3,7 @@ import BookingForm from '../../../components/ui/BookingForm';
 
 const BookingPage = async ({ params }) => {
     const serviceId = params.serviceId;
-    const res = await fetch(`http://localhost:5000/services/${serviceId}`, {
+    const res = await fetch(`https://clean-hub-backend.vercel.app/services/${serviceId}`, {
         // cache: "no-cache",
     });
     const service = await res.json();

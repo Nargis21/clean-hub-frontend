@@ -7,7 +7,7 @@ const useToken = user => {
         const email = user?.user?.email
         const currentUser = { email: email, role: 'User' }
         if (email) {
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://clean-hub-backend.vercel.app/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

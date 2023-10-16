@@ -3,7 +3,7 @@ import MyBookingTable from "../../../../../components/tables/MyBookingTable";
 
 const MyBooking = async ({ params }) => {
 
-    const res = await fetch(`http://localhost:5000/booking/${params.email}`, {
+    const res = await fetch(`https://clean-hub-backend.vercel.app/booking/${params.email}`, {
         cache: "no-cache",
     });
     const bookings = await res.json();
