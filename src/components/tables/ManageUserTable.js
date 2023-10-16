@@ -27,8 +27,18 @@ const ManageUserTable = ({ users }) => {
         },
         {
             title: "Role",
-            dataIndex: "role",
-            key: "role",
+            key: "action",
+            render: (record) => {
+                if (record.role === "Admin") {
+                    return (
+                        <p className="font-bold">Admin</p>
+                    );
+                } else {
+                    return (
+                        <p>User</p>
+                    );
+                }
+            },
         },
         {
             title: "Action",

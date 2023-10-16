@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import StarRating from './StarRating';
 import { useRouter } from 'next/navigation';
+import { Button } from 'antd';
 
 const Services = ({ services }) => {
     const router = useRouter()
@@ -28,9 +29,11 @@ const Services = ({ services }) => {
                     </div>
                     <div className='flex justify-between w-full items-center mb-4'>
                         <p>Location: <span className='font-semibold'>{service?.location}</span></p>
-                        <Link className='text-sky-500' href={`/booking/${service._id}`}>Book Now</Link>
+                        <Link className='text-sky-500' href={`/services/${service._id}`}>View Details</Link>
                     </div>
-                    <p className='px-4 py-2 rounded-full bg-indigo-300 font-semibold'>{service?.availabilityInfo}</p>
+                    <p className='px-4 py-2 rounded-full bg-indigo-300 font-semibold mb-4'>{service?.availabilityInfo}</p>
+                    <Button type='primary' size='large' block onClick={() => router.push(`/booking/${service._id}`)}
+                    >Book Now</Button>
                 </div>
             ))}
         </div>
