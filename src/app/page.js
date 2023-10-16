@@ -1,13 +1,9 @@
-'use client'
-import { Button } from 'antd';
-import { PlayCircleTwoTone } from '@ant-design/icons'
+import Banner from '../components/ui/Banner'
 
 const HomePage = () => {
   return (
     <div>
-      <h1 className='text-blue-800'>This is home page</h1>
-      <Button type="primary">Primary Button</Button>
-      <PlayCircleTwoTone />
+      <Banner />
     </div>
   );
 };
