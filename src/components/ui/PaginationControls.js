@@ -2,6 +2,7 @@
 
 import { Button } from 'antd'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { DoubleLeftOutlined, DoubleRightOutlined } from "@ant-design/icons"
 
 const PaginationControls = (
     {
@@ -17,28 +18,30 @@ const PaginationControls = (
     const per_page = searchParams.get('per_page') ?? '6'
 
     return (
-        <div className='flex gap-2 justify-center py-12 items-center'>
-            <Button
-                type='primary'
-                disabled={!hasPrevPage}
-                onClick={() => {
-                    router.push(`services/?page=${Number(page) - 1}&per_page=${per_page}`)
-                }}>
-                prev page
-            </Button>
+        <div className=' py-12'>
+            <div className='flex gap-2 justify-center items-center'>
+                <Button
+                    type='primary'
+                    disabled={!hasPrevPage}
+                    onClick={() => {
+                        router.push(`services/?page=${Number(page) - 1}&per_page=${per_page}`)
+                    }}>
+                    <DoubleLeftOutlined />
+                </Button>
 
-            <div>
-                {page} / {Math.ceil(totalData / Number(per_page))}
+                <div>
+                    {page} / {Math.ceil(totalData / Number(per_page))}
+                </div>
+
+                <Button
+                    type='primary'
+                    disabled={!hasNextPage}
+                    onClick={() => {
+                        router.push(`services/?page=${Number(page) + 1}&per_page=${per_page}`)
+                    }}>
+                    <DoubleRightOutlined />
+                </Button>
             </div>
-
-            <Button
-                type='primary'
-                disabled={!hasNextPage}
-                onClick={() => {
-                    router.push(`services/?page=${Number(page) + 1}&per_page=${per_page}`)
-                }}>
-                next page
-            </Button>
         </div>
     )
 }

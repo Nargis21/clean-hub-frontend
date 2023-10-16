@@ -1,9 +1,14 @@
-import React from 'react';
+import ManageUserTable from '../../../../components/tables/ManageUserTable'
 
-const ManageUser = () => {
+const ManageUser = async () => {
+    const res = await fetch("http://localhost:5000/users", {
+        cache: "no-cache",
+    });
+    const users = await res.json();
+
     return (
         <div>
-            <h1>Manage User</h1>
+            <ManageUserTable users={users}></ManageUserTable>
         </div>
     );
 };
