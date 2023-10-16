@@ -11,24 +11,25 @@ const bookingApi = api.injectEndpoints({
             invalidatesTags: ["booking"],
         }),
 
-        // editBook: builder.mutation({
-        //     query: ({ id, data }) => ({
-        //         url: `books/${id}`,
-        //         method: "PATCH",
-        //         body: data,
-        //     }),
-        //     invalidatesTags: ["book"],
-        // }),
-        // deleteBook: builder.mutation({
-        //     query: ({ id }) => ({
-        //         url: `books/${id}`,
-        //         method: "DELETE",
-        //     }),
-        //     invalidatesTags: ["book"],
-        // }),
+        editBooking: builder.mutation({
+            query: ({ id }) => ({
+                url: `bookings/${id}`,
+                method: "PATCH"
+            }),
+            invalidatesTags: ["booking"],
+        }),
+        deleteBooking: builder.mutation({
+            query: ({ id }) => ({
+                url: `bookings/${id}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["booking"],
+        }),
     }),
 });
 
 export const {
     useAddBookingMutation,
+    useEditBookingMutation,
+    useDeleteBookingMutation
 } = bookingApi;

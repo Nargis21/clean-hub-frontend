@@ -1,24 +1,65 @@
 'use client'
-import { Button, Table } from "antd";
+import { Button, Dropdown, Table } from "antd";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { useDeleteUserMutation } from "../../redux/slices/user/userApi";
+import { SmallDashOutlined } from '@ant-design/icons'
+import { useDeleteBookingMutation, useEditBookingMutation } from "../../redux/slices/booking/bookingApi";
 
 const ManageBookingTable = ({ bookings }) => {
-    const [deleteUser, data] = useDeleteUserMutation()
+    const [deleteBooking, deleteData] = useDeleteBookingMutation()
+    const [editBooking, editData] = useEditBookingMutation()
+
 
     const handleDelete = (id) => {
         const options = {
             id: id
         }
-        deleteUser(options)
+        deleteBooking(options)
+    }
+    const handleEdit = (id) => {
+        const options = {
+            id: id
+        }
+        editBooking(options)
     }
 
     useEffect(() => {
-        if (data?.isSuccess) {
-            toast.success(`User deleted successfully!`);
+        if (deleteData?.isSuccess) {
+            toast.success(`Booking deleted successfully!`);
         }
-    }, [data])
+    }, [deleteData])
+
+    useEffect(() => {
+        if (editData?.isSuccess) {
+            toast.success(`Booking Approved successfully!`);
+        }
+    }, [editData])
+
+    const approvedDropdownMenuItems = (id) => [
+        {
+            key: "3",
+            label: <span>Delete</span>,
+            onClick: () => {
+                handleDelete(id);
+            },
+        },
+    ];
+    const pendingDropdownMenuItems = (id) => [
+        {
+            key: "3",
+            label: <span>Delete</span>,
+            onClick: () => {
+                handleDelete(id);
+            },
+        },
+        {
+            key: "4",
+            label: <span>Approved</span>,
+            onClick: () => {
+                handleEdit(id);
+            },
+        },
+    ];
     const columns = [
         {
             title: "Service",
@@ -39,6 +80,35 @@ const ManageBookingTable = ({ bookings }) => {
             title: "Date",
             dataIndex: "date",
             key: "date",
+        },
+        {
+            title: "Status",
+            dataIndex: "status",
+            key: "status",
+        },
+        {
+            title: "Action",
+            key: "action",
+            render: (record) => {
+                let items;
+                {
+                    record.status === 'Pending' ? items = pendingDropdownMenuItems(record._id) : items = approvedDropdownMenuItems(record._id)
+                }
+                //   console.log(record);
+                return (
+                    <Dropdown
+                        placement="bottomLeft"
+                        overlayClassName="min-w-[150px]"
+                        menu={{
+                            items: items,
+                        }}
+                    >
+                        <Button>
+                            <SmallDashOutlined />
+                        </Button>
+                    </Dropdown>
+                );
+            },
         },
 
     ];

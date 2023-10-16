@@ -46,7 +46,7 @@ const BookingForm = ({ service }) => {
                     name="basic"
                     // labelCol={{ span: 8 }}
                     // wrapperCol={{ span: 18 }}
-                    initialValues={{ fullName: user[0]?.displayName, email: user[0]?.email, serviceName: service.title, servicePricing: service.pricing }}
+                    initialValues={{ fullName: user[0]?.displayName, email: user[0]?.email, serviceName: service.title, servicePricing: service.pricing, status: 'Pending' }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                     autoComplete="off"
@@ -95,6 +95,12 @@ const BookingForm = ({ service }) => {
                         getValueProps={(i) => moment(i)}
                     >
                         <DatePicker size="large" format='YYYY-MM-DD' style={{ width: '100%' }} />
+                    </Form.Item>
+                    <Form.Item
+                        className="hidden"
+                        name='status'
+                    >
+                        <Input type="hidden" size="large" />
                     </Form.Item>
 
                     <Checkbox
