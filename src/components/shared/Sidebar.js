@@ -11,23 +11,26 @@ import auth from "../../firebase/firebase.auth";
 import useAdmin from "../../hooks/useAdmin";
 const { Content, Sider } = Layout;
 
-const userItems = [
-    { key: "1", label: "My Profile", href: "/user/my-profile" },
-    { key: "2", label: "My Bookings", href: "/user/my-bookings" },
-    { key: "3", label: "My Reviews", href: "/user/my-reviews" },
-];
-const adminItems = [
-    { key: "1", label: "My Profile", href: "/user/my-profile" },
-    { key: "2", label: "Manage User", href: "/admin/manage-user" },
-    { key: "3", label: "Manage Bookings", href: "/admin/manage-booking" },
-    { key: "4", label: "Manage Services", href: "/admin/manage-service" },
-];
 
 const Sidebar = ({
     children,
 }) => {
     const [user] = useAuthState(auth)
     const [admin] = useAdmin(user)
+
+
+    const userItems = [
+        { key: "1", label: "My Profile", href: "/user/my-profile" },
+        { key: "2", label: "My Bookings", href: `/user/my-booking/${user?.email}` },
+        { key: "3", label: "My Reviews", href: "/user/my-reviews" },
+    ];
+    const adminItems = [
+        { key: "1", label: "My Profile", href: "/user/my-profile" },
+        { key: "2", label: "Manage User", href: "/admin/manage-user" },
+        { key: "3", label: "Manage Bookings", href: "/admin/manage-booking" },
+        { key: "4", label: "Manage Services", href: "/admin/manage-service" },
+    ];
+
     const open = useSelector((state) => state.sidebar.open)
     const dispatch = useDispatch();
     const pathname = usePathname();
