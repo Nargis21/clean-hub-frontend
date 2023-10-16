@@ -4,14 +4,36 @@ import { Button, Checkbox, DatePicker, Form, Input } from "antd";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.auth";
 import moment from "moment/moment";
+import { useState } from "react";
+import Link from 'next/link'
+
 
 const BookingForm = ({ service }) => {
+
+    const [agreed, setAgreed] = useState(false);
+    const handleAgreedChange = (e) => {
+        setAgreed(e.target.checked);
+    };
+
     const user = useAuthState(auth)
+    const accessToken = localStorage.getItem('accessToken');
+    console.log(accessToken);
+    if (!accessToken) {
+        console.error('Access token not found in localStorage');
+        return;
+    }
     const onFinish = async (values) => {
-        console.log(values, "values");
-        // await createDoctor({
-        //     ...values,
-        // });
+        const res = await fetch("http://localhost:5000/bookings", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${accessToken}`
+            },
+            body: JSON.stringify(values),
+            cache: "no-cache"
+        });
+        const { data: bookingData } = await res.json();
+        console.log(bookingData);
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -75,18 +97,16 @@ const BookingForm = ({ service }) => {
                     <DatePicker format='YYYY-MM-DD' style={{ width: '100%' }} />
                 </Form.Item>
 
-                <Form.Item
-                    label="Is Password Reset"
-                    valuePropName="checked"
-                    rules={[
-                        { required: true, message: "Please input your Is Password Reset!" },
-                    ]}
+                <Checkbox
+                    checked={agreed}
+                    onChange={handleAgreedChange}
+                    className='mb-4'
                 >
-                    <Checkbox>Password Reset</Checkbox>
-                </Form.Item>
+                    I agree to the <Link href='/' className="underline">Cancellation Policy</Link>
+                </Checkbox>
 
                 <Form.Item >
-                    <Button type="primary" htmlType="submit" block size="large">
+                    <Button type="primary" disabled={!agreed} htmlType="submit" block size="large">
                         Book Now
                     </Button>
                 </Form.Item>
