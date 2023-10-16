@@ -19,8 +19,8 @@ const userItems = [
 const adminItems = [
     { key: "1", label: "My Profile", href: "/user/my-profile" },
     { key: "2", label: "Manage User", href: "/admin/manage-user" },
-    { key: "3", label: "Manage Bookings", href: "/admin/manage-bookings" },
-    { key: "4", label: "Manage Services", href: "/admin/manage-services" },
+    { key: "3", label: "Manage Bookings", href: "/admin/manage-booking" },
+    { key: "4", label: "Manage Services", href: "/admin/manage-service" },
 ];
 
 const Sidebar = ({
