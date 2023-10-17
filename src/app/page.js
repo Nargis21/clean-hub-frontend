@@ -8,12 +8,12 @@ const HomePage = async () => {
     }
   );
   const services = await res.json();
-
+  const latestServices = services.slice(0, 6);
 
   return (
     <div>
       <Banner />
-      <Featured services={services} />
+      <Featured services={latestServices} />
     </div>
   );
 };

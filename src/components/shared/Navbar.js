@@ -8,7 +8,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import logo from '../../assets/images/logo.png'
+import logo from '../../assets/images/logo2.png'
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.auth";
@@ -50,8 +50,8 @@ const Navbar = ({
     }, []);
 
     return (
-        <Layout className="layout">
-            <Header className="flex items-center">
+        <Layout className="layout" >
+            <Header className="flex items-center py-10">
                 {hasSider && (
                     <Button
                         type="primary"
