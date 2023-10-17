@@ -1,6 +1,7 @@
 import Banner from '../components/ui/Banner'
 import FeaturedServices from '../components/ui/FeaturedServices'
 import AboutUs from '../components/ui/AboutUs'
+import Package from '../components/ui/Package'
 
 
 const HomePage = async () => {
@@ -16,6 +17,7 @@ const HomePage = async () => {
       <Banner />
       <FeaturedServices services={services} />
       <AboutUs />
+      <Package />
     </div>
   );
 };
