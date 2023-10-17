@@ -1,6 +1,7 @@
 import { Providers } from '../lib/Providers'
 import './globals.css'
 import Navbar from '../components/shared/Navbar'
+import Footer from '../components/shared/Footer'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
           <Navbar hasSider />
           {children}
           <ToastContainer theme="dark" />
+          <Footer />
         </body>
       </html>
     </Providers>
