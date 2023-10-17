@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { isLoggedIn } from '../../../utils/auth-service'
 import Loading from "../../../components/shared/Loading"
 
-const DashboardLayout = ({ children }) => {
+const PrivateLayout = ({ children }) => {
 
     const userLoggedIn = isLoggedIn();
     const router = useRouter();
@@ -28,4 +28,4 @@ const DashboardLayout = ({ children }) => {
     );
 };
 
-export default DashboardLayout;
+export default PrivateLayout;
