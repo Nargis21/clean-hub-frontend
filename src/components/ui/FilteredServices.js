@@ -71,7 +71,7 @@ const FilteredServices = ({ services, searchParams }) => {
 
     return (
         <div>
-            <div className="grid lg:grid-cols-10 grid-cols-1 gap-4 lg:p-12 p-4 bg-gray-300">
+            <div className="grid lg:grid-cols-10 grid-cols-1 gap-4 lg:p-12 p-4 bg-blue-950">
                 <div className="col-span-6">
                     <input
                         type="text"

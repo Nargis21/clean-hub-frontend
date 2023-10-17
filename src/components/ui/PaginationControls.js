@@ -18,7 +18,7 @@ const PaginationControls = (
     const per_page = searchParams.get('per_page') ?? '6'
 
     return (
-        <div className=' py-12'>
+        <div className=' py-12 bg-gray-300'>
             <div className='flex gap-2 justify-center items-center'>
                 <Button
                     type='primary'

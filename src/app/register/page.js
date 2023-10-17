@@ -40,7 +40,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (token) {
-            router.push("/user/my-profile");
+            router.push("/profile");
         }
     }, [token, router])
 

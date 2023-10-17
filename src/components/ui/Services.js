@@ -5,6 +5,7 @@ import React from 'react';
 import StarRating from './StarRating';
 import { useRouter } from 'next/navigation';
 import { Button } from 'antd';
+import { RightCircleTwoTone } from '@ant-design/icons';
 
 const Services = ({ services }) => {
     const router = useRouter()
@@ -33,7 +34,9 @@ const Services = ({ services }) => {
                     </div>
                     <p className='px-4 py-2 rounded-full bg-indigo-300 font-semibold mb-4'>{service?.availabilityInfo}</p>
                     <Button type='primary' size='large' block onClick={() => router.push(`/booking/${service._id}`)}
-                    >Book Now</Button>
+                    ><div className='flex items-center justify-center gap-1'>
+                            <p >Book Now</p> <RightCircleTwoTone className='text-xl' />
+                        </div></Button>
                 </div>
             ))}
         </div>
