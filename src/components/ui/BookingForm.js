@@ -31,9 +31,9 @@ const BookingForm = ({ service }) => {
     useEffect(() => {
         if (data?.isSuccess) {
             toast.success(`Booking Successful!`);
-            router.push('/')
+            router.push(`/user/my-booking/${user?.email}`)
         }
-    }, [data, router])
+    }, [data, router, user])
 
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);

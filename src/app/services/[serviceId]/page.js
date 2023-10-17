@@ -3,7 +3,7 @@ import ServiceDetails from "../../../components/ui/ServiceDetails";
 const ServiceDetailsPage = async ({ params }) => {
     const serviceId = params.serviceId;
     const res = await fetch(`https://clean-hub-backend.vercel.app/services/${serviceId}`, {
-        // cache: "no-cache",
+        cache: "no-store",
     });
     const service = await res.json();
     return (

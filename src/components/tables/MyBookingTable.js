@@ -30,6 +30,15 @@ const MyBookingTable = ({ bookings }) => {
             },
         },
     ];
+    const pendingDropdownMenuItems = (id) => [
+        {
+            key: "4",
+            label: <span>Cancel</span>,
+            onClick: () => {
+                handleDelete(id);
+            },
+        },
+    ];
 
     const columns = [
         {
@@ -61,7 +70,10 @@ const MyBookingTable = ({ bookings }) => {
             title: "Action",
             key: "action",
             render: (record) => {
-                const items = approvedDropdownMenuItems(record._id)
+                let items;
+                {
+                    record.status === 'Pending' ? items = pendingDropdownMenuItems(record._id) : items = approvedDropdownMenuItems(record._id)
+                }
                 //   console.log(record);
                 return (
                     <Dropdown

@@ -3,7 +3,7 @@ import FilteredServices from "../../components/ui/FilteredServices";
 const ServicesPage = async ({ searchParams }) => {
 
     const res = await fetch("https://clean-hub-backend.vercel.app/services", {
-        // cache: "no-cache",
+        cache: "no-store",
         next: {
             tags: ["services"],
         },

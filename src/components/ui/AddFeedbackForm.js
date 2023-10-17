@@ -24,9 +24,9 @@ const AddFeedbackForm = () => {
     useEffect(() => {
         if (data?.isSuccess) {
             toast.success(`Thanks For Your Feedback!`);
-            router.push('/user/my-review')
+            router.push(`/user/my-review/${user?.email}`)
         }
-    }, [data, router])
+    }, [data, router, user])
 
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);
