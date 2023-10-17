@@ -30,7 +30,6 @@ const Navbar = ({
     const handleSignOut = () => {
         signOut(auth)
         localStorage.removeItem('accessToken')
-        router.push('/')
     }
 
     const pathname = usePathname();

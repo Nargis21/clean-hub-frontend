@@ -1,4 +1,4 @@
-import AddFeedbackForm from '../../components/ui/AddFeedbackForm'
+import AddFeedbackForm from '../../../../components/ui/AddFeedbackForm'
 
 const AddReview = () => {
     return (

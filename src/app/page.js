@@ -1,6 +1,7 @@
 import Banner from '../components/ui/Banner'
 import Featured from '../components/ui/Featured'
 
+
 const HomePage = async () => {
   const res = await fetch("https://clean-hub-backend.vercel.app/services",
     {

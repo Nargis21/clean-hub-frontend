@@ -1,10 +1,9 @@
 'use client'
 
-import Loading from '../../components/shared/Loading';
-import Sidebar from '../../components/shared/Sidebar';
-import { isLoggedIn } from '../../utils/auth-service';
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { isLoggedIn } from '../../../utils/auth-service'
+import Loading from "../../../components/shared/Loading"
 
 const DashboardLayout = ({ children }) => {
 
@@ -22,10 +21,9 @@ const DashboardLayout = ({ children }) => {
     if (!isLoading) {
         return <Loading />;
     }
-
     return (
-        <div className="min-h-[calc(100vh-64px)]">
-            <Sidebar>{children}</Sidebar>
+        <div>
+            {children}
         </div>
     );
 };

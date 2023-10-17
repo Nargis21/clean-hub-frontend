@@ -9,6 +9,7 @@ import auth from '../../firebase/firebase.auth';
 import { useRouter } from 'next/navigation';
 import useToken from '../../hooks/useToken';
 import Link from 'next/link';
+import Loading from "../../components/shared/Loading"
 
 const LoginPage = () => {
     const [agreed, setAgreed] = useState(false);
@@ -47,9 +48,9 @@ const LoginPage = () => {
     if (error || googleError || updateError) {
         signInError = <span className='text-red-500' >{error?.message || googleError?.message}</span>
     }
-    // if (loading || googleLoading || updating) {
-    //     return <Loading></Loading>
-    // }
+    if (loading || googleLoading || updating) {
+        return <Loading />
+    }
 
     return (
         <Row justify="center" align='middle' style={{ minHeight: '100vh' }}>

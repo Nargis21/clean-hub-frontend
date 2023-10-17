@@ -10,6 +10,8 @@ import { useRouter } from 'next/navigation';
 import useToken from '../../hooks/useToken'
 import { toast } from 'react-toastify';
 import Link from "next/link";
+import Loading from '../../components/shared/Loading';
+
 
 const LoginPage = () => {
     const router = useRouter();
@@ -51,9 +53,9 @@ const LoginPage = () => {
     if (error || googleError || resetError) {
         signInError = <span className='text-red-500'>{error?.message || googleError?.message}</span>
     }
-    // if (loading || googleLoading || sending) {
-    //     return <Loading></Loading>
-    // }
+    if (loading || googleLoading || sending) {
+        return <Loading />
+    }
 
     return (
         <Row justify="center" align='middle' style={{ minHeight: '100vh' }}>
