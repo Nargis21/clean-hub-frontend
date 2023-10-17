@@ -1,5 +1,6 @@
 import Banner from '../components/ui/Banner'
-import Featured from '../components/ui/Featured'
+import FeaturedServices from '../components/ui/FeaturedServices'
+import AboutUs from '../components/ui/AboutUs'
 
 
 const HomePage = async () => {
@@ -9,12 +10,12 @@ const HomePage = async () => {
     }
   );
   const services = await res.json();
-  const latestServices = services.slice(0, 6);
 
   return (
     <div>
       <Banner />
-      <Featured services={latestServices} />
+      <FeaturedServices services={services} />
+      <AboutUs />
     </div>
   );
 };
