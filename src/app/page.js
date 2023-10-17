@@ -3,6 +3,7 @@ import FeaturedServices from '../components/ui/FeaturedServices'
 import AboutUs from '../components/ui/AboutUs'
 import Package from '../components/ui/Package'
 import Testimonial from '../components/ui/Testimonial'
+import Booking from '../components/ui/Booking'
 
 
 const HomePage = async () => {
@@ -20,6 +21,7 @@ const HomePage = async () => {
       <AboutUs />
       <Package />
       <Testimonial />
+      <Booking />
     </div>
   );
 };
