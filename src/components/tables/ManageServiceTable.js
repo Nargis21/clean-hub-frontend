@@ -78,8 +78,9 @@ const ManageServiceTable = ({ services }) => {
     ];
     return (
         <div>
-            <div className="text-center py-6">
-                <Button type="primary" size="large" onClick={() => router.push('/admin/add-service')}>Add New Service</Button>
+            <div className="p-4 bg-sky-600 text-center items-center justify-center text-white flex flex-col lg:flex-row md:flex-row gap-2">
+                <p className="text-2xl ">Manage User</p>
+                <Button size="large" ghost onClick={() => router.push('/admin/add-service')}>Add New Service</Button>
             </div>
             <Table dataSource={services} columns={columns} />;
         </div>

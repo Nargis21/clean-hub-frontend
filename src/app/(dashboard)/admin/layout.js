@@ -10,23 +10,23 @@ import { signOut } from 'firebase/auth';
 
 const AdminLayout = ({ children }) => {
 
-    const [user] = useAuthState(auth)
-    const [admin] = useAdmin(user)
-    const router = useRouter();
-    const [isLoading, setIsLoading] = useState(false);
+    // const [user] = useAuthState(auth)
+    // const [admin] = useAdmin(user)
+    // const router = useRouter();
+    // const [isLoading, setIsLoading] = useState(false);
+    // console.log(admin, "admin");
+    // useEffect(() => {
+    //     if (!admin) {
+    //         signOut(auth)
+    //         localStorage.removeItem('accessToken')
+    //         router.push("/login");
+    //     }
+    //     setIsLoading(true);
+    // }, [router, isLoading, setIsLoading, admin]);
 
-    useEffect(() => {
-        if (!admin) {
-            signOut(auth)
-            localStorage.removeItem('accessToken')
-            router.push("/login");
-        }
-        setIsLoading(true);
-    }, [router, isLoading, setIsLoading, admin]);
-
-    if (!isLoading) {
-        return <Loading />;
-    }
+    // if (!isLoading) {
+    //     return <Loading />;
+    // }
 
     return (
         <div>

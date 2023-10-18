@@ -32,7 +32,7 @@ const AddServiceForm = () => {
 
     return (
         <div className="flex justify-center py-12">
-            <div className="lg:w-[50%] md:[60%] w-[90%] shadow-xl rounded">
+            <div className="lg:w-[50%] md:[60%] w-[90%] shadow-xl rounded bg-white">
                 <h1 className="text-center text-xl py-4 bg-blue-400 rounded">Add Service</h1>
                 <Form
                     layout="vertical"

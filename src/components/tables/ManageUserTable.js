@@ -50,7 +50,7 @@ const ManageUserTable = ({ users }) => {
                     );
                 } else {
                     return (
-                        <Button onClick={() => handleDelete(record._id)}>Delete</Button>
+                        <Button type="primary" danger onClick={() => handleDelete(record._id)}>Delete</Button>
                     );
                 }
             },
@@ -59,6 +59,9 @@ const ManageUserTable = ({ users }) => {
     ];
     return (
         <div>
+            <div className="p-4 bg-sky-600 text-center text-white">
+                <p className="text-2xl ">Manage User</p>
+            </div>
             <Table dataSource={users} columns={columns} />;
         </div>
     );

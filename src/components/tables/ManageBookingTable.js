@@ -114,6 +114,9 @@ const ManageBookingTable = ({ bookings }) => {
     ];
     return (
         <div>
+            <div className="p-4 bg-sky-600 text-center text-white">
+                <p className="text-2xl ">Manage Booking</p>
+            </div>
             <Table dataSource={bookings} columns={columns} />;
         </div>
     );

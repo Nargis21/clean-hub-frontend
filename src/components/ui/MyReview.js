@@ -14,7 +14,7 @@ const MyReview = ({ reviews }) => {
                     (
                         <div>
                             <div className="text-center py-6">
-                                <Button type="primary" size="large" onClick={() => router.push('/add-review')}>Add Feedback</Button>
+                                <Button type="primary" size="large" onClick={() => router.push('/user/add-review')}>Add Feedback</Button>
                             </div>
                             <div className="p-10 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 bg-gray-200 ">
                                 {reviews?.map((review) => (

@@ -18,7 +18,6 @@ const Sidebar = ({
     const [user] = useAuthState(auth)
     const [admin] = useAdmin(user)
 
-
     const userItems = [
         { key: "1", label: "My Profile", href: "/profile" },
         { key: "2", label: "My Bookings", href: `/user/my-booking/${user?.email}` },
@@ -43,9 +42,9 @@ const Sidebar = ({
         <Layout>
             <Content>
                 <Layout className="lg:flex hidden">
-                    <Sider width={250} className="min-h-screen bg-gray-300">
+                    <Sider width={250} className="min-h-screen bg-sky-900">
                         <Menu
-                            className="h-full px-3 bg-transparent py-1 bg-gray-300"
+                            className="h-full px-3 font-semibold text-white bg-transparent py-1 bg-gray-300"
                             mode="inline"
                             defaultSelectedKeys={[getSelectedKey()]}
                             selectedKeys={[getSelectedKey()]}
@@ -63,7 +62,7 @@ const Sidebar = ({
                             }
                         </Menu>
                     </Sider>
-                    <Content className="bg-white p-4">{children}</Content>
+                    <Content className="bg-gray-200 p-4">{children}</Content>
                 </Layout>
                 <Layout className="lg:hidden">
                     <Drawer

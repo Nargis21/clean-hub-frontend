@@ -6,7 +6,7 @@ import Image from 'next/image';
 const MyProfile = () => {
     const [user] = useAuthState(auth)
     return (
-        <div className='flex flex-col justify-center items-center min-h-[100vh]'>
+        <div className='flex flex-col justify-center items-center min-h-[100vh] '>
             <Image src='https://cdn-icons-png.flaticon.com/512/9131/9131529.png' alt='login Image' sizes="100vw"
                 height={150}
                 width={150}
