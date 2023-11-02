@@ -4,6 +4,7 @@ import AboutUs from '../components/ui/AboutUs'
 import Package from '../components/ui/Package'
 import Testimonial from '../components/ui/Testimonial'
 import Booking from '../components/ui/Booking'
+import BackToTop from '../components/shared/BackToTop'
 
 
 const HomePage = async () => {
@@ -16,6 +17,7 @@ const HomePage = async () => {
 
   return (
     <div>
+      <BackToTop />
       <Banner />
       <FeaturedServices services={services} />
       <AboutUs />
