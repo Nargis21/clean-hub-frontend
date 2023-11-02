@@ -94,7 +94,7 @@ const MyBookingTable = ({ bookings }) => {
     ];
     return (
         <div>
-            <div className="p-4 bg-sky-600 text-center text-white">
+            <div className="p-4 bg-blue-950 text-center text-white">
                 <p className="text-2xl ">My Booking</p>
             </div>
             <Table dataSource={bookings} columns={columns} />;

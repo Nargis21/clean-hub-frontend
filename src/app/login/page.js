@@ -58,7 +58,7 @@ const LoginPage = () => {
     }
 
     return (
-        <Row justify="center" align='middle' style={{ minHeight: '100vh' }}>
+        <Row justify="center" align='middle' style={{ minHeight: '100vh' }} className='bg-sky-900'>
             <Col sm={24} md={12} lg={10}>
                 <Image src={loginImage} alt='login Image' sizes="100vw"
                     style={{
@@ -67,7 +67,7 @@ const LoginPage = () => {
                     }} />
             </Col>
             <Col sm={24} md={10} lg={8}>
-                <div className="p-6 shadow-lg rounded ">
+                <div className="p-6 shadow-lg bg-white">
                     <form onSubmit={handleSubmit(onSubmit)} >
                         <h1 className='text-2xl pb-6 text-center'>Sign In</h1>
                         <div className='mb-4'>

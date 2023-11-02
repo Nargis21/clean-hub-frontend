@@ -18,7 +18,7 @@ const PaginationControls = (
     const per_page = searchParams.get('per_page') ?? '6'
 
     return (
-        <div className=' py-12 bg-gray-300'>
+        <div className='py-12 bg-sky-900 text-white'>
             <div className='flex gap-2 justify-center items-center'>
                 <Button
                     type='primary'
@@ -26,7 +26,7 @@ const PaginationControls = (
                     onClick={() => {
                         router.push(`services/?page=${Number(page) - 1}&per_page=${per_page}`)
                     }}>
-                    <DoubleLeftOutlined />
+                    <DoubleLeftOutlined />Previous
                 </Button>
 
                 <div>
@@ -39,7 +39,7 @@ const PaginationControls = (
                     onClick={() => {
                         router.push(`services/?page=${Number(page) + 1}&per_page=${per_page}`)
                     }}>
-                    <DoubleRightOutlined />
+                    <DoubleRightOutlined />Next
                 </Button>
             </div>
         </div>

@@ -40,9 +40,9 @@ const BookingForm = ({ service }) => {
     };
 
     return (
-        <div className="flex justify-center py-12 bg-gray-200">
-            <div className="lg:w-[50%] md:[60%] w-[90%] shadow-xl rounded bg-white">
-                <h1 className="text-center text-xl py-4 bg-blue-400 rounded">Booking Form</h1>
+        <div className="flex justify-center py-12 bg-sky-900">
+            <div className="lg:w-[50%] md:[60%] w-[90%] shadow-xl bg-white">
+                <h1 className="text-center text-xl py-6 bg-blue-950 text-white">Booking Confirmation Form</h1>
                 <Form
                     layout="vertical"
                     name="basic"
@@ -115,7 +115,7 @@ const BookingForm = ({ service }) => {
 
                     <Form.Item >
                         <Button type="primary" disabled={!agreed} htmlType="submit" block size="large">
-                            Book Now
+                            Confirm Now
                         </Button>
                     </Form.Item>
                 </Form>

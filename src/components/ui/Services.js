@@ -10,7 +10,7 @@ import { RightCircleTwoTone } from '@ant-design/icons';
 const Services = ({ services }) => {
     const router = useRouter()
     return (
-        <div className="p-10 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 bg-gray-200 ">
+        <div className="p-10 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 bg-sky-900 ">
             {services?.map((service) => (
                 <div key={service._id} className="rounded-lg flex flex-col items-center justify-between p-5 shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white text-black underline-none">
                     <Image

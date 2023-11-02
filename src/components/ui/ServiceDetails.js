@@ -9,7 +9,7 @@ import { RightCircleTwoTone } from '@ant-design/icons';
 const ServiceDetails = ({ service }) => {
     const router = useRouter()
     return (
-        <div className="bg-gray-300">
+        <div className="bg-sky-900 text-white">
             <div className="lg:flex mx-auto items-center gap-10 border-b lg:w-[80%] md:w-[90%] w-[95%] lg:h-screen py-8">
                 <div className="lg:w-[50%]">
                     <Image
