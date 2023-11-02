@@ -3,13 +3,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
-import styles from '../../styles/Featured.module.css'
-import Image from 'next/image';
 import { Avatar, Button } from 'antd';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { RightCircleTwoTone, } from '@ant-design/icons'
+
 
 const FeaturedServices = ({ services }) => {
-    const router = useRouter()
     return (
         <div className='bg-sky-900 pb-12'>
             <div>
@@ -44,8 +44,13 @@ const FeaturedServices = ({ services }) => {
                                 <p className='text-xl font-semibold my-3'>{service.title}</p>
                                 <p className="text-xl text-yellow-500 font-bold ">{service?.pricing}</p>
                                 <p className='text-center my-3 h-14'>{service.description}</p>
-                                <Button type='primary' className='' onClick={() => router.push(`/services/${service._id}`)}
-                                >View Details</Button>
+                                <Link href={`/services/${service._id}`}>
+                                    <Button type='primary' size='large' className=' mt-4'>
+                                        <div className='flex items-center gap-1'>
+                                            <p >View Details</p> <RightCircleTwoTone className='text-xl' />
+                                        </div>
+                                    </Button>
+                                </Link>
                             </div>
                         </SwiperSlide>
                     ))

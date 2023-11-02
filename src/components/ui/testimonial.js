@@ -16,9 +16,9 @@ import { StarFilled } from "@ant-design/icons"
 
 const Testimonial = () => {
     return (
-        <div className=''>
+        <div className='bg-blue-950 pb-12'>
             <div>
-                <p className="lg:text-6xl md:text-5xl text-4xl py-16 bg-sky-900 text-center text-white font-semibold">Our Customer <span className='text-yellow-500'>Feedback</span></p>
+                <p className="lg:text-6xl md:text-5xl text-4xl py-16 bg-blue-950 text-center text-white font-semibold">Our Customer <span className='text-yellow-500'>Feedback</span></p>
             </div>
             <Swiper
                 spaceBetween={30}
@@ -32,10 +32,10 @@ const Testimonial = () => {
                 }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper w-full h-full "
+                className="mySwiper w-full h-full bg-blue-950 pb-12"
             >
-                <SwiperSlide className='flex justify-center items-center p-16 bg-blue-950 '>
-                    <div className='flex flex-col items-center lg:gap-0 gap-10 lg:flex-row lg:py-16 py-8 lg:px-36 md:px-6 px-2 '>
+                <SwiperSlide className='flex justify-center items-center p-16  '>
+                    <div className='flex flex-col items-center lg:gap-0 gap-10 lg:flex-row lg:px-36 md:px-6 px-2 '>
                         <div className='w-full text-center'>
                             <Avatar src="https://img.freepik.com/free-photo/amazing-cheerful-business-woman-standing-with-arms-crossed_171337-8487.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1697500800&semt=ais" size={300} />
 
@@ -55,8 +55,8 @@ const Testimonial = () => {
 
                     </div>
                 </SwiperSlide>
-                <SwiperSlide className='flex justify-center items-center p-16 bg-blue-950'>
-                    <div className='flex flex-col items-center lg:gap-0 gap-10 lg:flex-row lg:py-16 py-8 lg:px-36 md:px-6 px-2 '>
+                <SwiperSlide className='flex justify-center items-center p-16 '>
+                    <div className='flex flex-col items-center lg:gap-0 gap-10 lg:flex-row lg:px-36 md:px-6 px-2 '>
                         <div className='w-full text-center'>
                             <Avatar src="https://img.freepik.com/free-photo/mand-holding-cup_1258-340.jpg" size={300} />
 
@@ -76,8 +76,8 @@ const Testimonial = () => {
 
                     </div>
                 </SwiperSlide>
-                <SwiperSlide className='flex justify-center items-center p-16 bg-blue-950'>
-                    <div className='flex flex-col items-center lg:gap-0 gap-10 lg:flex-row lg:py-16 py-8 lg:px-36 md:px-6 px-2 '>
+                <SwiperSlide className='flex justify-center items-center p-16 '>
+                    <div className='flex flex-col items-center lg:gap-0 gap-10 lg:flex-row lg:px-36 md:px-6 px-2 '>
                         <div className='w-full text-center'>
                             <Avatar src="https://img.freepik.com/free-photo/confident-pretty-business-woman-with-arms-crossed_1262-2992.jpg" size={300} />
 
