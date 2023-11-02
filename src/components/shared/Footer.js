@@ -31,7 +31,7 @@ const Footer = () => {
 
                 <div className='text-gray-400 lg:text-left md:text-left text-center'>
                     <p className='text-2xl font-semibold text-white mb-6'>Services</p>
-                    <p className='mb-2 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><HomeFilled className='text-yellow-500 text-xl' /> Standard Cleaning</p>
+                    <p className='mb-2 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><RightCircleFilled className='text-yellow-500 text-xl' /> Standard Cleaning</p>
                     <p className='mb-2 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><RightCircleFilled className='text-yellow-500 text-xl' /> Residential Cleaning</p>
                     <p className='mb-2 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><RightCircleFilled className='text-yellow-500 text-xl' /> Commercial Cleaning</p>
                 </div>
@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
                 <div className='text-gray-400 lg:text-left md:text-left text-center'>
                     <p className='text-2xl font-semibold text-white mb-6'>Information</p>
-                    <p className='mb-2 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><RightCircleFilled className='text-yellow-500 text-xl' /> 59 Street, B4 Appartment, Australia</p>
+                    <p className='mb-2 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><HomeFilled className='text-yellow-500 text-xl' /> 59 Street, B4 Appartment, Australia</p>
                     <p className='mb-2 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><PhoneFilled className='text-yellow-500 text-xl' />  +985-8844-000</p>
                     <p className='mb-2 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><MailFilled className='text-yellow-500 text-xl' /> info@cleanix.com</p>
                 </div>

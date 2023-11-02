@@ -17,6 +17,8 @@ import image7 from '../../assets/images/image7.jpg'
 import image8 from '../../assets/images/image8.jpg'
 import image9 from '../../assets/images/image9.jpg'
 import { Avatar } from 'antd';
+import { VerifiedOutlined } from '@ant-design/icons'
+
 
 const FeaturedServices = () => {
     return (
@@ -49,8 +51,8 @@ const FeaturedServices = () => {
                             />
                         } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
-                            <p className='text-2xl  '>Sarah Anderson</p>
-                            <p className=' text-yellow-500 text-xl pt-2'>Head Cleaner</p>
+                            <p className='text-2xl'>Sarah Anderson</p>
+                            <p className=' text-yellow-500 text-xl pt-2 flex justify-center gap-2'><VerifiedOutlined className='text-2xl' />Head Cleaner</p>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -64,7 +66,7 @@ const FeaturedServices = () => {
                         } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Emily Martinez</p>
-                            <p className=' text-yellow-500 text-xl pt-2'>Glass Cleaner</p>
+                            <p className=' text-yellow-500 text-xl pt-2 flex justify-center gap-2'><VerifiedOutlined className='text-2xl' />Glass Cleaner</p>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -78,7 +80,7 @@ const FeaturedServices = () => {
                         } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Olivia Johnson</p>
-                            <p className=' text-yellow-500 text-xl pt-2'>Office Cleaner</p>
+                            <p className=' text-yellow-500 text-xl pt-2 flex justify-center gap-2'><VerifiedOutlined className='text-2xl' />Office Cleaner</p>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -92,7 +94,7 @@ const FeaturedServices = () => {
                         } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Mia Brown</p>
-                            <p className=' text-yellow-500 text-xl pt-2'>House Cleaner</p>
+                            <p className=' text-yellow-500 text-xl pt-2 flex justify-center gap-2'><VerifiedOutlined className='text-2xl' />House Cleaner</p>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -106,7 +108,7 @@ const FeaturedServices = () => {
                         } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Ava White</p>
-                            <p className=' text-yellow-500 text-xl pt-2'>Elite Dust Buster</p>
+                            <p className=' text-yellow-500 text-xl pt-2 flex justify-center gap-2'><VerifiedOutlined className='text-2xl' />Elite Dust Buster</p>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -120,7 +122,7 @@ const FeaturedServices = () => {
                         } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Isabella Davis</p>
-                            <p className=' text-yellow-500 text-xl pt-2'>Hygiene Supervisor</p>
+                            <p className=' text-yellow-500 text-xl pt-2 flex justify-center gap-2'><VerifiedOutlined className='text-2xl' />Hygiene Supervisor</p>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -134,7 +136,7 @@ const FeaturedServices = () => {
                         } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Sophia Taylor</p>
-                            <p className=' text-yellow-500 text-xl pt-2'>Lead Maid</p>
+                            <p className=' text-yellow-500 text-xl pt-2 flex justify-center gap-2'><VerifiedOutlined className='text-2xl' />Lead Maid</p>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -148,7 +150,7 @@ const FeaturedServices = () => {
                         } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Grace Wilson</p>
-                            <p className=' text-yellow-500 text-xl pt-2'>Kitchen Cleaner</p>
+                            <p className=' text-yellow-500 text-xl pt-2 flex justify-center gap-2'><VerifiedOutlined className='text-2xl' />Kitchen Cleaner</p>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -162,7 +164,7 @@ const FeaturedServices = () => {
                         } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Chloe Miller</p>
-                            <p className=' text-yellow-500 text-xl pt-2'>Housekeeper</p>
+                            <p className=' text-yellow-500 text-xl pt-2 flex justify-center gap-2'><VerifiedOutlined className='text-2xl' />Housekeeper</p>
                         </div>
                     </div>
                 </SwiperSlide>

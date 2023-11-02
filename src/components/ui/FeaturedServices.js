@@ -4,7 +4,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { Avatar, Button } from 'antd';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { RightCircleTwoTone, } from '@ant-design/icons'
 

@@ -56,7 +56,7 @@ const Package = () => {
 
                     <div className="py-8 bg-blue-950 w-full flex flex-col items-center  font-semibold text-white">
                         <p className="text-5xl ">$89 <span className="text-xl">/mo</span></p>
-                        <p className="p-3 mt-6 bg-yellow-500 text-xl w-[50%] rounded-full text-center">Standard Plan</p>
+                        <p className="p-3 mt-6 bg-yellow-500 text-xl w-[50%] rounded-full text-center">Residential Plan</p>
                     </div>
                     <div className="text-center">
                         <p className="py-4 font-semibold text-gray-500">6 Bedrooms Cleaning</p>
