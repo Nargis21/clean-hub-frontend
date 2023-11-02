@@ -93,6 +93,9 @@ const Navbar = ({
                             <Menu.Item>
                                 <Link href='/profile'>Dashboard</Link>
                             </Menu.Item>
+                            <Menu.Item>
+                                <Link href='/user/add-review'>Add Feedback</Link>
+                            </Menu.Item>
                             <Button
                                 className="ml-4"
                                 ghost

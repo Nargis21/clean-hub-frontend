@@ -13,10 +13,10 @@ const MyReview = ({ reviews }) => {
                 reviews.length > 0 ?
                     (
                         <div>
-                            <div className="text-center py-6">
-                                <Button type="primary" size="large" onClick={() => router.push('/user/add-review')}>Add Feedback</Button>
+                            <div className="p-4 bg-blue-950 text-center text-white">
+                                <p className="text-2xl ">My Review</p>
                             </div>
-                            <div className="p-10 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 bg-blue-950 ">
+                            <div className="p-10 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 bg-gray-200">
                                 {reviews?.map((review) => (
                                     <div key={review._id} className="rounded-lg flex flex-col items-center justify-between p-5 shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white text-black underline-none">
 
