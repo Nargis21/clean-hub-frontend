@@ -30,7 +30,7 @@ const FeaturedServices = ({ services }) => {
                         slidesPerView: 2,
                     },
                     1024: {
-                        slidesPerView: 4,
+                        slidesPerView: 3,
                         spaceBetween: 20,
                     },
                 }}
@@ -38,13 +38,13 @@ const FeaturedServices = ({ services }) => {
             >
                 {
                     services.map(service => (
-                        <SwiperSlide key={service.id} className="rounded bg-white">
+                        <SwiperSlide key={service.id} className=" bg-white py-4 ">
                             <div className='flex flex-col justify-center items-center p-3'>
-                                <Avatar size={250} src={service?.image} shape="square" />
+                                <Avatar size={280} src={service?.image} shape="square" />
                                 <p className='text-xl font-semibold my-3'>{service.title}</p>
                                 <p className="text-xl text-yellow-500 font-bold ">{service?.pricing}</p>
                                 <p className='text-center my-3 h-14'>{service.description}</p>
-                                <Button type='primary' className='mb-4 ' onClick={() => router.push(`/services/${service._id}`)}
+                                <Button type='primary' className='' onClick={() => router.push(`/services/${service._id}`)}
                                 >View Details</Button>
                             </div>
                         </SwiperSlide>

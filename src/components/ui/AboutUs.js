@@ -16,10 +16,11 @@ import image6 from '../../assets/images/image6.jpg'
 import image7 from '../../assets/images/image7.jpg'
 import image8 from '../../assets/images/image8.jpg'
 import image9 from '../../assets/images/image9.jpg'
+import { Avatar } from 'antd';
 
 const FeaturedServices = () => {
     return (
-        <div className='pb-12 bg-gray-200'>
+        <div className='pb-12 bg-blue-950'>
             <div>
                 <p className="lg:text-6xl md:text-5xl text-4xl py-20 bg-blue-950 text-center text-white font-semibold">Meet Our <span className='text-yellow-500'>Teams</span></p>
             </div>
@@ -37,19 +38,16 @@ const FeaturedServices = () => {
                 }}
                 pagination={true}
                 modules={[EffectCoverflow, Pagination]}
-                className=" mySwiper p-12 bg-blue-950 w-[100%] py-16"
+                className=" mySwiper px-12 bg-blue-950 w-[100%] pb-32"
             >
-                <SwiperSlide className={`${styles.swiperSlide}  shadow-lg`}>
-                    <div >
-                        <Image
-                            src={image1}
-                            sizes="100vw"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                            }}
-                            alt="service image"
-                        />
+                <SwiperSlide className={`${styles.swiperSlide} shadow-lg`}>
+                    <div className='bg-white text-center'>
+                        <Avatar size={220} src={
+                            <Image
+                                src={image1}
+                                alt="service image"
+                            />
+                        } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Sarah Anderson</p>
                             <p className=' text-yellow-500 text-xl pt-2'>Head Cleaner</p>
@@ -57,16 +55,13 @@ const FeaturedServices = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={`${styles.swiperSlide}`}>
-                    <div >
-                        <Image
-                            src={image2}
-                            sizes="100vw"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                            }}
-                            alt="service image"
-                        />
+                    <div className='bg-white text-center'>
+                        <Avatar size={220} src={
+                            <Image
+                                src={image2}
+                                alt="service image"
+                            />
+                        } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Emily Martinez</p>
                             <p className=' text-yellow-500 text-xl pt-2'>Glass Cleaner</p>
@@ -74,16 +69,13 @@ const FeaturedServices = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={`${styles.swiperSlide}`}>
-                    <div >
-                        <Image
-                            src={image3}
-                            sizes="100vw"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                            }}
-                            alt="service image"
-                        />
+                    <div className='bg-white text-center'>
+                        <Avatar size={220} src={
+                            <Image
+                                src={image3}
+                                alt="service image"
+                            />
+                        } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Olivia Johnson</p>
                             <p className=' text-yellow-500 text-xl pt-2'>Office Cleaner</p>
@@ -91,16 +83,13 @@ const FeaturedServices = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={`${styles.swiperSlide}`}>
-                    <div >
-                        <Image
-                            src={image4}
-                            sizes="100vw"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                            }}
-                            alt="service image"
-                        />
+                    <div className='bg-white text-center'>
+                        <Avatar size={220} src={
+                            <Image
+                                src={image4}
+                                alt="service image"
+                            />
+                        } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Mia Brown</p>
                             <p className=' text-yellow-500 text-xl pt-2'>House Cleaner</p>
@@ -108,16 +97,13 @@ const FeaturedServices = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={`${styles.swiperSlide}`}>
-                    <div >
-                        <Image
-                            src={image5}
-                            sizes="100vw"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                            }}
-                            alt="service image"
-                        />
+                    <div className='bg-white text-center'>
+                        <Avatar size={220} src={
+                            <Image
+                                src={image5}
+                                alt="service image"
+                            />
+                        } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Ava White</p>
                             <p className=' text-yellow-500 text-xl pt-2'>Elite Dust Buster</p>
@@ -125,16 +111,13 @@ const FeaturedServices = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={`${styles.swiperSlide}`}>
-                    <div >
-                        <Image
-                            src={image6}
-                            sizes="100vw"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                            }}
-                            alt="service image"
-                        />
+                    <div className='bg-white text-center'>
+                        <Avatar size={220} src={
+                            <Image
+                                src={image6}
+                                alt="service image"
+                            />
+                        } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Isabella Davis</p>
                             <p className=' text-yellow-500 text-xl pt-2'>Hygiene Supervisor</p>
@@ -142,16 +125,13 @@ const FeaturedServices = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={`${styles.swiperSlide}`}>
-                    <div >
-                        <Image
-                            src={image7}
-                            sizes="100vw"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                            }}
-                            alt="service image"
-                        />
+                    <div className='bg-white text-center'>
+                        <Avatar size={220} src={
+                            <Image
+                                src={image7}
+                                alt="service image"
+                            />
+                        } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Sophia Taylor</p>
                             <p className=' text-yellow-500 text-xl pt-2'>Lead Maid</p>
@@ -159,16 +139,13 @@ const FeaturedServices = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={`${styles.swiperSlide}`}>
-                    <div >
-                        <Image
-                            src={image8}
-                            sizes="100vw"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                            }}
-                            alt="service image"
-                        />
+                    <div className='bg-white text-center'>
+                        <Avatar size={220} src={
+                            <Image
+                                src={image8}
+                                alt="service image"
+                            />
+                        } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Grace Wilson</p>
                             <p className=' text-yellow-500 text-xl pt-2'>Kitchen Cleaner</p>
@@ -176,16 +153,13 @@ const FeaturedServices = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className={`${styles.swiperSlide}`}>
-                    <div >
-                        <Image
-                            src={image9}
-                            sizes="100vw"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                            }}
-                            alt="service image"
-                        />
+                    <div className='bg-white text-center'>
+                        <Avatar size={220} src={
+                            <Image
+                                src={image9}
+                                alt="service image"
+                            />
+                        } className='my-4' />
                         <div className='text-center font-semibold text-white bg-sky-900 py-6'>
                             <p className='text-2xl  '>Chloe Miller</p>
                             <p className=' text-yellow-500 text-xl pt-2'>Housekeeper</p>

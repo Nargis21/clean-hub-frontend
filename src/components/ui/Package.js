@@ -4,15 +4,15 @@ import { RightCircleTwoTone } from "@ant-design/icons"
 
 const Package = () => {
     return (
-        <div>
+        <div className="bg-sky-900">
             <div>
-                <p className="lg:text-6xl md:text-5xl text-4xl py-20 bg-blue-950 text-center text-white font-semibold">Choose Your <span className='text-yellow-500'>Plan</span></p>
+                <p className="lg:text-6xl md:text-5xl text-4xl py-20 text-center text-white font-semibold">Choose Your <span className='text-yellow-500'>Plan</span></p>
             </div>
-            <div className="px-10 py-16 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 bg-gray-200 ">
+            <div className="px-10 pb-16 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
 
-                <div className="rounded-lg flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white">
+                <div className=" flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white">
 
-                    <div className="py-8 rounded-lg bg-sky-900 w-full flex flex-col items-center  font-semibold text-white">
+                    <div className="py-8 bg-blue-950 w-full flex flex-col items-center  font-semibold text-white">
                         <p className="text-5xl ">$39 <span className="text-xl">/mo</span></p>
                         <p className="p-3 mt-6 bg-yellow-500 text-xl w-[50%] rounded-full text-center">Standard Plan</p>
                     </div>
@@ -31,9 +31,9 @@ const Package = () => {
                         </div>
                     </Button>
                 </div>
-                <div className="rounded-lg flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white">
+                <div className="flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white">
 
-                    <div className="py-8 rounded-lg bg-sky-900 w-full flex flex-col items-center  font-semibold text-white">
+                    <div className="py-8 bg-blue-950 w-full flex flex-col items-center  font-semibold text-white">
                         <p className="text-5xl ">$59 <span className="text-xl">/mo</span></p>
                         <p className="p-3 mt-6 bg-yellow-500 text-xl w-[50%] rounded-full text-center">Commercial Plan</p>
                     </div>
@@ -52,9 +52,9 @@ const Package = () => {
                         </div>
                     </Button>
                 </div>
-                <div className="rounded-lg flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white">
+                <div className="flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white">
 
-                    <div className="py-8 rounded-lg bg-sky-900 w-full flex flex-col items-center  font-semibold text-white">
+                    <div className="py-8 bg-blue-950 w-full flex flex-col items-center  font-semibold text-white">
                         <p className="text-5xl ">$89 <span className="text-xl">/mo</span></p>
                         <p className="p-3 mt-6 bg-yellow-500 text-xl w-[50%] rounded-full text-center">Standard Plan</p>
                     </div>
