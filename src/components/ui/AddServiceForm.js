@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Rate } from "antd";
 import { useEffect } from "react";
 import { useAddServiceMutation } from "../../redux/slices/service/serviceApi";
 import { toast } from "react-toastify";
@@ -33,7 +33,7 @@ const AddServiceForm = () => {
     return (
         <div className="flex justify-center py-12">
             <div className="lg:w-[60%] md:[70%] w-[90%] shadow-xl bg-white text-white">
-                <h1 className="text-center text-2xl py-4 bg-blue-950">Add New Service</h1>
+                <h1 className="text-center text-2xl py-6 bg-blue-950">Add New Service</h1>
                 <Form
                     layout="vertical"
                     name="basic"
@@ -68,14 +68,6 @@ const AddServiceForm = () => {
                     </Form.Item>
 
                     <Form.Item
-                        label="Rating (Out of 5)"
-                        name="rating"
-                        rules={[{ required: true, message: "Please input Rating!" }]}
-                    >
-                        <Input type="number" size="large" />
-                    </Form.Item>
-
-                    <Form.Item
                         label="Availability Info"
                         name="availabilityInfo"
                         rules={[{ required: true, message: "Please input Availability Info!" }]}
@@ -101,9 +93,15 @@ const AddServiceForm = () => {
                         name="description"
                         rules={[{ required: true, message: "Please input Description!" }]}
                     >
-                        <TextArea type="text" size="large" />
+                        <TextArea type="text" style={{ height: 150 }} />
                     </Form.Item>
-
+                    <Form.Item
+                        label="Ratings"
+                        name="rating"
+                        rules={[{ required: true, message: "Please input Rating!" }]}
+                    >
+                        <Rate allowClear />
+                    </Form.Item>
                     <Form.Item >
                         <Button type="primary" htmlType="submit" block size="large">
                             Add Now

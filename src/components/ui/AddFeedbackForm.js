@@ -63,18 +63,18 @@ const AddFeedbackForm = () => {
                         <Input type="email" size="large" disabled className="text-black" />
                     </Form.Item>
                     <Form.Item
-                        label="Rating (Out of 5)"
-                        name="rating"
-                        rules={[{ required: true, message: "Please input Rating!" }]}
-                    >
-                        <Rate allowClear />
-                    </Form.Item>
-                    <Form.Item
                         label="Your Feedback"
                         name="title"
                         rules={[{ required: true, message: "Please add your Feedback!" }]}
                     >
                         <TextArea type="text" style={{ height: 120 }} />
+                    </Form.Item>
+                    <Form.Item
+                        label="Ratings"
+                        name="rating"
+                        rules={[{ required: true, message: "Please input Rating!" }]}
+                    >
+                        <Rate allowClear />
                     </Form.Item>
                     <Form.Item >
                         <Button type="primary" htmlType="submit" block size="large">
