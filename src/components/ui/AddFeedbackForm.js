@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Rate } from "antd";
 import { useEffect } from "react";
 import { useAddFeedbackMutation } from "../../redux/slices/feedback/feedbackApi";
 import { toast } from "react-toastify";
@@ -19,6 +19,7 @@ const AddFeedbackForm = () => {
             data: { ...values },
         };
         addFeedback(options);
+        // console.log(values);
     };
 
     useEffect(() => {
@@ -66,7 +67,7 @@ const AddFeedbackForm = () => {
                         name="rating"
                         rules={[{ required: true, message: "Please input Rating!" }]}
                     >
-                        <Input type="number" size="large" />
+                        <Rate allowClear />
                     </Form.Item>
                     <Form.Item
                         label="Your Feedback"

@@ -21,6 +21,7 @@ const PaginationControls = (
         <div className='py-12 bg-sky-900 text-white'>
             <div className='flex gap-2 justify-center items-center'>
                 <Button
+                    className='text-white'
                     type='primary'
                     disabled={!hasPrevPage}
                     onClick={() => {
@@ -34,12 +35,13 @@ const PaginationControls = (
                 </div>
 
                 <Button
+                    className='text-white'
                     type='primary'
                     disabled={!hasNextPage}
                     onClick={() => {
                         router.push(`services/?page=${Number(page) + 1}&per_page=${per_page}`)
                     }}>
-                    <DoubleRightOutlined />Next
+                    Next<DoubleRightOutlined />
                 </Button>
             </div>
         </div>
