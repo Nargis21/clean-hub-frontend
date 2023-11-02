@@ -19,7 +19,7 @@ import image9 from '../../assets/images/image9.jpg'
 
 const FeaturedServices = () => {
     return (
-        <div className='pt-56 pb-12 bg-gray-200'>
+        <div className='pb-12 bg-gray-200'>
             <div>
                 <p className="lg:text-6xl md:text-5xl text-4xl py-20 bg-blue-950 text-center text-white font-semibold">Meet Our <span className='text-yellow-500'>Teams</span></p>
             </div>
@@ -37,7 +37,7 @@ const FeaturedServices = () => {
                 }}
                 pagination={true}
                 modules={[EffectCoverflow, Pagination]}
-                className=" mySwiper p-12 bg-gray-200 w-[100%] py-16"
+                className=" mySwiper p-12 bg-blue-950 w-[100%] py-16"
             >
                 <SwiperSlide className={`${styles.swiperSlide}  shadow-lg`}>
                     <div >

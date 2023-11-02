@@ -38,9 +38,9 @@ const Footer = () => {
                 <div className='space-y-3 lg:text-left md:text-left text-center'>
                     <p className='text-2xl font-semibold text-white mb-6'>Links</p>
                     <Link href='/services' className='text-gray-400 mb-2'>Services</Link> <br /><br />
-                    <Link href='/services' className='text-gray-400 mb-2'>Privacy Policy</Link><br /><br />
-                    <Link href='/services' className='text-gray-400 mb-2'>Terms and Conditions</Link><br /><br />
-                    <Link href='/services' className='text-gray-400 mb-2'>Cancellation Policy</Link><br /><br />
+                    <Link href='/' className='text-gray-400 mb-2'>Privacy Policy</Link><br /><br />
+                    <Link href='/' className='text-gray-400 mb-2'>Terms and Conditions</Link><br /><br />
+                    <Link href='/' className='text-gray-400 mb-2'>Cancellation Policy</Link><br /><br />
                 </div>
                 <div className='text-gray-400 lg:text-left md:text-left text-center'>
                     <p className='text-2xl font-semibold text-white mb-6'>Information</p>

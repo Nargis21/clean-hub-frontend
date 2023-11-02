@@ -35,7 +35,7 @@ const MyReview = ({ reviews }) => {
                             <p className="lg:text-5xl md:text-3xl text-2xl font-semibold">
                                 You have no feedback yet!.
                             </p>
-                            <Button type="primary" size="large" onClick={() => router.push('/add-review')}>Add Feedback</Button>
+                            <Button type="primary" size="large" onClick={() => router.push('/user/add-review')}>Add Feedback</Button>
                         </div>
                     )
             }
