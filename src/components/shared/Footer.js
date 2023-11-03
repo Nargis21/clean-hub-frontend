@@ -9,7 +9,7 @@ import Link from "next/link"
 const Footer = () => {
     const router = useRouter()
     return (
-        <div className='bg-blue-950 px-12 py-24'>
+        <div className='bg-slate-900 px-12 py-24'>
             <div className='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-6 '>
                 <div className='lg:text-left md:text-left text-center'>
                     <div className='flex items-center lg:justify-start md:justify-start justify-center gap-2'>

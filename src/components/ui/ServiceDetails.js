@@ -27,7 +27,7 @@ const ServiceDetails = ({ service }) => {
                 </div>
                 <div className="lg:w-[50%] space-y-2">
                     <h1 className="text-3xl ">{service?.title}</h1>
-                    <p className="text-xl text-indigo-500 font-bold">{service?.pricing}</p>
+                    <p className="text-xl text-yellow-500 font-bold">{service?.pricing}</p>
                     <p><span className="font-bold">Location: </span>{service?.location}</p>
                     <p><span className="font-bold">Status: </span>{service?.availabilityInfo}</p>
                     <p><span className="font-bold">Description: </span>{service?.description}</p>

@@ -42,7 +42,7 @@ const Sidebar = ({
         <Layout>
             <Content>
                 <Layout className="lg:flex hidden">
-                    <Sider width={250} className="min-h-screen bg-slate-800">
+                    <Sider width={250} className="min-h-screen bg-blue-950">
                         <Menu
                             className="h-full px-3 font-semibold text-white bg-transparent py-1 bg-gray-300"
                             mode="inline"
@@ -62,7 +62,7 @@ const Sidebar = ({
                             }
                         </Menu>
                     </Sider>
-                    <Content className="bg-sky-900 p-4">{children}</Content>
+                    <Content className="bg-gray-100 p-4">{children}</Content>
                 </Layout>
                 <Layout className="lg:hidden">
                     <Drawer

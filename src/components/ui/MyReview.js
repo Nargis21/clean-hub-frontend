@@ -13,7 +13,7 @@ const MyReview = ({ reviews }) => {
                 reviews.length > 0 ?
                     (
                         <div>
-                            <div className="p-4 bg-blue-950 text-center text-white">
+                            <div className="p-4 bg-sky-900 text-center text-white">
                                 <p className="text-2xl ">My Review</p>
                             </div>
                             <div className="p-10 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 bg-gray-200">
