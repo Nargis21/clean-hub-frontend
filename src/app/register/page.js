@@ -148,7 +148,7 @@ const LoginPage = () => {
                             onChange={handleAgreedChange}
                             className='mb-4'
                         >
-                            I agree to the <Link href='/'>Terms and Conditions</Link> and <Link href='/'>Privacy Policy</Link>
+                            I agree to the <Link href='/terms-and-condition'>Terms and Conditions</Link> and <Link href='/privacy-policy'>Privacy Policy</Link>
                         </Checkbox>
                         <Button type='primary' block size='large' disabled={!agreed} htmlType='submit'>Sign Up</Button>
                     </form>

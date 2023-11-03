@@ -110,7 +110,7 @@ const BookingForm = ({ service }) => {
                         onChange={handleAgreedChange}
                         className='mb-4'
                     >
-                        I agree to the <Link href='/' className="underline">Cancellation Policy</Link>
+                        I agree to the <Link href='/cancellation-policy' className="underline">Cancellation Policy</Link>
                     </Checkbox>
 
                     <Form.Item >
