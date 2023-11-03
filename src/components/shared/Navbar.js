@@ -104,7 +104,7 @@ const Navbar = ({
                                 type="primary"
                                 onClick={handleSignOut}
                             >
-                                Logout
+                                Sign Out
                             </Button>
                         </>
                     ) : (
@@ -117,7 +117,7 @@ const Navbar = ({
                                 router.push("/login");
                             }}
                         >
-                            Login
+                            Sign In
                         </Button>
                     )}
                 </Menu>
@@ -140,6 +140,9 @@ const Navbar = ({
                         {user ? (
                             <>
                                 <Menu.Item>
+                                    <Link href='/feedback'>Add Feedback</Link>
+                                </Menu.Item>
+                                <Menu.Item>
                                     <Link href='/profile'>Dashboard</Link>
                                 </Menu.Item>
                                 <Button
@@ -149,7 +152,7 @@ const Navbar = ({
                                     type="primary"
                                     onClick={handleSignOut}
                                 >
-                                    Logout
+                                    Sign Out
                                 </Button>
                             </>
                         ) : (
@@ -162,7 +165,7 @@ const Navbar = ({
                                     router.push("/login");
                                 }}
                             >
-                                Login
+                                Sign In
                             </Button>
                         )}
                     </Menu>
