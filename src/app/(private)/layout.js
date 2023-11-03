@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { isLoggedIn } from '../../../utils/auth-service'
-import Loading from "../../../components/shared/Loading"
+import { isLoggedIn } from '../../utils/auth-service'
+import Loading from "../../components/shared/Loading"
 
 const PrivateLayout = ({ children }) => {
 

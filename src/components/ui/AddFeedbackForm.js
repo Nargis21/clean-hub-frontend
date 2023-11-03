@@ -35,8 +35,8 @@ const AddFeedbackForm = () => {
 
     return (
 
-        <div className="flex justify-center py-12">
-            <div className="lg:w-[60%] md:[70%] w-[90%] shadow-xl bg-white text-white">
+        <div className="flex justify-center py-12 bg-sky-900">
+            <div className="lg:w-[50%] md:[60%] w-[90%] shadow-xl bg-white text-white">
                 <h1 className="text-center text-2xl py-6 bg-blue-950">Feedback Form</h1>
                 <Form
                     layout="vertical"
