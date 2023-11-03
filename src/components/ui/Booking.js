@@ -5,8 +5,8 @@ import { FileDoneOutlined, MailOutlined, SmileOutlined } from "@ant-design/icons
 const Booking = () => {
     return (
         <div>
-            <div>
-                <p className="lg:text-6xl md:text-5xl text-4xl py-20 bg-sky-900 text-center text-white font-semibold">Our Working <span className='text-yellow-500'>Process</span></p>
+            <div className="lg:text-6xl md:text-5xl text-4xl py-20 bg-sky-900 text-center text-white font-semibold">
+                <p data-aos="zoom-in">Our Working <span className='text-yellow-500'>Process</span></p>
             </div>
             <div className="px-10 py-20 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6  bg-sky-900" >
 

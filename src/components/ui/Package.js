@@ -5,8 +5,8 @@ import { RightCircleTwoTone } from "@ant-design/icons"
 const Package = () => {
     return (
         <div className="bg-sky-900">
-            <div>
-                <p className="lg:text-6xl md:text-5xl text-4xl py-20 text-center text-white font-semibold">Choose Your <span className='text-yellow-500'>Plan</span></p>
+            <div className="lg:text-6xl md:text-5xl text-4xl py-20 text-center text-white font-semibold">
+                <p data-aos="zoom-in">Choose Your <span className='text-yellow-500'>Plan</span></p>
             </div>
             <div className="px-10 pb-16 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
 

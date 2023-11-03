@@ -17,8 +17,8 @@ import { StarFilled } from "@ant-design/icons"
 const Testimonial = () => {
     return (
         <div className='bg-blue-950 pb-12'>
-            <div>
-                <p className="lg:text-6xl md:text-5xl text-4xl py-16 bg-blue-950 text-center text-white font-semibold">Our Customer <span className='text-yellow-500'>Feedback</span></p>
+            <div className="lg:text-6xl md:text-5xl text-4xl py-16 bg-blue-950 text-center text-white font-semibold">
+                <p data-aos="zoom-in">Our Customer <span className='text-yellow-500'>Feedback</span></p>
             </div>
             <Swiper
                 spaceBetween={30}

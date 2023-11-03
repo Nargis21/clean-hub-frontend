@@ -8,7 +8,7 @@ import { RightCircleTwoTone, RightCircleFilled } from '@ant-design/icons'
 const Banner = () => {
     return (
         <div className='flex flex-col items-center gap-10 lg:flex-row lg:py-16 py-8 lg:px-12 md:px-6 px-2 bg-blue-950 lg:h-screen'>
-            <div className='w-full text-white text-center lg:text-left'>
+            <div className='w-full text-white text-center lg:text-left' data-aos="fade-right">
                 <h1 className='lg:text-7xl md:text-5xl text-3xl mb-2'>Professional</h1>
                 <p className='font-thin lg:text-6xl md:text-4xl text-2xl mb-4'><span className='text-yellow-500'>Cleaning</span> service</p>
                 <p className='mb-4'>Revitalize Your Space with Our Expert Cleaning Services,Spotless Cleanliness, Every Time Your Trusted Cleaning Partner</p>
@@ -25,7 +25,7 @@ const Banner = () => {
                 </Link>
 
             </div>
-            <div className='w-full text-center'>
+            <div className='w-full text-center' data-aos="fade-left">
                 <Image src={BannerImage} alt='login Image'></Image>
             </div>
         </div>

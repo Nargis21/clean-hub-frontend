@@ -23,8 +23,8 @@ import { VerifiedOutlined } from '@ant-design/icons'
 const FeaturedServices = () => {
     return (
         <div className='pb-12 bg-blue-950'>
-            <div>
-                <p className="lg:text-6xl md:text-5xl text-4xl py-20 bg-blue-950 text-center text-white font-semibold">Meet Our <span className='text-yellow-500'>Teams</span></p>
+            <div className="lg:text-6xl md:text-5xl text-4xl py-20 bg-blue-950 text-center text-white font-semibold">
+                <p data-aos="zoom-in" >Meet Our <span className='text-yellow-500'>Teams</span></p>
             </div>
             <Swiper
                 effect={'coverflow'}

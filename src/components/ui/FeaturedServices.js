@@ -11,8 +11,8 @@ import { RightCircleTwoTone, } from '@ant-design/icons'
 const FeaturedServices = ({ services }) => {
     return (
         <div className='bg-sky-900 pb-12'>
-            <div>
-                <p className="lg:text-6xl md:text-5xl text-4xl pt-16 bg-sky-900 text-center text-white font-semibold">Explore Our <span className='text-yellow-500'>Services</span></p>
+            <div className="lg:text-6xl md:text-5xl text-4xl pt-16 bg-sky-900 text-center text-white font-semibold">
+                <p data-aos="zoom-in">Explore Our <span className='text-yellow-500'>Services</span></p>
             </div>
             <Swiper
                 className="flex justify-center items-center mySwiper bg-sky-900 p-16"
