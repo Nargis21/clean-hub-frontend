@@ -8,7 +8,7 @@ const Package = () => {
             <div className="lg:text-6xl md:text-5xl text-4xl py-20 text-center text-white font-semibold">
                 <p data-aos="zoom-in">Choose Your <span className='text-yellow-500'>Plan</span></p>
             </div>
-            <div className="px-10 pb-16 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
+            <div className="px-12 pb-16 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
 
                 <div className=" flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white pb-4">
 

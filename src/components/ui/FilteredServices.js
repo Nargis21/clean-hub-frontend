@@ -78,7 +78,7 @@ const FilteredServices = ({ services, searchParams }) => {
                         placeholder="Search by Title or Location"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="px-4 py-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
+                        className="px-4 py-4 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
                     />
                 </div>
 
@@ -86,7 +86,7 @@ const FilteredServices = ({ services, searchParams }) => {
                     <select
                         value={selectedPricing}
                         onChange={handlePricingChange}
-                        className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 "
+                        className="px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 "
                     >
                         <option value="">All Pricing</option>
                         {(pricing).map((price, i) => (
@@ -99,7 +99,7 @@ const FilteredServices = ({ services, searchParams }) => {
                     <select
                         value={selectedAvailabilityInfo}
                         onChange={handleAvailabilityInfoChange}
-                        className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        className="px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     >
                         <option value="">All Availability</option>
                         {(availabilityInfo).map((availability, i) => (
