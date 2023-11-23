@@ -2,14 +2,14 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import logo from "../../assets/images/logo2.png"
+import logo from "../../assets/images/logo.png"
 import { FacebookFilled, TwitterSquareFilled, InstagramFilled, RightCircleFilled, HomeFilled, MailFilled, PhoneFilled } from "@ant-design/icons"
 import Link from "next/link"
 
 const Footer = () => {
     const router = useRouter()
     return (
-        <div className='bg-slate-900 px-12 py-24'>
+        <div className='bg-slate-900 px-12 pt-24 pb-12'>
             <div className='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-6 '>
                 <div className='lg:text-left md:text-left text-center'>
                     <div className='flex items-center lg:justify-start md:justify-start justify-center gap-2'>

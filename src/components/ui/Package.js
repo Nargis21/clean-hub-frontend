@@ -10,7 +10,7 @@ const Package = () => {
             </div>
             <div className="px-10 pb-16 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
 
-                <div className=" flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white">
+                <div className=" flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white pb-4">
 
                     <div className="py-8 bg-blue-950 w-full flex flex-col items-center  font-semibold text-white">
                         <p className="text-5xl ">$39 <span className="text-xl">/mo</span></p>
@@ -31,7 +31,7 @@ const Package = () => {
                         </div>
                     </Button>
                 </div>
-                <div className="flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white">
+                <div className="flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white pb-4">
 
                     <div className="py-8 bg-blue-950 w-full flex flex-col items-center  font-semibold text-white">
                         <p className="text-5xl ">$59 <span className="text-xl">/mo</span></p>
@@ -52,7 +52,7 @@ const Package = () => {
                         </div>
                     </Button>
                 </div>
-                <div className="flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white">
+                <div className="flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white pb-4">
 
                     <div className="py-8 bg-blue-950 w-full flex flex-col items-center  font-semibold text-white">
                         <p className="text-5xl ">$89 <span className="text-xl">/mo</span></p>
