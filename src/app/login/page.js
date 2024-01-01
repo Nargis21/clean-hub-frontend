@@ -1,5 +1,5 @@
 'use client'
-import { Button, Col, Divider, Input, Row } from 'antd';
+import { Button, Divider, } from 'antd';
 import React, { useEffect } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import loginImage from '../../assets/images/login.png'
@@ -58,16 +58,20 @@ const LoginPage = () => {
     }
 
     return (
-        <Row justify="center" align='middle' style={{ minHeight: '100vh' }} className='bg-sky-900'>
-            <Col sm={24} md={12} lg={10}>
-                <Image src={loginImage} alt='login Image' sizes="100vw"
-                    style={{
-                        width: '100%',
-                        height: 'auto',
-                    }} />
-            </Col>
-            <Col sm={24} md={10} lg={8}>
-                <div className="p-6 shadow-lg bg-white">
+        <div className='bg-sky-900 p-24'>
+            <div className='flex lg:flex-row flex-col items-center gap-6 p-12 rounded-2xl bg-white w-100 h-auto'>
+                <div>
+                    <h1 className='text-4xl font-semibold text-center'>Welcome Back</h1>
+                    <p className='pt-6 text-center'>New to <span className='font-semibold'>Clean Hub</span>? <Link className='no-underline text-sky-600' href='/register'>Create a new account</Link></p>
+                    <Image src={loginImage} alt='login Image' sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto',
+                        }}
+                    />
+                </div>
+
+                <div className="p-10 shadow-xl bg-white w-full">
                     <form onSubmit={handleSubmit(onSubmit)} >
                         <h1 className='text-2xl pb-6 text-center'>Sign In</h1>
                         <div className='mb-4'>
@@ -137,7 +141,6 @@ const LoginPage = () => {
                         </div>
                         <Button type='primary' block size='large' htmlType='submit'>Sign In</Button>
                     </form>
-                    <p className='text-sm pt-2 text-center'>New to Clean Hub? <Link className='text-sky-500' href='/register'>Create new account</Link></p>
                     <Divider plain>or</Divider>
                     <Button onClick={() => signInWithGoogle()} type='primary' block size='large' htmlType='submit' className='flex items-center justify-center gap-2 font-semibold w-full text-black' ghost>
                         <Image
@@ -150,8 +153,9 @@ const LoginPage = () => {
                         <p>Continue With Google</p>
                     </Button>
                 </div>
-            </Col>
-        </Row>
+            </div>
+
+        </div>
     );
 };
 
