@@ -90,10 +90,10 @@ const Navbar = ({
 
                     {user ? (
                         <>
-                            <Menu.Item>
+                            <Menu.Item key={'/feedback'}>
                                 <Link href='/feedback'>Add Feedback</Link>
                             </Menu.Item>
-                            <Menu.Item>
+                            <Menu.Item key={'/profile'}>
                                 <Link href='/profile'>Dashboard</Link>
                             </Menu.Item>
 
@@ -139,10 +139,10 @@ const Navbar = ({
                         ))}
                         {user ? (
                             <>
-                                <Menu.Item>
+                                <Menu.Item key={'/feedback'}>
                                     <Link href='/feedback'>Add Feedback</Link>
                                 </Menu.Item>
-                                <Menu.Item>
+                                <Menu.Item key={'/profile'}>
                                     <Link href='/profile'>Dashboard</Link>
                                 </Menu.Item>
                                 <Button
