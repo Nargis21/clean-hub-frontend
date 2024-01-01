@@ -58,10 +58,10 @@ const LoginPage = () => {
     }
 
     return (
-        <div className='bg-sky-900 p-24'>
-            <div className='flex lg:flex-row flex-col items-center gap-6 p-12 rounded-2xl bg-white w-100 h-auto'>
+        <div className='bg-sky-900 lg:p-24 md:p-16 p-4'>
+            <div className='flex lg:flex-row flex-col items-center justify-center lg:p-12 md:p-6 p-2  rounded-2xl bg-white w-full h-auto'>
                 <div>
-                    <h1 className='text-4xl font-semibold text-center'>Welcome Back</h1>
+                    <h1 className='text-4xl font-semibold text-center lg:mt-0 mt-6'>Welcome Back</h1>
                     <p className='pt-6 text-center'>New to <span className='font-semibold'>Clean Hub</span>? <Link className='no-underline text-sky-600' href='/register'>Create a new account</Link></p>
                     <Image src={loginImage} alt='login Image' sizes="100vw"
                         style={{
@@ -71,9 +71,9 @@ const LoginPage = () => {
                     />
                 </div>
 
-                <div className="p-10 shadow-xl bg-white w-full">
+                <div className="lg:p-10 md:p-6 p-2 shadow-xl bg-white w-full">
                     <form onSubmit={handleSubmit(onSubmit)} >
-                        <h1 className='text-2xl pb-6 text-center'>Login</h1>
+                        <h1 className='text-2xl text-center'>Login</h1>
                         <div className='my-4 p-6 shadow-lg text-center border-black border-2 flex justify-evenly '>
                             <Tooltip title="Email: admin@gmail.com
                                 Password: 212121" color='geekblue' key='geekblue'>
@@ -84,7 +84,7 @@ const LoginPage = () => {
                                 <p className='cursor-pointer underline text-sky-600'>User Credentials</p>
                             </Tooltip>
                         </div>
-                        <div className='mb-4'>
+                        <div className='mb-4 mt-8'>
                             <label>Email Address</label>
                             <input
                                 type="email"
@@ -152,7 +152,7 @@ const LoginPage = () => {
                         <Button type='primary' block size='large' htmlType='submit'>Login</Button>
                     </form>
                     <Divider plain >or</Divider>
-                    <Button onClick={() => signInWithGoogle()} type='primary' block size='large' htmlType='submit' className='flex items-center justify-center gap-2 font-semibold w-full text-black' ghost>
+                    <Button onClick={() => signInWithGoogle()} type='primary' block size='large' htmlType='submit' className='mb-4 lg:mb-0 flex items-center justify-center gap-2 font-semibold w-full text-black' ghost>
                         <Image
                             src='https://cdn-icons-png.flaticon.com/512/2965/2965278.png'
                             sizes="100vw"
