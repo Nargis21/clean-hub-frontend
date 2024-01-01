@@ -1,5 +1,5 @@
 'use client'
-import { Button, Divider, } from 'antd';
+import { Button, Divider, Tooltip, } from 'antd';
 import React, { useEffect } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import loginImage from '../../assets/images/login.png'
@@ -73,7 +73,17 @@ const LoginPage = () => {
 
                 <div className="p-10 shadow-xl bg-white w-full">
                     <form onSubmit={handleSubmit(onSubmit)} >
-                        <h1 className='text-2xl pb-6 text-center'>Sign In</h1>
+                        <h1 className='text-2xl pb-6 text-center'>Login</h1>
+                        <div className='my-4 p-6 shadow-lg text-center border-black border-2 flex justify-evenly '>
+                            <Tooltip title="Email: admin@gmail.com
+                                Password: 212121" color='geekblue' key='geekblue'>
+                                <p className='cursor-pointer underline text-sky-600'>Admin Credentials</p>
+                            </Tooltip>
+                            <Tooltip title="Email: user@gmail.com
+                                Password: 212121" color='geekblue' key='geekblue'>
+                                <p className='cursor-pointer underline text-sky-600'>User Credentials</p>
+                            </Tooltip>
+                        </div>
                         <div className='mb-4'>
                             <label>Email Address</label>
                             <input
@@ -139,9 +149,9 @@ const LoginPage = () => {
                         <div className='mb-2'>
                             {signInError}
                         </div>
-                        <Button type='primary' block size='large' htmlType='submit'>Sign In</Button>
+                        <Button type='primary' block size='large' htmlType='submit'>Login</Button>
                     </form>
-                    <Divider plain>or</Divider>
+                    <Divider plain >or</Divider>
                     <Button onClick={() => signInWithGoogle()} type='primary' block size='large' htmlType='submit' className='flex items-center justify-center gap-2 font-semibold w-full text-black' ghost>
                         <Image
                             src='https://cdn-icons-png.flaticon.com/512/2965/2965278.png'
