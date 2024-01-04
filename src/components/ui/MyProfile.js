@@ -4,11 +4,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
-import { ArrowLeftOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, EditOutlined } from "@ant-design/icons";
 import auth from "../../firebase/firebase.auth";
 import Image from "next/image";
+import { Avatar, Button } from "antd";
 const MyProfile = ({ user: userInfo }) => {
     const [user] = useAuthState(auth);
+    console.log(user);
     const [edit, setEdit] = useState(null);
     const handleEdit = () => {
         setEdit("set");
@@ -90,53 +92,51 @@ const MyProfile = ({ user: userInfo }) => {
     };
 
     return (
-        <div className="p-10">
-            <h1 className="text-3xl text-red-900 pb-6 border-b-2 border-gray-500">
-                My Profile
-            </h1>
+        <div className="bg-gray-900 p-6 rounded-xl text-white h-screen">
+            <div className="flex justify-between items-center">
+                <h1 className="text-2xl pb-2">
+                    My Profile
+                </h1>
+                <Button
+                    onClick={handleEdit}
+                    type='link'
+                    className="underline"
+                >
+
+                    <EditOutlined />
+                    EDIT
+                </Button>
+            </div>
+            <hr />
             {!edit && (
                 <div className="grid lg:grid-cols-2 grid-cols-1">
                     <div className="py-10 flex flex-col justify-center items-center">
-                        <div className="avatar">
-                            <div className="w-48 rounded-full">
-                                <Image src={userInfo?.img || "https://cdn-icons-png.flaticon.com/512/9131/9131529.png"} alt='login Image' sizes="100vw"
-                                    height={150}
-                                    width={150}
-                                    className="mb-4"
-                                />
-                            </div>
-                        </div>
-                        <button
-                            onClick={handleEdit}
-                            className="btn btn-link normal-case"
-                        >
-                            Edit Profile
-                        </button>
+                        <Avatar src={userInfo?.img || user?.photoURL || "https://i.ibb.co/SRF75vM/avatar.png"} size={180} />
                     </div>
-                    <div className="py-10 ">
-                        <h1 className="text-gray-600 pb-2 font-semibold">Full Name</h1>
-                        <h1 className="text-xl text-gray-800 pb-6">
+                    <div className="py-10">
+                        <p className="text-gray-600 pb-2 font-semibold text-md">Full Name</p>
+                        <h1 className="text-xl pb-6">
                             {userInfo?.name || user?.displayName}
                         </h1>
-                        <h1 className="text-gray-600 pb-2 font-semibold">Email</h1>
-                        <h1 className="text-xl text-gray-800 pb-6">{user?.email}</h1>
-                        <h1 className="text-gray-600 pb-2 font-semibold">Phone</h1>
+                        <p className="text-gray-600 pb-2 font-semibold">Email</p>
+                        <h1 className="text-xl pb-6">{user?.email}</h1>
+                        <p className="text-gray-600 pb-2 font-semibold">Phone</p>
                         {userInfo?.phone ? (
-                            <h1 className="text-xl text-gray-800 pb-6">{userInfo?.phone}</h1>
+                            <h1 className="text-xl pb-6">{userInfo?.phone}</h1>
                         ) : (
-                            <button onClick={handleEdit} className="btn btn-link normal-case">
+                            <Button onClick={handleEdit} type='link'>
                                 Add now +
-                            </button>
+                            </Button>
                         )}
-                        <h1 className="text-gray-600 pb-2 font-semibold">Address</h1>
+                        <p className="text-gray-600 pb-2 font-semibold">Address</p>
                         {userInfo?.state || userInfo?.city || userInfo?.country ? (
-                            <h1 className="text-xl text-gray-800 pb-6">
+                            <h1 className="text-xl pb-6">
                                 {userInfo?.state}, {userInfo?.city}, {userInfo?.country}
                             </h1>
                         ) : (
-                            <button onClick={handleEdit} className="btn btn-link normal-case">
+                            <Button onClick={handleEdit} type="link" className="underline">
                                 Add now +
-                            </button>
+                            </Button>
                         )}
                     </div>
                 </div>

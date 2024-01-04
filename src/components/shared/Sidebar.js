@@ -19,7 +19,7 @@ const Sidebar = ({
     const [admin] = useAdmin(user)
 
     const userItems = [
-        { key: "1", label: "My Profile", href: `/profile/${user?.email}` },
+        { key: "<UserOutlined />", label: "My Profile", href: `/profile/${user?.email}` },
         { key: "2", label: "My Bookings", href: `/user/my-booking/${user?.email}` },
         { key: "3", label: "My Reviews", href: `/user/my-review/${user?.email}` },
     ];
@@ -41,10 +41,10 @@ const Sidebar = ({
     return (
         <Layout>
             <Content>
-                <Layout className="lg:flex hidden">
-                    <Sider width={250} className="min-h-screen bg-blue-950">
+                <Layout className="lg:flex bg-gray-950 hidden">
+                    <Sider width={250} className="min-h-screen bg-slate-900 m-6 py-2 rounded-xl">
                         <Menu
-                            className="h-full px-3 font-semibold text-white bg-transparent py-1 bg-gray-300"
+                            className="h-full px-3 font-semibold text-white bg-transparent py-1"
                             mode="inline"
                             defaultSelectedKeys={[getSelectedKey()]}
                             selectedKeys={[getSelectedKey()]}
@@ -62,7 +62,7 @@ const Sidebar = ({
                             }
                         </Menu>
                     </Sider>
-                    <Content className="bg-gray-100 p-4">{children}</Content>
+                    <Content className="bg-gray-950 p-6 pl-4 h-screen ">{children}</Content>
                 </Layout>
                 <Layout className="lg:hidden">
                     <Drawer
@@ -92,7 +92,7 @@ const Sidebar = ({
                             }
                         </Menu>
                     </Drawer>
-                    <Content className="bg-white p-4">{children}</Content>
+                    <Content className="bg-blue-950 p-4 h-screen rounded-xl">{children}</Content>
                 </Layout>
             </Content>
         </Layout>
