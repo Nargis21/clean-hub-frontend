@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
@@ -27,6 +27,7 @@ const MyProfile = ({ user: userInfo }) => {
     const onSubmit = (data) => {
         const imageStoragekey = '68cb5fb5d48334a60f021c30aff06ada'
         const image = data.image[0]
+        console.log(image, "Image");
         const formData = new FormData()
         formData.append('image', image)
         fetch(`https://api.imgbb.com/1/upload?key=${imageStoragekey}`, {
@@ -37,9 +38,9 @@ const MyProfile = ({ user: userInfo }) => {
             .then(result => {
                 if (result.success) {
                     const img = result.data.url
-                    const userInfo = {
+                    const userData = {
                         name: data.name,
-                        email: user.email,
+                        email: data.email,
                         phone: data.phone,
                         city: data.city,
                         state: data.state,
@@ -52,7 +53,31 @@ const MyProfile = ({ user: userInfo }) => {
                         headers: {
                             "content-type": "application/json",
                         },
-                        body: JSON.stringify(userInfo),
+                        body: JSON.stringify(userData),
+                    })
+                        .then((res) => res.json())
+                        .then(() => {
+                            reset();
+                            toast.success("Profile Updated!");
+                            setEdit(null);
+                        });
+                } else {
+                    const userData = {
+                        name: data.name,
+                        email: data.email,
+                        phone: data.phone,
+                        city: data.city,
+                        state: data.state,
+                        country: data.country,
+                        img: userInfo?.img
+                    }
+
+                    fetch(`https://clean-hub-backend.vercel.app/user/update/${user?.email}`, {
+                        method: "PUT",
+                        headers: {
+                            "content-type": "application/json",
+                        },
+                        body: JSON.stringify(userData),
                     })
                         .then((res) => res.json())
                         .then(() => {
