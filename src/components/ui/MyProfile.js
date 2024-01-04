@@ -26,6 +26,9 @@ const MyProfile = ({ user: userInfo }) => {
         reset,
     } = useForm();
 
+    const [currentImage, setCurrentImage] = useState(userInfo?.img || user?.photoURL || "https://i.ibb.co/SRF75vM/avatar.png");
+
+
     const onSubmit = (data) => {
         const imageStoragekey = '68cb5fb5d48334a60f021c30aff06ada'
         const image = data.image[0]
@@ -93,8 +96,8 @@ const MyProfile = ({ user: userInfo }) => {
 
     return (
         <div className="bg-gray-900 p-6 rounded-xl text-white h-screen">
-            <div className="flex justify-between items-center">
-                <h1 className="text-2xl pb-2">
+            <div className="flex justify-between items-center pb-4">
+                <h1 className="text-2xl ">
                     My Profile
                 </h1>
                 <Button
@@ -143,136 +146,159 @@ const MyProfile = ({ user: userInfo }) => {
             )}
             {edit && (
                 <div>
-                    <button className="pt-6 text-xl font-xl" onClick={reverseEdit}>
-                        <ArrowLeftOutlined />
-                    </button>
-                    <div className="flex flex-col justify-center items-center text-center backCol">
-                        <h1 className="text-2xl meriFont pb-6 text-center ">
-                            Profile Information
-                        </h1>
-                        <div className="pb-10 lg:w-6/12 md:w-8/12 w-full">
+
+                    <ArrowLeftOutlined onClick={reverseEdit} className="pt-4" />
+
+                    <div className="flex flex-col justify-center items-center">
+                        <div className="pb-10 lg:w-8/12 md:w-10/12 w-full">
                             <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-                                <div className="form-control w-full max-w-x">
-                                    <label className="label">
-                                        <span className="label-text text-gray-600 font-semibold">
-                                            Full Name
-                                        </span>
-                                    </label>
-                                    <input
-                                        className="input input-bordered input-warning w-full max-w-x mb-2"
-                                        placeholder="Name"
-                                        type="text"
-                                        defaultValue={userInfo?.name || user?.displayName}
-                                        {...register("name", {
-                                            required: {
-                                                value: true,
-                                                message: "Name is Required",
-                                            },
-                                        })}
-                                    />
-                                    <label className="label">
-                                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
-                                    </label>
+                                <div className="flex lg:flex-row flex-col gap-4 justify-center items-center">
+                                    <div className="form-control w-full max-w-x mb-2">
+                                        <label>
+                                            <span className=" text-gray-600 font-semibold">
+                                                Full Name
+                                            </span>
+                                        </label>
+                                        <input
+                                            className="p-3 rounded border border-slate-950 w-full max-w-x my-2"
+                                            placeholder="Name"
+                                            type="text"
+                                            defaultValue={userInfo?.name || user?.displayName}
+                                            {...register("name", {
+                                                required: {
+                                                    value: true,
+                                                    message: "Name is Required",
+                                                },
+                                            })}
+                                        />
+                                        <label className="label">
+                                            {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                                        </label>
+                                    </div>
+                                    <div className="form-control w-full max-w-x mb-2">
+                                        <label>
+                                            <span className=" text-gray-600 font-semibold">
+                                                Email
+                                            </span>
+                                        </label>
+                                        <input
+                                            className="p-3 text-white rounded border border-slate-950 w-full max-w-x my-2"
+                                            type="text"
+                                            disabled
+                                            defaultValue={userInfo?.email}
+                                            {...register("email", {
+                                            })}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="form-control w-full max-w-x">
-                                    <label className="label">
-                                        <span className="label-text text-gray-600 font-semibold">
-                                            Email
-                                        </span>
-                                    </label>
-                                    <input
-                                        className="input input-bordered input-warning w-full max-w-x mb-2"
-                                        placeholder="Name"
-                                        type="text"
-                                        disabled
-                                        defaultValue={userInfo?.email}
-                                        {...register("email", {
-                                        })}
-                                    />
-                                </div>
-                                <div className="form-control w-full max-w-x">
-                                    <label className="label">
-                                        <span className="label-text text-gray-600 font-semibold">
-                                            Phone Number
-                                        </span>
-                                    </label>
-                                    <input
-                                        className="input input-bordered input-warning w-full max-w-x mb-2"
-                                        placeholder="Phone"
-                                        type="text"
-                                        defaultValue={userInfo?.phone}
-                                        {...register("phone", {
 
-                                        })}
-                                    />
-                                </div>
-                                <div className="form-control w-full max-w-x">
-                                    <label className="label">
-                                        <span className="label-text text-gray-600 font-semibold">
-                                            City
-                                        </span>
-                                    </label>
-                                    <input
-                                        className="input input-bordered input-warning w-full max-w-x mb-4"
-                                        placeholder="City"
-                                        type="text"
-                                        defaultValue={userInfo?.city}
-                                        {...register("city", {
+                                <div className="flex lg:flex-row flex-col gap-4 justify-center items-center">
+                                    <div className="form-control w-full max-w-x mb-2">
+                                        <label >
+                                            <span className=" text-gray-600 font-semibold">
+                                                Phone Number
+                                            </span>
+                                        </label>
+                                        <input
+                                            className="p-3 rounded border border-slate-950 w-full max-w-x my-2"
+                                            placeholder="Phone"
+                                            type="text"
+                                            defaultValue={userInfo?.phone}
+                                            {...register("phone", {
 
-                                        })}
-                                    />
-                                </div>
-                                <div className="form-control w-full max-w-x">
-                                    <label className="label">
-                                        <span className="label-text text-gray-600 font-semibold">
-                                            State
-                                        </span>
-                                    </label>
-                                    <input
-                                        className="input input-bordered input-warning w-full max-w-x mb-4"
-                                        placeholder="State"
-                                        type="text"
-                                        defaultValue={userInfo?.state}
-                                        {...register("state", {
+                                            })}
+                                        />
+                                    </div>
+                                    <div className="form-control w-full max-w-x mb-2">
+                                        <label>
+                                            <span className=" text-gray-600 font-semibold">
+                                                City
+                                            </span>
+                                        </label>
+                                        <input
+                                            className="p-3 rounded border border-slate-950 w-full max-w-x my-2"
+                                            placeholder="City"
+                                            type="text"
+                                            defaultValue={userInfo?.city}
+                                            {...register("city", {
 
-                                        })}
-                                    />
+                                            })}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="form-control w-full max-w-x">
-                                    <label className="label">
-                                        <span className="label-text text-gray-600 font-semibold">
-                                            Country
-                                        </span>
-                                    </label>
-                                    <input
-                                        className="input input-bordered input-warning w-full max-w-x mb-4"
-                                        placeholder="Country"
-                                        type="text"
-                                        defaultValue={userInfo?.country}
-                                        {...register("country", {
+                                <div className="flex lg:flex-row flex-col gap-4 justify-center items-center">
+                                    <div className="form-control w-full max-w-x mb-2">
+                                        <label>
+                                            <span className=" text-gray-600 font-semibold">
+                                                State
+                                            </span>
+                                        </label>
+                                        <input
+                                            className="p-3 rounded border border-slate-950 w-full max-w-x my-2"
+                                            placeholder="State"
+                                            type="text"
+                                            defaultValue={userInfo?.state}
+                                            {...register("state", {
 
-                                        })}
-                                    />
-                                </div>
-                                <div className="form-control w-full max-w-x">
-                                    <label className="label">
-                                        <span className="label-text text-gray-600 font-semibold">Photo</span>
-                                    </label>
-                                    <input
-                                        type="file"
-                                        placeholder="Image"
-                                        className="input input-bordered input-warning w-full max-w-x mb-4"
-                                        {...register("image", {
+                                            })}
+                                        />
+                                    </div>
+                                    <div className="form-control w-full max-w-x mb-2">
+                                        <label>
+                                            <span className=" text-gray-600 font-semibold">
+                                                Country
+                                            </span>
+                                        </label>
+                                        <input
+                                            className="p-3 rounded border border-slate-950 w-full max-w-x my-2"
+                                            placeholder="Country"
+                                            type="text"
+                                            defaultValue={userInfo?.country}
+                                            {...register("country", {
 
-                                        })}
+                                            })}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex lg:flex-row flex-col gap-4 justify-center items-center mt-2">
+                                    <div>
+                                        <Avatar src={currentImage} size={120} className="" />
+                                    </div>
+                                    <div className="form-control w-full max-w-x">
+                                        <label className="label">
+                                            <span className="label-text text-gray-600 font-semibold">Profile Image</span>
+                                        </label>
+                                        <input
+                                            type="file"
+                                            placeholder="Image"
+                                            className="input input-bordered input-warning w-full max-w-x mt-2"
+                                            {...register("image", {
+                                                onChange: (e) => {
+                                                    const file = e.target.files[0];
+                                                    if (file) {
+                                                        const reader = new FileReader();
+                                                        reader.onloadend = () => {
+                                                            setCurrentImage(reader.result);
+                                                        };
+                                                        reader.readAsDataURL(file);
+                                                    } else {
+                                                        setCurrentImage(currentImage);
+                                                    }
+                                                },
+
+                                            })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="justify-end flex">
+                                    <input
+                                        className="bg-blue-500 p-2 rounded  text-white font-semibold cursor-pointer border-0"
+                                        name="submit"
+                                        type="submit"
+                                        value="Save Changes"
                                     />
                                 </div>
-                                <input
-                                    className="bg-red-900 p-2 rounded-lg text-white font-semibold w-full max-w-sm cursor-pointer"
-                                    name="submit"
-                                    type="submit"
-                                    value="Save Changes"
-                                />
                             </form>
                         </div>
                     </div>
