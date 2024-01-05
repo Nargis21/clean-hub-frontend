@@ -93,11 +93,12 @@ const MyBookingTable = ({ bookings }) => {
 
     ];
     return (
-        <div>
-            <div className="p-4 bg-sky-900 text-center text-white">
-                <p className="text-2xl ">My Booking</p>
-            </div>
-            <Table dataSource={bookings} columns={columns} />;
+        <div className="bg-gray-900 lg:p-6 md:p-6 p-4 rounded-xl text-white lg:h-screen">
+            <h1 className="text-2xl pb-4">
+                My Bookings
+            </h1>
+            <hr />
+            <Table className="my-4" dataSource={bookings} columns={columns} />
         </div>
     );
 };

@@ -92,7 +92,7 @@ const Sidebar = ({
                             }
                         </Menu>
                     </Drawer>
-                    <Content className="bg-blue-950 p-4 h-screen rounded-xl">{children}</Content>
+                    <Content className="bg-gray-950 p-4 h-screen">{children}</Content>
                 </Layout>
             </Content>
         </Layout>

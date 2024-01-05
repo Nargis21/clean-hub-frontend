@@ -95,7 +95,7 @@ const MyProfile = ({ user: userInfo }) => {
     };
 
     return (
-        <div className="bg-gray-900 p-6 rounded-xl text-white h-screen">
+        <div className="bg-gray-900 lg:p-6 md:p-6 p-4 rounded-xl text-white lg:h-screen">
             <div className="flex justify-between items-center pb-4">
                 <h1 className="text-2xl ">
                     My Profile
@@ -112,15 +112,18 @@ const MyProfile = ({ user: userInfo }) => {
             </div>
             <hr />
             {!edit && (
-                <div className="grid lg:grid-cols-2 grid-cols-1">
-                    <div className="py-10 flex flex-col justify-center items-center">
+                <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 py-10 gap-y-8">
+                    <div className=" flex flex-col justify-center items-center">
                         <Avatar src={userInfo?.img || user?.photoURL || "https://i.ibb.co/SRF75vM/avatar.png"} size={180} />
-                    </div>
-                    <div className="py-10">
-                        <p className="text-gray-600 pb-2 font-semibold text-md">Full Name</p>
-                        <h1 className="text-xl pb-6">
+                        <h1 className="text-2xl mt-6">
                             {userInfo?.name || user?.displayName}
                         </h1>
+                    </div>
+                    <div>
+                        {/* <p className="text-gray-600 pb-2 font-semibold text-md">Full Name</p>
+                        <h1 className="text-xl pb-6">
+                            {userInfo?.name || user?.displayName}
+                        </h1> */}
                         <p className="text-gray-600 pb-2 font-semibold">Email</p>
                         <h1 className="text-xl pb-6">{user?.email}</h1>
                         <p className="text-gray-600 pb-2 font-semibold">Phone</p>
@@ -146,8 +149,7 @@ const MyProfile = ({ user: userInfo }) => {
             )}
             {edit && (
                 <div>
-
-                    <ArrowLeftOutlined onClick={reverseEdit} className="pt-4" />
+                    <ArrowLeftOutlined onClick={reverseEdit} className="py-4" />
 
                     <div className="flex flex-col justify-center items-center">
                         <div className="pb-10 lg:w-8/12 md:w-10/12 w-full">
@@ -260,7 +262,7 @@ const MyProfile = ({ user: userInfo }) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="flex lg:flex-row flex-col gap-4 justify-center items-center mt-2">
+                                <div className="flex lg:flex-row flex-col gap-4 justify-center lg:items-center mt-2">
                                     <div>
                                         <Avatar src={currentImage} size={120} className="" />
                                     </div>
