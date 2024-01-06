@@ -2,7 +2,7 @@
 import { Button, Dropdown, Table } from "antd";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { PlusCircleOutlined, PlusOutlined, SmallDashOutlined } from '@ant-design/icons'
+import { PlusOutlined, SmallDashOutlined } from '@ant-design/icons'
 import { useDeleteServiceMutation, } from "../../redux/slices/service/serviceApi";
 import { useRouter } from "next/navigation";
 
