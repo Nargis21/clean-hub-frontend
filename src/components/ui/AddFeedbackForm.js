@@ -16,7 +16,7 @@ const AddFeedbackForm = () => {
 
     const onFinish = async (values) => {
         const options = {
-            data: { ...values },
+            data: { ...values, status: 0 },
         };
         addFeedback(options);
         // console.log(values);
@@ -25,7 +25,7 @@ const AddFeedbackForm = () => {
     useEffect(() => {
         if (data?.isSuccess) {
             toast.success(`Thanks For Your Feedback!`);
-            router.push(`/user/my-review/${user?.email}`)
+            router.push(`/`)
         }
     }, [data, router, user])
 
@@ -64,7 +64,7 @@ const AddFeedbackForm = () => {
                     </Form.Item>
                     <Form.Item
                         label="Your Feedback"
-                        name="title"
+                        name="comment"
                         rules={[{ required: true, message: "Please add your Feedback!" }]}
                     >
                         <TextArea type="text" style={{ height: 120 }} />

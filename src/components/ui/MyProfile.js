@@ -103,7 +103,6 @@ const MyProfile = ({ user: userInfo }) => {
                 <Button
                     onClick={handleEdit}
                     type='link'
-                    className="underline"
                 >
 
                     <EditOutlined />
@@ -140,7 +139,7 @@ const MyProfile = ({ user: userInfo }) => {
                                 {userInfo?.state}, {userInfo?.city}, {userInfo?.country}
                             </h1>
                         ) : (
-                            <Button onClick={handleEdit} type="link" className="underline">
+                            <Button onClick={handleEdit} type="link">
                                 Add now +
                             </Button>
                         )}

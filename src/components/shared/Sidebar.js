@@ -21,13 +21,14 @@ const Sidebar = ({
     const userItems = [
         { key: "<UserOutlined />", label: "My Profile", href: `/profile/${user?.email}` },
         { key: "2", label: "My Bookings", href: `/user/my-booking/${user?.email}` },
-        { key: "3", label: "My Reviews", href: `/user/my-review/${user?.email}` },
+        // { key: "3", label: "My Reviews", href: `/user/my-review/${user?.email}` },
     ];
     const adminItems = [
         { key: "1", label: "My Profile", href: `/profile/${user?.email}` },
-        { key: "2", label: "Manage User", href: "/admin/manage-user" },
+        { key: "2", label: "Manage Users", href: "/admin/manage-user" },
         { key: "3", label: "Manage Bookings", href: "/admin/manage-booking" },
         { key: "4", label: "Manage Services", href: "/admin/manage-service" },
+        { key: "5", label: "Manage Feedbacks", href: "/admin/manage-feedback" },
     ];
 
     const open = useSelector((state) => state.sidebar.open)
@@ -62,7 +63,7 @@ const Sidebar = ({
                             }
                         </Menu>
                     </Sider>
-                    <Content className="bg-gray-950 p-6 pl-4 min-h-screen">{children}</Content>
+                    <Content className="bg-gray-950 p-6 pl-0 min-h-screen">{children}</Content>
                 </Layout>
                 <Layout className="lg:hidden">
                     <Drawer

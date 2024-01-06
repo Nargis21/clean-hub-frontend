@@ -83,7 +83,7 @@ const ManageServiceTable = ({ services }) => {
                 <h1 className="text-2xl ">
                     Manage Services
                 </h1>
-                <Button size="large" ghost onClick={() => router.push('/admin/add-service')}> Add Service <PlusOutlined /></Button>
+                <Button type="link" onClick={() => router.push('/admin/add-service')}><PlusOutlined /> Add New Service </Button>
             </div>
             <hr />
             <Table
