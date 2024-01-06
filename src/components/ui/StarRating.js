@@ -9,7 +9,7 @@ const StarRating = ({ rating }) => {
         </svg>
     ));
 
-    return <div className="flex text-orange-400 text-sm">{stars}</div>;
+    return <div className="flex text-yellow-500 text-sm">{stars}</div>;
 };
 
 export default StarRating;
