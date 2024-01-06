@@ -58,11 +58,23 @@ const ManageUserTable = ({ users }) => {
 
     ];
     return (
-        <div>
-            <div className="p-4 bg-sky-900 text-center text-white">
-                <p className="text-2xl ">Manage User</p>
-            </div>
-            <Table dataSource={users} columns={columns} scroll={{ x: '100%' }} />;
+        <div className="bg-gray-900 lg:p-6 md:p-6 p-4 rounded-xl text-white lg:min-h-screen">
+            <h1 className="text-2xl pb-4">
+                Manage Users
+            </h1>
+            <hr />
+            <Table dataSource={users} columns={columns} scroll={{ x: '100%' }} className="mt-4"
+                style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: "10px"
+                }}
+                pagination={{
+                    pageSize: 5,
+                    style: {
+                        backgroundColor: '#ffffff',
+                        paddingRight: '15px'
+                    },
+                }} />;
         </div>
     );
 };
