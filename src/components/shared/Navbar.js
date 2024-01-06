@@ -96,7 +96,6 @@ const Navbar = ({
                             <Menu.Item key={'/profile'}>
                                 <Link href={`/profile/${user?.email}`}>Dashboard</Link>
                             </Menu.Item>
-
                             <Button
                                 className="ml-4"
                                 ghost
