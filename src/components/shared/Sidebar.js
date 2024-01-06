@@ -62,7 +62,7 @@ const Sidebar = ({
                             }
                         </Menu>
                     </Sider>
-                    <Content className="bg-gray-950 p-6 pl-4 h-screen ">{children}</Content>
+                    <Content className="bg-gray-950 p-6 pl-4 min-h-screen">{children}</Content>
                 </Layout>
                 <Layout className="lg:hidden">
                     <Drawer
@@ -92,7 +92,7 @@ const Sidebar = ({
                             }
                         </Menu>
                     </Drawer>
-                    <Content className="bg-gray-950 p-4 h-screen">{children}</Content>
+                    <Content className="bg-gray-950 p-4 min-h-screen">{children}</Content>
                 </Layout>
             </Content>
         </Layout>

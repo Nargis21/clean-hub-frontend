@@ -2,7 +2,7 @@
 import { Button, Dropdown, Table } from "antd";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { SmallDashOutlined } from '@ant-design/icons'
+import { PlusCircleOutlined, PlusOutlined, SmallDashOutlined } from '@ant-design/icons'
 import { useDeleteServiceMutation, } from "../../redux/slices/service/serviceApi";
 import { useRouter } from "next/navigation";
 
@@ -33,6 +33,7 @@ const ManageServiceTable = ({ services }) => {
         }
     ];
     const columns = [
+
         {
             title: "Service",
             dataIndex: "title",
@@ -77,12 +78,30 @@ const ManageServiceTable = ({ services }) => {
 
     ];
     return (
-        <div>
-            <div className="p-4 bg-sky-900 text-center items-center justify-center text-white flex flex-col lg:flex-row md:flex-row gap-2">
-                <p className="text-2xl ">Manage User</p>
-                <Button size="large" ghost onClick={() => router.push('/admin/add-service')}>Add New Service</Button>
+        <div className="bg-gray-900 lg:p-6 md:p-6 p-4 rounded-xl text-white lg:min-h-screen">
+            <div className="flex justify-between items-center pb-4">
+                <h1 className="text-2xl ">
+                    Manage Services
+                </h1>
+                <Button size="large" ghost onClick={() => router.push('/admin/add-service')}> Add Service <PlusOutlined /></Button>
             </div>
-            <Table dataSource={services} columns={columns} />;
+            <hr />
+            <Table
+                className="mt-4"
+                dataSource={services}
+                columns={columns}
+                scroll={{ x: '100%' }}
+                style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: "10px"
+                }}
+                pagination={{
+                    pageSize: 5,
+                    style: {
+                        backgroundColor: '#ffffff',
+                        paddingRight: '15px'
+                    },
+                }} />
         </div>
     );
 };

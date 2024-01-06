@@ -62,7 +62,7 @@ const ManageUserTable = ({ users }) => {
             <div className="p-4 bg-sky-900 text-center text-white">
                 <p className="text-2xl ">Manage User</p>
             </div>
-            <Table dataSource={users} columns={columns} />;
+            <Table dataSource={users} columns={columns} scroll={{ x: '100%' }} />;
         </div>
     );
 };
