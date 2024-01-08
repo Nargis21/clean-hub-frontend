@@ -1,16 +1,10 @@
 import React from 'react';
 import MyProfile from '../../../../components/ui/MyProfile'
 
-const MyProfilePage = async ({ params }) => {
-    const res = await fetch(`https://clean-hub-backend.vercel.app/user/${params.email}`,
-        {
-            cache: 'no-store'
-        }
-    );
-    const user = await res.json();
+const MyProfilePage = async () => {
     return (
         <div>
-            <MyProfile user={user}></MyProfile>
+            <MyProfile></MyProfile>
         </div>
     );
 };

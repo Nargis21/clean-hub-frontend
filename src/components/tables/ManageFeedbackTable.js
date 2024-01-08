@@ -1,5 +1,5 @@
 'use client'
-import { Button, Dropdown, Table } from "antd";
+import { Avatar, Button, Dropdown, Table } from "antd";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { SmallDashOutlined } from '@ant-design/icons'
@@ -68,11 +68,13 @@ const ManageFeedbackTable = ({ reviews }) => {
         },
     ];
     const columns = [
-        // {
-        //     title: "Image",
-        //     dataIndex: "image",
-        //     key: "image",
-        // },
+        {
+            title: "Image",
+            key: "img",
+            render: (record) => {
+                return <Avatar src={record.img || "https://i.ibb.co/SRF75vM/avatar.png"} size={60} />
+            },
+        },
         {
             title: "Name",
             dataIndex: "fullName",

@@ -8,26 +8,30 @@ import TextArea from "antd/es/input/TextArea";
 import { useRouter } from "next/navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.auth";
+import { useGetUserQuery } from "../../redux/slices/user/userApi";
+import Loading from "../shared/Loading";
 
 const AddFeedbackForm = () => {
     const [user] = useAuthState(auth)
     const router = useRouter()
     const [addFeedback, data] = useAddFeedbackMutation()
-
+    const { data: userInfo, isLoading } = useGetUserQuery({ email: user?.email })
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+    console.log(userInfo);
     const onFinish = async (values) => {
         const options = {
-            data: { ...values, status: 0 },
+            data: { ...values, status: 0, img: userInfo?.img },
         };
         addFeedback(options);
-        // console.log(values);
+        console.log(options);
     };
 
-    useEffect(() => {
-        if (data?.isSuccess) {
-            toast.success(`Thanks For Your Feedback!`);
-            router.push(`/`)
-        }
-    }, [data, router, user])
+    if (data?.isSuccess) {
+        toast.success(`Thanks For Your Feedback!`);
+        router.push(`/`)
+    }
 
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);

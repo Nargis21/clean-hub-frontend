@@ -8,9 +8,10 @@ import { ArrowLeftOutlined, EditOutlined } from "@ant-design/icons";
 import auth from "../../firebase/firebase.auth";
 import Image from "next/image";
 import { Avatar, Button } from "antd";
-const MyProfile = ({ user: userInfo }) => {
+import Loading from "../shared/Loading";
+import { useGetUserQuery } from "../../redux/slices/user/userApi";
+const MyProfile = () => {
     const [user] = useAuthState(auth);
-    console.log(user);
     const [edit, setEdit] = useState(null);
     const handleEdit = () => {
         setEdit("set");
@@ -25,9 +26,13 @@ const MyProfile = ({ user: userInfo }) => {
         handleSubmit,
         reset,
     } = useForm();
+    const { data: userInfo, isLoading } = useGetUserQuery({ email: user?.email })
 
     const [currentImage, setCurrentImage] = useState(userInfo?.img || user?.photoURL || "https://i.ibb.co/SRF75vM/avatar.png");
 
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     const onSubmit = (data) => {
         const imageStoragekey = '68cb5fb5d48334a60f021c30aff06ada'
