@@ -22,7 +22,7 @@ const AddFeedbackForm = () => {
     console.log(userInfo);
     const onFinish = async (values) => {
         const options = {
-            data: { ...values, status: 0, img: userInfo?.img },
+            data: { ...values, status: false, img: userInfo?.img },
         };
         addFeedback(options);
         console.log(options);

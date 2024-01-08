@@ -1,29 +1,40 @@
 'use client'
-import { Avatar, Button, Dropdown, Table } from "antd";
+import { Avatar, Button, Dropdown, Modal, Switch, Table } from "antd";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { SmallDashOutlined } from '@ant-design/icons'
-import { useDeleteBookingMutation, useEditBookingMutation } from "../../redux/slices/booking/bookingApi";
-import { useDeleteFeedbackMutation, useGetFeedbacksQuery } from "../../redux/slices/feedback/feedbackApi";
+import { DeleteFilled, } from '@ant-design/icons'
+import { useDeleteFeedbackMutation, useEditFeedbackMutation, useGetFeedbacksQuery } from "../../redux/slices/feedback/feedbackApi";
 import Loading from "../shared/Loading";
 
 const ManageFeedbackTable = () => {
     const { data: reviews, isLoading } = useGetFeedbacksQuery()
     const [deleteFeedback, deleteData] = useDeleteFeedbackMutation()
-    const [editBooking, editData] = useEditBookingMutation()
+    const [editFeedback, editData] = useEditFeedbackMutation()
 
+    const handleDeleteWithConfirmation = (id) => {
+        const handleOk = () => {
+            deleteFeedback({ id });
+        };
 
-    const handleDelete = (id) => {
-        const options = {
-            id: id
-        }
-        deleteFeedback(options)
-    }
+        Modal.confirm({
+            title: 'Are you sure you want to delete this feedback?',
+            okText: 'Delete',
+            okButtonProps: {
+                style: {
+                    backgroundColor: '#FF7875',
+                    border: 'none', // Remove default border
+                    color: 'white', // Ensure text visibility
+                },
+            },
+            onOk: () => handleOk(),
+        });
+    };
+
     const handleEdit = (id) => {
         const options = {
             id: id
         }
-        editBooking(options)
+        editFeedback(options)
     }
 
     useEffect(() => {
@@ -32,54 +43,17 @@ const ManageFeedbackTable = () => {
         }
     }, [deleteData])
 
-    useEffect(() => {
-        if (editData?.isSuccess) {
-            toast.success(`Booking Approved successfully!`);
-        }
-    }, [editData])
 
     if (isLoading) {
         return <Loading></Loading>
     }
 
-    const visibleDropdownMenuItems = (id) => [
-        {
-            key: "3",
-            label: <Button type="primary" danger size="small">Delete</Button>,
-            onClick: () => {
-                handleDelete(id);
-            },
-        },
-        {
-            key: "4",
-            label: <Button type="primary" size="small">Hide</Button>,
-            onClick: () => {
-                handleEdit(id);
-            },
-        },
-    ];
-    const hiddenDropdownMenuItems = (id) => [
-        {
-            key: "3",
-            label: <Button type="primary" danger size="small">Delete</Button>,
-            onClick: () => {
-                handleDelete(id);
-            },
-        },
-        {
-            key: "4",
-            label: <Button type="primary" size="small">Visible</Button>,
-            onClick: () => {
-                handleEdit(id);
-            },
-        },
-    ];
     const columns = [
         {
             title: "Image",
             key: "img",
             render: (record) => {
-                return <Avatar src={record.img || "https://i.ibb.co/SRF75vM/avatar.png"} size={60} />
+                return <Avatar src={record.img || "https://i.ibb.co/SRF75vM/avatar.png"} size={50} />
             },
         },
         {
@@ -98,41 +72,24 @@ const ManageFeedbackTable = () => {
             key: "rating",
         },
         {
-            title: "Status",
-            key: "status",
+            title: "Visibility",
+            key: "visibility",
             render: (record) => {
-                if (record.status === 0) {
-                    return (
-                        <p>Hidden</p>
-                    );
-                } else {
-                    return (
-                        <p>Visible</p>
-                    );
-                }
-            },
+                return (
+                    <Switch
+                        checked={record.status !== false} // Set initial checked state based on status
+                        onChange={() => handleEdit(record._id)}
+                        size="small"
+                    />
+                );
+            }
         },
         {
             title: "Action",
             key: "action",
             render: (record) => {
-                let items;
-                {
-                    record.status === 0 ? items = hiddenDropdownMenuItems(record._id) : items = visibleDropdownMenuItems(record._id)
-                }
-                //   console.log(record);
                 return (
-                    <Dropdown
-                        placement="bottomLeft"
-                        overlayClassName="min-w-[100px]"
-                        menu={{
-                            items: items,
-                        }}
-                    >
-                        <Button>
-                            <SmallDashOutlined />
-                        </Button>
-                    </Dropdown>
+                    <Button className="text-xl" type="link" danger onClick={() => handleDeleteWithConfirmation(record._id)}><DeleteFilled /></Button>
                 );
             },
         },

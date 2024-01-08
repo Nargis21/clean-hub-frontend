@@ -4,7 +4,7 @@ export const api = createApi({
     reducerPath: "api",
     tagTypes: ["service", "booking", "user", 'feedback'],
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://clean-hub-backend.vercel.app/",
+        baseUrl: "http://localhost:5000/",
         prepareHeaders: (headers) => {
             const accessToken = localStorage.getItem("accessToken");
 

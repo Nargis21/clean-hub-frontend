@@ -14,6 +14,13 @@ const feedbackApi = api.injectEndpoints({
             }),
             invalidatesTags: ["feedback"],
         }),
+        editFeedback: builder.mutation({
+            query: ({ id }) => ({
+                url: `review/${id}`,
+                method: "PATCH"
+            }),
+            invalidatesTags: ["feedback"],
+        }),
         deleteFeedback: builder.mutation({
             query: ({ id }) => ({
                 url: `review/${id}`,
@@ -27,5 +34,6 @@ const feedbackApi = api.injectEndpoints({
 export const {
     useAddFeedbackMutation,
     useGetFeedbacksQuery,
-    useDeleteFeedbackMutation
+    useDeleteFeedbackMutation,
+    useEditFeedbackMutation
 } = feedbackApi;
