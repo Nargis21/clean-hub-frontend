@@ -4,9 +4,12 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { SmallDashOutlined } from '@ant-design/icons'
 import { useDeleteBookingMutation, useEditBookingMutation } from "../../redux/slices/booking/bookingApi";
+import { useDeleteFeedbackMutation, useGetFeedbacksQuery } from "../../redux/slices/feedback/feedbackApi";
+import Loading from "../shared/Loading";
 
-const ManageFeedbackTable = ({ reviews }) => {
-    const [deleteBooking, deleteData] = useDeleteBookingMutation()
+const ManageFeedbackTable = () => {
+    const { data: reviews, isLoading } = useGetFeedbacksQuery()
+    const [deleteFeedback, deleteData] = useDeleteFeedbackMutation()
     const [editBooking, editData] = useEditBookingMutation()
 
 
@@ -14,7 +17,7 @@ const ManageFeedbackTable = ({ reviews }) => {
         const options = {
             id: id
         }
-        deleteBooking(options)
+        deleteFeedback(options)
     }
     const handleEdit = (id) => {
         const options = {
@@ -25,7 +28,7 @@ const ManageFeedbackTable = ({ reviews }) => {
 
     useEffect(() => {
         if (deleteData?.isSuccess) {
-            toast.success(`Booking deleted successfully!`);
+            toast.success(`Feedback deleted successfully!`);
         }
     }, [deleteData])
 
@@ -34,6 +37,10 @@ const ManageFeedbackTable = ({ reviews }) => {
             toast.success(`Booking Approved successfully!`);
         }
     }, [editData])
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     const visibleDropdownMenuItems = (id) => [
         {
@@ -44,10 +51,10 @@ const ManageFeedbackTable = ({ reviews }) => {
             },
         },
         {
-            key: "3",
+            key: "4",
             label: <Button type="primary" size="small">Hide</Button>,
             onClick: () => {
-                handleDelete(id);
+                handleEdit(id);
             },
         },
     ];
@@ -96,7 +103,7 @@ const ManageFeedbackTable = ({ reviews }) => {
             render: (record) => {
                 if (record.status === 0) {
                     return (
-                        <p> Hidden</p>
+                        <p>Hidden</p>
                     );
                 } else {
                     return (

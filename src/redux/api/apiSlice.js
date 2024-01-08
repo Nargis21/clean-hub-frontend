@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
     reducerPath: "api",
-    tagTypes: ["service", "booking", "user"],
+    tagTypes: ["service", "booking", "user", 'feedback'],
     baseQuery: fetchBaseQuery({
         baseUrl: "https://clean-hub-backend.vercel.app/",
         prepareHeaders: (headers) => {
