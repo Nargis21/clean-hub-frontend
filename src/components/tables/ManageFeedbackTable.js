@@ -1,6 +1,6 @@
 'use client'
 import { Avatar, Button, Dropdown, Modal, Switch, Table } from "antd";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { DeleteFilled, } from '@ant-design/icons'
 import { useDeleteFeedbackMutation, useEditFeedbackMutation, useGetFeedbacksQuery } from "../../redux/slices/feedback/feedbackApi";
@@ -10,6 +10,15 @@ const ManageFeedbackTable = () => {
     const { data: reviews, isLoading } = useGetFeedbacksQuery()
     const [deleteFeedback, deleteData] = useDeleteFeedbackMutation()
     const [editFeedback, editData] = useEditFeedbackMutation()
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize, setPageSize] = useState(5);
+
+    const handleTableChange = (pagination) => {
+        setCurrentPage(pagination.current);
+        setPageSize(pagination.pageSize);
+    };
+
 
     const handleDeleteWithConfirmation = (id) => {
         const handleOk = () => {
@@ -22,8 +31,8 @@ const ManageFeedbackTable = () => {
             okButtonProps: {
                 style: {
                     backgroundColor: '#FF7875',
-                    border: 'none', // Remove default border
-                    color: 'white', // Ensure text visibility
+                    border: 'none',
+                    color: 'white',
                 },
             },
             onOk: () => handleOk(),
@@ -49,6 +58,11 @@ const ManageFeedbackTable = () => {
     }
 
     const columns = [
+        {
+            title: 'No.',
+            key: 'no',
+            render: (text, record, index) => index + 1 + (currentPage - 1) * pageSize,
+        },
         {
             title: "Image",
             key: "img",
@@ -101,7 +115,7 @@ const ManageFeedbackTable = () => {
                 Manage Feedbacks
             </h1>
             <hr />
-            <Table dataSource={reviews} columns={columns} scroll={{ x: '100%' }}
+            <Table onChange={(pagination) => handleTableChange(pagination)} dataSource={reviews} columns={columns} scroll={{ x: '100%' }}
                 className="mt-4"
                 style={{
                     backgroundColor: '#ffffff',

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Form, Input, Rate } from "antd";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAddFeedbackMutation } from "../../redux/slices/feedback/feedbackApi";
 import { toast } from "react-toastify";
 import TextArea from "antd/es/input/TextArea";
@@ -14,6 +14,7 @@ import Loading from "../shared/Loading";
 const AddFeedbackForm = () => {
     const [user] = useAuthState(auth)
     const router = useRouter()
+    const [hasToasted, setHasToasted] = useState(false);
     const [addFeedback, data] = useAddFeedbackMutation()
     const { data: userInfo, isLoading } = useGetUserQuery({ email: user?.email })
     if (isLoading) {
@@ -21,6 +22,7 @@ const AddFeedbackForm = () => {
     }
     console.log(userInfo);
     const onFinish = async (values) => {
+        setHasToasted(false);
         const options = {
             data: { ...values, status: false, img: userInfo?.img },
         };
@@ -28,9 +30,10 @@ const AddFeedbackForm = () => {
         console.log(options);
     };
 
-    if (data?.isSuccess) {
+    if (data?.isSuccess && !hasToasted) {
         toast.success(`Thanks For Your Feedback!`);
         router.push(`/`)
+        setHasToasted(true);
     }
 
     const onFinishFailed = (errorInfo) => {
