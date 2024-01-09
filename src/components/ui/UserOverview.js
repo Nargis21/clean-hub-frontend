@@ -4,13 +4,16 @@ import auth from '../../firebase/firebase.auth';
 import { useGetIndividualBookingsQuery } from '../../redux/slices/booking/bookingApi';
 import Loading from '../shared/Loading';
 import { FileDoneOutlined, SafetyOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { useGetIndividualFeedbacksQuery } from '../../redux/slices/feedback/feedbackApi';
 
 const UserOverview = () => {
     const [user] = useAuthState(auth)
-    const { data: bookings, isLoading } = useGetIndividualBookingsQuery({ email: user?.email })
+    const { data: bookings, isLoading: bookingLoading } = useGetIndividualBookingsQuery({ email: user?.email })
+    const { data: reviews, isLoading: feedbackLoading } = useGetIndividualFeedbacksQuery({ email: user?.email })
+    const approvedFeedbacksCount = reviews?.filter((review) => review.status === true).length;
     const approvedBookingsCount = bookings?.filter((booking) => booking.status === 'Approved').length;
     const pendingBookingsCount = bookings?.filter((booking) => booking.status === 'Pending').length;
-    if (isLoading) {
+    if (bookingLoading || feedbackLoading) {
         return <Loading></Loading>
     }
     return (
@@ -32,8 +35,8 @@ const UserOverview = () => {
             <div className="rounded-lg p-12 hover:shadow-2xl hover:scale-[102%] transition-all bg-gray-800 text-white flex justify-between gap-2 items-center">
                 <SafetyOutlined className='text-6xl' />
                 <div className='flex flex-col justify-center items-center gap-2'>
-                    <p className='text-3xl'>{approvedBookingsCount}</p>
-                    <p>Approved Review</p>
+                    <p className='text-3xl'>{approvedFeedbacksCount}</p>
+                    <p>Approved Feedback</p>
                 </div>
             </div>
         </div>

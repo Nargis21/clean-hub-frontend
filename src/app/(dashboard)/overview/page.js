@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase/firebase.auth";
 import useAdmin from "../../../hooks/useAdmin";
 import UserOverview from "../../../components/ui/UserOverview"
+import AdminOverview from "../../../components/ui/AdminOverview"
 
 const Overview = () => {
     const [user] = useAuthState(auth)
@@ -15,7 +16,8 @@ const Overview = () => {
             </h1>
             <hr />
             {admin ? (
-                <div>Admin</div>
+                <AdminOverview />
+
             ) : (
                 <UserOverview />
             )}
