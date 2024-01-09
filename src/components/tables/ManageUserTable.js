@@ -60,6 +60,55 @@ const ManageUserTable = () => {
             key: "email",
         },
         {
+            title: "Name",
+            key: "name",
+            render: (record) => {
+                if (record.name) {
+                    return (
+                        <p>{record.name}</p>
+                    );
+                } else {
+                    return (
+                        <p>N/A</p>
+                    );
+                }
+            },
+        },
+        {
+            title: "Phone",
+            key: "phone",
+            render: (record) => {
+                if (record.phone) {
+                    return (
+                        <p>{record.phone}</p>
+                    );
+                } else {
+                    return (
+                        <p>N/A</p>
+                    );
+                }
+            },
+        },
+        {
+            title: "Address",
+            key: "address",
+            render: (record) => {
+                if (record.city || record.state || record.country) {
+                    return (
+                        <div>
+                            <p>{record?.state}</p>
+                            <p>{record?.city}</p>
+                            <p>{record?.country}</p>
+                        </div>
+                    );
+                } else {
+                    return (
+                        <p>N/A</p>
+                    );
+                }
+            },
+        },
+        {
             title: "Role",
             key: "action",
             render: (record) => {
