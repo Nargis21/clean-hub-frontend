@@ -1,19 +1,64 @@
 'use client'
-import { Button, Dropdown, Table } from "antd";
-import { useEffect } from "react";
+import { Button, Dropdown, Modal, Table } from "antd";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { SmallDashOutlined } from '@ant-design/icons'
-import { useDeleteBookingMutation, } from "../../redux/slices/booking/bookingApi";
+import { DeleteFilled, SmallDashOutlined } from '@ant-design/icons'
+import { useDeleteBookingMutation, useGetIndividualBookingsQuery, } from "../../redux/slices/booking/bookingApi";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase/firebase.auth";
+import Loading from "../shared/Loading";
 
-const MyBookingTable = ({ bookings }) => {
+const MyBookingTable = () => {
+    const [user] = useAuthState(auth)
+    const { data: bookings, isLoading } = useGetIndividualBookingsQuery({ email: user?.email })
     const [deleteBooking, deleteData] = useDeleteBookingMutation()
 
-    const handleDelete = (id) => {
-        const options = {
-            id: id
-        }
-        deleteBooking(options)
-    }
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize, setPageSize] = useState(5);
+
+    const handleTableChange = (pagination) => {
+        setCurrentPage(pagination.current);
+        setPageSize(pagination.pageSize);
+    };
+
+
+    const handleDeleteWithConfirmation = (id) => {
+        const handleOk = () => {
+            deleteBooking({ id });
+        };
+
+        Modal.confirm({
+            title: 'Are you sure you want to delete this booking?',
+            okText: 'Delete',
+            okButtonProps: {
+                style: {
+                    backgroundColor: '#FF7875',
+                    border: 'none',
+                    color: 'white',
+                },
+            },
+            onOk: () => handleOk(),
+        });
+    };
+    const handleCancelWithConfirmation = (id) => {
+        const handleOk = () => {
+            deleteBooking({ id });
+        };
+
+        Modal.confirm({
+            title: 'Are you sure you want to cancel this booking?',
+            okText: 'Delete',
+            okButtonProps: {
+                style: {
+                    backgroundColor: '#FF7875',
+                    border: 'none',
+                    color: 'white',
+                },
+            },
+            onOk: () => handleOk(),
+        });
+    };
+
 
     useEffect(() => {
         if (deleteData?.isSuccess) {
@@ -21,26 +66,16 @@ const MyBookingTable = ({ bookings }) => {
         }
     }, [deleteData])
 
-    const approvedDropdownMenuItems = (id) => [
-        {
-            key: "3",
-            label: <span>Delete</span>,
-            onClick: () => {
-                handleDelete(id);
-            },
-        },
-    ];
-    const pendingDropdownMenuItems = (id) => [
-        {
-            key: "4",
-            label: <span>Cancel</span>,
-            onClick: () => {
-                handleDelete(id);
-            },
-        },
-    ];
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     const columns = [
+        {
+            title: 'No.',
+            key: 'no',
+            render: (text, record, index) => index + 1 + (currentPage - 1) * pageSize,
+        },
         {
             title: "Service",
             dataIndex: "serviceName",
@@ -70,24 +105,15 @@ const MyBookingTable = ({ bookings }) => {
             title: "Action",
             key: "action",
             render: (record) => {
-                let items;
-                {
-                    record.status === 'Pending' ? items = pendingDropdownMenuItems(record._id) : items = approvedDropdownMenuItems(record._id)
+                if (record.status !== "Pending") {
+                    return (
+                        <Button className="text-xl" type="link" danger onClick={() => handleDeleteWithConfirmation(record._id)}><DeleteFilled /></Button>
+                    );
+                } else {
+                    return (
+                        <Button size="small" danger onClick={() => handleCancelWithConfirmation(record._id)}>Cancel</Button>
+                    );
                 }
-                //   console.log(record);
-                return (
-                    <Dropdown
-                        placement="bottomLeft"
-                        overlayClassName="min-w-[150px]"
-                        menu={{
-                            items: items,
-                        }}
-                    >
-                        <Button>
-                            <SmallDashOutlined />
-                        </Button>
-                    </Dropdown>
-                );
             },
         },
 
@@ -98,7 +124,19 @@ const MyBookingTable = ({ bookings }) => {
                 My Bookings
             </h1>
             <hr />
-            <Table className="my-4" dataSource={bookings} columns={columns} />
+            <Table onChange={(pagination) => handleTableChange(pagination)} scroll={{ x: '100%' }}
+                className="mt-4"
+                style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: "10px"
+                }}
+                pagination={{
+                    pageSize: 5,
+                    style: {
+                        backgroundColor: '#ffffff',
+                        paddingRight: '15px'
+                    },
+                }} dataSource={bookings} columns={columns} />
         </div>
     );
 };

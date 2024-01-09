@@ -6,6 +6,10 @@ const bookingApi = api.injectEndpoints({
             query: () => "bookings",
             providesTags: ["booking"],
         }),
+        getIndividualBookings: builder.query({
+            query: ({ email }) => `booking/${email}`,
+            providesTags: ["booking"],
+        }),
         addBooking: builder.mutation({
             query: ({ data }) => ({
                 url: "/bookings",
@@ -36,5 +40,6 @@ export const {
     useAddBookingMutation,
     useEditBookingMutation,
     useDeleteBookingMutation,
-    useGetBookingsQuery
+    useGetBookingsQuery,
+    useGetIndividualBookingsQuery
 } = bookingApi;
