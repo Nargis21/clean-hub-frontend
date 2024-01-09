@@ -31,7 +31,7 @@ const BookingForm = ({ service }) => {
     useEffect(() => {
         if (data?.isSuccess) {
             toast.success(`Booking Successful!`);
-            router.push(`/user/my-booking/${user?.email}`)
+            router.push("/user/my-booking")
         }
     }, [data, router, user])
 
