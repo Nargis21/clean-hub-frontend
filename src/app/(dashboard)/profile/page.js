@@ -1,5 +1,5 @@
 import React from 'react';
-import MyProfile from '../../../../components/ui/MyProfile'
+import MyProfile from '../../../components/ui/MyProfile'
 
 const MyProfilePage = async () => {
     return (

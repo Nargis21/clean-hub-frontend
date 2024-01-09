@@ -93,8 +93,8 @@ const Navbar = ({
                             <Menu.Item key={'/feedback'}>
                                 <Link href='/feedback'>Add Feedback</Link>
                             </Menu.Item>
-                            <Menu.Item key={'/profile'}>
-                                <Link href={`/profile/${user?.email}`}>Dashboard</Link>
+                            <Menu.Item key={'/overview'}>
+                                <Link href={'/overview'}>Dashboard</Link>
                             </Menu.Item>
                             <Button
                                 className="ml-4"
@@ -141,8 +141,8 @@ const Navbar = ({
                                 <Menu.Item key={'/feedback'}>
                                     <Link href='/feedback'>Add Feedback</Link>
                                 </Menu.Item>
-                                <Menu.Item key={'/profile'}>
-                                    <Link href={`/profile/${user?.email}`}>Dashboard</Link>
+                                <Menu.Item key={'/overview'}>
+                                    <Link href={`/overview`}>Dashboard</Link>
                                 </Menu.Item>
                                 <Button
                                     className="ml-4"

@@ -1,7 +1,7 @@
 "use client";
 
 import { onSidebarClose } from "../../redux/slices/sidebarSlice";
-import { Drawer, Layout, Menu } from "antd";
+import { Avatar, Button, Drawer, Layout, Menu } from "antd";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -9,6 +9,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector, } from "react-redux";
 import auth from "../../firebase/firebase.auth";
 import useAdmin from "../../hooks/useAdmin";
+import { useGetUserQuery } from "../../redux/slices/user/userApi";
+import Loading from "./Loading";
 const { Content, Sider } = Layout;
 
 
@@ -17,14 +19,15 @@ const Sidebar = ({
 }) => {
     const [user] = useAuthState(auth)
     const [admin] = useAdmin(user)
+    const { data: userInfo, isLoading } = useGetUserQuery({ email: user?.email })
 
     const userItems = [
-        { key: "<UserOutlined />", label: "My Profile", href: `/profile/${user?.email}` },
+        { key: "1", label: "Overview", href: `/overview` },
         { key: "2", label: "My Bookings", href: `/user/my-booking/${user?.email}` },
-        // { key: "3", label: "My Reviews", href: `/user/my-review/${user?.email}` },
+        { key: "3", label: "My Reviews", href: `/user/my-review/${user?.email}` },
     ];
     const adminItems = [
-        { key: "1", label: "My Profile", href: `/profile/${user?.email}` },
+        { key: "1", label: "Overview", href: "/overview" },
         { key: "2", label: "Manage Users", href: "/admin/manage-user" },
         { key: "3", label: "Manage Bookings", href: "/admin/manage-booking" },
         { key: "4", label: "Manage Services", href: "/admin/manage-service" },
@@ -39,6 +42,10 @@ const Sidebar = ({
             !admin ? userItems.find((item) => item.href === pathname)?.key || "" : adminItems.find((item) => item.href === pathname)?.key || ""
         )
     };
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <Layout>
             <Content>
@@ -50,6 +57,21 @@ const Sidebar = ({
                             defaultSelectedKeys={[getSelectedKey()]}
                             selectedKeys={[getSelectedKey()]}
                         >
+                            <Menu.Item className="h-auto">
+                                <div className=" flex flex-col justify-center items-center">
+                                    <Avatar src={userInfo?.img || user?.photoURL || "https://i.ibb.co/SRF75vM/avatar.png"} size={100} />
+                                    <Link href='/profile'>
+                                        <Button
+                                            className="mt-2 mb-4"
+                                            ghost
+                                            size="small"
+                                            type="primary"
+                                        >
+                                            View Profile
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </Menu.Item>
                             {
                                 !admin ? userItems?.map((item) => (
                                     <Menu.Item key={item.key}>
