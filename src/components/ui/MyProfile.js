@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
@@ -9,7 +9,7 @@ import auth from "../../firebase/firebase.auth";
 import Image from "next/image";
 import { Avatar, Button } from "antd";
 import Loading from "../shared/Loading";
-import { useGetUserQuery } from "../../redux/slices/user/userApi";
+import { useEditUserMutation, useGetUserQuery } from "../../redux/slices/user/userApi";
 const MyProfile = () => {
     const [user] = useAuthState(auth);
     const [edit, setEdit] = useState(null);
@@ -27,8 +27,17 @@ const MyProfile = () => {
         reset,
     } = useForm();
     const { data: userInfo, isLoading } = useGetUserQuery({ email: user?.email })
+    const [editUser, data] = useEditUserMutation()
 
     const [currentImage, setCurrentImage] = useState(userInfo?.img || user?.photoURL || "https://i.ibb.co/SRF75vM/avatar.png");
+
+    useEffect(() => {
+        if (data?.isSuccess) {
+            reset();
+            toast.success("Profile Updated!");
+            setEdit(null);
+        }
+    }, [data, reset])
 
     if (isLoading) {
         return <Loading></Loading>
@@ -37,7 +46,6 @@ const MyProfile = () => {
     const onSubmit = (data) => {
         const imageStoragekey = '68cb5fb5d48334a60f021c30aff06ada'
         const image = data.image[0]
-        console.log(image, "Image");
         const formData = new FormData()
         formData.append('image', image)
         fetch(`https://api.imgbb.com/1/upload?key=${imageStoragekey}`, {
@@ -48,53 +56,38 @@ const MyProfile = () => {
             .then(result => {
                 if (result.success) {
                     const img = result.data.url
-                    const userData = {
-                        name: data.name,
-                        email: data.email,
-                        phone: data.phone,
-                        city: data.city,
-                        state: data.state,
-                        country: data.country,
-                        img: img
-                    }
 
-                    fetch(`https://clean-hub-backend.vercel.app/user/update/${user?.email}`, {
-                        method: "PUT",
-                        headers: {
-                            "content-type": "application/json",
+                    const options = {
+                        email: userInfo?.email,
+                        data: {
+                            name: data.name,
+                            email: userInfo?.email,
+                            phone: data.phone,
+                            city: data.city,
+                            state: data.state,
+                            country: data.country,
+                            img: img
                         },
-                        body: JSON.stringify(userData),
-                    })
-                        .then((res) => res.json())
-                        .then(() => {
-                            reset();
-                            toast.success("Profile Updated!");
-                            setEdit(null);
-                        });
+                    };
+                    console.log(options);
+                    editUser(options)
+
                 } else {
-                    const userData = {
-                        name: data.name,
-                        email: data.email,
-                        phone: data.phone,
-                        city: data.city,
-                        state: data.state,
-                        country: data.country,
-                        img: userInfo?.img
-                    }
 
-                    fetch(`https://clean-hub-backend.vercel.app/user/update/${user?.email}`, {
-                        method: "PUT",
-                        headers: {
-                            "content-type": "application/json",
+                    const options = {
+                        email: userInfo?.email,
+                        data: {
+                            name: data.name,
+                            email: userInfo?.email,
+                            phone: data.phone,
+                            city: data.city,
+                            state: data.state,
+                            country: data.country,
+                            img: userInfo?.img
                         },
-                        body: JSON.stringify(userData),
-                    })
-                        .then((res) => res.json())
-                        .then(() => {
-                            reset();
-                            toast.success("Profile Updated!");
-                            setEdit(null);
-                        });
+                    };
+                    console.log(options);
+                    editUser(options)
                 }
             })
     };

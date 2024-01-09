@@ -11,14 +11,14 @@ const userApi = api.injectEndpoints({
         //     invalidatesTags: ["booking"],
         // }),
 
-        // editBook: builder.mutation({
-        //     query: ({ id, data }) => ({
-        //         url: `books/${id}`,
-        //         method: "PATCH",
-        //         body: data,
-        //     }),
-        //     invalidatesTags: ["book"],
-        // }),
+        editUser: builder.mutation({
+            query: ({ email, data }) => ({
+                url: `user/update/${email}`,
+                method: "PUT",
+                body: data,
+            }),
+            invalidatesTags: ["user"],
+        }),
         getUsers: builder.query({
             query: () => "users",
             providesTags: ["user"],
@@ -40,5 +40,6 @@ const userApi = api.injectEndpoints({
 export const {
     useDeleteUserMutation,
     useGetUserQuery,
-    useGetUsersQuery
+    useGetUsersQuery,
+    useEditUserMutation
 } = userApi;
