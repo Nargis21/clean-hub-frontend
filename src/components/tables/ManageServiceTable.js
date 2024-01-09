@@ -1,21 +1,44 @@
 'use client'
-import { Button, Dropdown, Table } from "antd";
-import { useEffect } from "react";
+import { Avatar, Button, Dropdown, Modal, Table } from "antd";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { PlusOutlined, SmallDashOutlined } from '@ant-design/icons'
-import { useDeleteServiceMutation, } from "../../redux/slices/service/serviceApi";
+import { DeleteFilled, PlusOutlined, SmallDashOutlined } from '@ant-design/icons'
+import { useDeleteServiceMutation, useGetServicesQuery, } from "../../redux/slices/service/serviceApi";
 import { useRouter } from "next/navigation";
+import Loading from "../shared/Loading";
 
-const ManageServiceTable = ({ services }) => {
+const ManageServiceTable = () => {
+    const { data: services, isLoading } = useGetServicesQuery()
     const router = useRouter()
     const [deleteService, data] = useDeleteServiceMutation()
 
-    const handleDelete = (id) => {
-        const options = {
-            id: id
-        }
-        deleteService(options)
-    }
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize, setPageSize] = useState(5);
+
+    const handleTableChange = (pagination) => {
+        setCurrentPage(pagination.current);
+        setPageSize(pagination.pageSize);
+    };
+
+    const handleDeleteWithConfirmation = (id) => {
+        const handleOk = () => {
+            deleteService({ id });
+        };
+
+        Modal.confirm({
+            title: 'Are you sure you want to delete this service?',
+            okText: 'Delete',
+            okButtonProps: {
+                style: {
+                    backgroundColor: '#FF7875',
+                    border: 'none',
+                    color: 'white',
+                },
+            },
+            onOk: () => handleOk(),
+        });
+    };
+
 
     useEffect(() => {
         if (data?.isSuccess) {
@@ -23,16 +46,22 @@ const ManageServiceTable = ({ services }) => {
         }
     }, [data])
 
-    const getDropdownMenuItems = (id) => [
-        {
-            key: "3",
-            label: <span>Delete</span>,
-            onClick: () => {
-                handleDelete(id);
-            },
-        }
-    ];
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     const columns = [
+        {
+            title: 'No.',
+            key: 'no',
+            render: (text, record, index) => index + 1 + (currentPage - 1) * pageSize,
+        },
+        {
+            title: "Image",
+            key: "img",
+            render: (record) => {
+                return <Avatar src={record.image} shape="square" size={60} />
+            },
+        },
 
         {
             title: "Service",
@@ -58,20 +87,8 @@ const ManageServiceTable = ({ services }) => {
             title: "Action",
             key: "action",
             render: (record) => {
-                const items = getDropdownMenuItems(record._id)
-                //   console.log(record);
                 return (
-                    <Dropdown
-                        placement="bottomLeft"
-                        overlayClassName="min-w-[150px]"
-                        menu={{
-                            items: items,
-                        }}
-                    >
-                        <Button>
-                            <SmallDashOutlined />
-                        </Button>
-                    </Dropdown>
+                    <Button className="text-xl" type="link" danger onClick={() => handleDeleteWithConfirmation(record._id)}><DeleteFilled /></Button>
                 );
             },
         },
@@ -87,6 +104,7 @@ const ManageServiceTable = ({ services }) => {
             </div>
             <hr />
             <Table
+                onChange={(pagination) => handleTableChange(pagination)}
                 className="mt-4"
                 dataSource={services}
                 columns={columns}

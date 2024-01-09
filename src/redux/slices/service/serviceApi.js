@@ -2,6 +2,10 @@ import { api } from "../../api/apiSlice";
 
 const serviceApi = api.injectEndpoints({
     endpoints: (builder) => ({
+        getServices: builder.query({
+            query: () => "services",
+            providesTags: ["service"],
+        }),
         addService: builder.mutation({
             query: ({ data }) => ({
                 url: "/services",
@@ -31,5 +35,6 @@ const serviceApi = api.injectEndpoints({
 export const {
     useAddServiceMutation,
     useEditServiceMutation,
-    useDeleteServiceMutation
+    useDeleteServiceMutation,
+    useGetServicesQuery
 } = serviceApi;
