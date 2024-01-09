@@ -1,14 +1,10 @@
 import ManageServiceTable from '../../../../components/tables/ManageServiceTable'
 
 const ManageService = async () => {
-    const res = await fetch("https://clean-hub-backend.vercel.app/services", {
-        cache: "no-store",
-    });
-    const services = await res.json();
 
     return (
         <div>
-            <ManageServiceTable services={services}></ManageServiceTable>
+            <ManageServiceTable></ManageServiceTable>
         </div>
     );
 };

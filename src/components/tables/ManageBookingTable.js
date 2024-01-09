@@ -1,27 +1,50 @@
 'use client'
-import { Button, Dropdown, Table } from "antd";
-import { useEffect } from "react";
+import { Button, Dropdown, Modal, Table } from "antd";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { SmallDashOutlined } from '@ant-design/icons'
-import { useDeleteBookingMutation, useEditBookingMutation } from "../../redux/slices/booking/bookingApi";
+import { DeleteFilled, SmallDashOutlined } from '@ant-design/icons'
+import { useDeleteBookingMutation, useEditBookingMutation, useGetBookingsQuery } from "../../redux/slices/booking/bookingApi";
+import Loading from "../shared/Loading";
 
-const ManageBookingTable = ({ bookings }) => {
+const ManageBookingTable = () => {
+    const { data: bookings, isLoading } = useGetBookingsQuery()
     const [deleteBooking, deleteData] = useDeleteBookingMutation()
     const [editBooking, editData] = useEditBookingMutation()
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize, setPageSize] = useState(5);
 
-    const handleDelete = (id) => {
-        const options = {
-            id: id
-        }
-        deleteBooking(options)
-    }
+    const handleTableChange = (pagination) => {
+        setCurrentPage(pagination.current);
+        setPageSize(pagination.pageSize);
+    };
+
     const handleEdit = (id) => {
         const options = {
             id: id
         }
         editBooking(options)
     }
+
+    const handleDeleteWithConfirmation = (id) => {
+        const handleOk = () => {
+            deleteBooking({ id });
+        };
+
+        Modal.confirm({
+            title: 'Are you sure you want to delete this booking?',
+            okText: 'Delete',
+            okButtonProps: {
+                style: {
+                    backgroundColor: '#FF7875',
+                    border: 'none',
+                    color: 'white',
+                },
+            },
+            onOk: () => handleOk(),
+        });
+    };
+
 
     useEffect(() => {
         if (deleteData?.isSuccess) {
@@ -35,32 +58,16 @@ const ManageBookingTable = ({ bookings }) => {
         }
     }, [editData])
 
-    const approvedDropdownMenuItems = (id) => [
-        {
-            key: "3",
-            label: <span>Delete</span>,
-            onClick: () => {
-                handleDelete(id);
-            },
-        },
-    ];
-    const pendingDropdownMenuItems = (id) => [
-        {
-            key: "3",
-            label: <span>Delete</span>,
-            onClick: () => {
-                handleDelete(id);
-            },
-        },
-        {
-            key: "4",
-            label: <span>Approved</span>,
-            onClick: () => {
-                handleEdit(id);
-            },
-        },
-    ];
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
     const columns = [
+        {
+            title: 'No.',
+            key: 'no',
+            render: (text, record, index) => index + 1 + (currentPage - 1) * pageSize,
+        },
         {
             title: "Service",
             dataIndex: "serviceName",
@@ -87,26 +94,26 @@ const ManageBookingTable = ({ bookings }) => {
             key: "status",
         },
         {
+            title: "Approval",
+            key: "approval",
+            render: (record) => {
+                if (record.status === 'Pending') {
+                    return (
+                        <Button type="primary" onClick={() => handleEdit(record._id)}>Approve</Button>
+                    );
+                } else {
+                    return (
+                        <Button type="primary" disabled>Approve</Button>
+                    );
+                }
+            },
+        },
+        {
             title: "Action",
             key: "action",
             render: (record) => {
-                let items;
-                {
-                    record.status === 'Pending' ? items = pendingDropdownMenuItems(record._id) : items = approvedDropdownMenuItems(record._id)
-                }
-                //   console.log(record);
                 return (
-                    <Dropdown
-                        placement="bottomLeft"
-                        overlayClassName="min-w-[150px]"
-                        menu={{
-                            items: items,
-                        }}
-                    >
-                        <Button>
-                            <SmallDashOutlined />
-                        </Button>
-                    </Dropdown>
+                    <Button className="text-xl" type="link" danger onClick={() => handleDeleteWithConfirmation(record._id)}><DeleteFilled /></Button>
                 );
             },
         },
@@ -118,7 +125,7 @@ const ManageBookingTable = ({ bookings }) => {
                 Manage Bookings
             </h1>
             <hr />
-            <Table dataSource={bookings} columns={columns} scroll={{ x: '100%' }}
+            <Table onChange={(pagination) => handleTableChange(pagination)} dataSource={bookings} columns={columns} scroll={{ x: '100%' }}
                 className="mt-4"
                 style={{
                     backgroundColor: '#ffffff',

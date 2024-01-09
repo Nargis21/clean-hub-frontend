@@ -2,6 +2,10 @@ import { api } from "../../api/apiSlice";
 
 const bookingApi = api.injectEndpoints({
     endpoints: (builder) => ({
+        getBookings: builder.query({
+            query: () => "bookings",
+            providesTags: ["booking"],
+        }),
         addBooking: builder.mutation({
             query: ({ data }) => ({
                 url: "/bookings",
@@ -31,5 +35,6 @@ const bookingApi = api.injectEndpoints({
 export const {
     useAddBookingMutation,
     useEditBookingMutation,
-    useDeleteBookingMutation
+    useDeleteBookingMutation,
+    useGetBookingsQuery
 } = bookingApi;
