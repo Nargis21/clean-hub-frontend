@@ -119,15 +119,17 @@ const MyProfile = () => {
                 <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 py-10 gap-y-8">
                     <div className=" flex flex-col justify-center items-center">
                         <Avatar src={userInfo?.img || user?.photoURL || "https://i.ibb.co/SRF75vM/avatar.png"} size={180} />
-                        <h1 className="text-2xl mt-6">
-                            {userInfo?.name || user?.displayName}
-                        </h1>
+
+                        <Button className="mt-4 underline" onClick={handleEdit} type="link">
+                            Upload Photo
+                        </Button>
+
                     </div>
                     <div>
-                        {/* <p className="text-gray-600 pb-2 font-semibold text-md">Full Name</p>
+                        <p className="text-gray-600 pb-2 font-semibold text-md">Full Name</p>
                         <h1 className="text-xl pb-6">
                             {userInfo?.name || user?.displayName}
-                        </h1> */}
+                        </h1>
                         <p className="text-gray-600 pb-2 font-semibold">Email</p>
                         <h1 className="text-xl pb-6">{user?.email}</h1>
                         <p className="text-gray-600 pb-2 font-semibold">Phone</p>
@@ -141,7 +143,9 @@ const MyProfile = () => {
                         <p className="text-gray-600 pb-2 font-semibold">Address</p>
                         {userInfo?.state || userInfo?.city || userInfo?.country ? (
                             <h1 className="text-xl pb-6">
-                                {userInfo?.state}, {userInfo?.city}, {userInfo?.country}
+                                {userInfo?.state && <span> {userInfo?.state},</span>}
+                                {userInfo?.city && <span> {userInfo?.city},</span>}
+                                {userInfo?.country && <span> {userInfo?.country}</span>}
                             </h1>
                         ) : (
                             <Button onClick={handleEdit} type="link">

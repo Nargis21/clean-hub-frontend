@@ -57,21 +57,21 @@ const Sidebar = ({
                             defaultSelectedKeys={[getSelectedKey()]}
                             selectedKeys={[getSelectedKey()]}
                         >
-                            <Menu.Item className="h-auto">
-                                <div className=" flex flex-col justify-center items-center">
-                                    <Avatar src={userInfo?.img || user?.photoURL || "https://i.ibb.co/SRF75vM/avatar.png"} size={100} />
-                                    <Link href='/profile'>
-                                        <Button
-                                            className="mt-2 mb-4"
-                                            ghost
-                                            size="small"
-                                            type="primary"
-                                        >
-                                            View Profile
-                                        </Button>
-                                    </Link>
-                                </div>
-                            </Menu.Item>
+
+                            <div className=" flex flex-col justify-center items-center">
+                                <Avatar src={userInfo?.img || user?.photoURL || "https://i.ibb.co/SRF75vM/avatar.png"} size={100} />
+                                <Link href='/profile'>
+                                    <Button
+                                        className="mt-2 mb-4"
+                                        ghost
+                                        size="small"
+                                        type="primary"
+                                    >
+                                        View Profile
+                                    </Button>
+                                </Link>
+                            </div>
+
                             {
                                 !admin ? userItems?.map((item) => (
                                     <Menu.Item key={item.key}>
