@@ -1,25 +1,59 @@
 'use client'
-import { Button, Table } from "antd";
-import { useEffect } from "react";
+import { Button, Modal, Table } from "antd";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { useDeleteUserMutation } from "../../redux/slices/user/userApi";
+import { useDeleteUserMutation, useGetUsersQuery } from "../../redux/slices/user/userApi";
+import { DeleteFilled } from "@ant-design/icons";
+import Loading from "../shared/Loading";
 
-const ManageUserTable = ({ users }) => {
+const ManageUserTable = () => {
+    const { data: users, isLoading } = useGetUsersQuery()
+
     const [deleteUser, data] = useDeleteUserMutation()
 
-    const handleDelete = (id) => {
-        const options = {
-            id: id
-        }
-        deleteUser(options)
-    }
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize, setPageSize] = useState(5);
+
+    const handleTableChange = (pagination) => {
+        setCurrentPage(pagination.current);
+        setPageSize(pagination.pageSize);
+    };
+
+    const handleDeleteWithConfirmation = (id) => {
+        const handleOk = () => {
+            deleteUser({ id });
+        };
+
+        Modal.confirm({
+            title: 'Are you sure you want to delete this user?',
+            okText: 'Delete',
+            okButtonProps: {
+                style: {
+                    backgroundColor: '#FF7875',
+                    border: 'none',
+                    color: 'white',
+                },
+            },
+            onOk: () => handleOk(),
+        });
+    };
 
     useEffect(() => {
         if (data?.isSuccess) {
             toast.success(`User deleted successfully!`);
         }
     }, [data])
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
     const columns = [
+        {
+            title: 'No.',
+            key: 'no',
+            render: (text, record, index) => index + 1 + (currentPage - 1) * pageSize,
+        },
         {
             title: "Email",
             dataIndex: "email",
@@ -46,11 +80,11 @@ const ManageUserTable = ({ users }) => {
             render: (record) => {
                 if (record.role === "Admin") {
                     return (
-                        <Button disabled>Delete</Button>
+                        <Button className="text-xl" type="link" disabled><DeleteFilled /></Button>
                     );
                 } else {
                     return (
-                        <Button type="primary" danger onClick={() => handleDelete(record._id)}>Delete</Button>
+                        <Button className="text-xl" type="link" danger onClick={() => handleDeleteWithConfirmation(record._id)}><DeleteFilled /></Button>
                     );
                 }
             },
@@ -63,7 +97,7 @@ const ManageUserTable = ({ users }) => {
                 Manage Users
             </h1>
             <hr />
-            <Table dataSource={users} columns={columns} scroll={{ x: '100%' }} className="mt-4"
+            <Table onChange={(pagination) => handleTableChange(pagination)} dataSource={users} columns={columns} scroll={{ x: '100%' }} className="mt-4"
                 style={{
                     backgroundColor: '#ffffff',
                     borderRadius: "10px"
@@ -74,7 +108,7 @@ const ManageUserTable = ({ users }) => {
                         backgroundColor: '#ffffff',
                         paddingRight: '15px'
                     },
-                }} />;
+                }} />
         </div>
     );
 };

@@ -19,6 +19,10 @@ const userApi = api.injectEndpoints({
         //     }),
         //     invalidatesTags: ["book"],
         // }),
+        getUsers: builder.query({
+            query: () => "users",
+            providesTags: ["user"],
+        }),
         getUser: builder.query({
             query: ({ email }) => `user/${email}`,
             providesTags: ["user"],
@@ -35,5 +39,6 @@ const userApi = api.injectEndpoints({
 
 export const {
     useDeleteUserMutation,
-    useGetUserQuery
+    useGetUserQuery,
+    useGetUsersQuery
 } = userApi;
