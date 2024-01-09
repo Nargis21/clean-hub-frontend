@@ -6,6 +6,10 @@ const feedbackApi = api.injectEndpoints({
             query: () => "reviews",
             providesTags: ["feedback"],
         }),
+        getIndividualFeedbacks: builder.query({
+            query: ({ email }) => `reviews/${email}`,
+            providesTags: ["feedback"],
+        }),
         addFeedback: builder.mutation({
             query: ({ data }) => ({
                 url: "/review",
@@ -35,5 +39,6 @@ export const {
     useAddFeedbackMutation,
     useGetFeedbacksQuery,
     useDeleteFeedbackMutation,
-    useEditFeedbackMutation
+    useEditFeedbackMutation,
+    useGetIndividualFeedbacksQuery
 } = feedbackApi;

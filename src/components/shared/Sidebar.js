@@ -22,9 +22,9 @@ const Sidebar = ({
     const { data: userInfo, isLoading } = useGetUserQuery({ email: user?.email })
 
     const userItems = [
-        { key: "1", label: "Overview", href: `/overview` },
-        { key: "2", label: "My Bookings", href: `/user/my-booking/${user?.email}` },
-        { key: "3", label: "My Reviews", href: `/user/my-review/${user?.email}` },
+        { key: "1", label: "Overview", href: "/overview" },
+        { key: "2", label: "My Bookings", href: "/user/my-booking" },
+        { key: "3", label: "My Reviews", href: "/user/my-review" },
     ];
     const adminItems = [
         { key: "1", label: "Overview", href: "/overview" },

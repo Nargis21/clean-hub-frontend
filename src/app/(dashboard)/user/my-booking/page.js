@@ -1,4 +1,4 @@
-import MyBookingTable from "../../../../../components/tables/MyBookingTable";
+import MyBookingTable from "../../../../components/tables/MyBookingTable";
 
 
 const MyBooking = async ({ params }) => {

@@ -1,4 +1,4 @@
-import MyReview from "../../../../../components/ui/MyReview"
+import MyReview from "../../../../components/ui/MyReview"
 const MyReviewPage = async ({ params }) => {
 
     const res = await fetch(`https://clean-hub-backend.vercel.app/review/${params.email}`,
