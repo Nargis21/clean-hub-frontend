@@ -15,7 +15,7 @@ const Services = ({ services }) => {
         <div className="p-10 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 bg-sky-900 ">
             {services?.map((service) => (
 
-                <div key={service._id} className="flex flex-col items-center justify-between p-5 shadow-md hover:shadow-2xl hover:scale-[102%] transition-all text-black underline-none bg-white rounded">
+                <div key={service._id} className="flex flex-col items-center justify-between p-8 pt-10 shadow-md hover:shadow-2xl hover:scale-[102%] transition-all text-black underline-none bg-white rounded">
                     <Tooltip title={service?.availabilityInfo} color='gold'>
                         <div className='flex justify-between gap-4'>
                             <div>
