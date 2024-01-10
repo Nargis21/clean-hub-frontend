@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import BannerImage from '../../assets/images/banner4.png'
 import { Button } from 'antd';
-import { RightCircleTwoTone, RightCircleFilled } from '@ant-design/icons'
+import { RightCircleTwoTone, RightCircleFilled, DoubleRightOutlined } from '@ant-design/icons'
 
 const Banner = () => {
     return (
@@ -14,14 +14,12 @@ const Banner = () => {
                 <p className='mb-4'>Revitalize Your Space with Our Expert Cleaning Services,Spotless Cleanliness, Every Time Your Trusted Cleaning Partner</p>
                 <p className='mb-2 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><RightCircleFilled className='text-yellow-500 text-xl' /> Standard Cleaning</p>
                 <p className='mb-2 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><RightCircleFilled className='text-yellow-500 text-xl' /> Residential Cleaning</p>
-                <p className='mb-2 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><RightCircleFilled className='text-yellow-500 text-xl' /> Commercial Cleaning</p>
+                <p className='mb-4 flex items-center lg:justify-start justify-center  gap-2 font-semibold'><RightCircleFilled className='text-yellow-500 text-xl' /> Commercial Cleaning</p>
 
-                <Link href='/services'>
-                    <Button type='primary' size='large' className=' mt-4'>
-                        <div className='flex items-center gap-1'>
-                            <p > Explore Now</p> <RightCircleTwoTone className='text-xl' />
-                        </div>
-                    </Button>
+                <Link href='/services' className='no-underline'>
+                    <div className='flex items-center justify-center gap-1 text-white px-4 py-3 hover:bg-yellow-500 bg-blue-500 w-40 rounded'>
+                        <p > Explore Now</p> <DoubleRightOutlined className='text-xl' />
+                    </div>
                 </Link>
 
             </div>

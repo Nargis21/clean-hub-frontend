@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 import styles from '../../styles/Featured.module.css'
 import Image from 'next/image';
 import image1 from '../../assets/images/image1.jpg'
@@ -31,6 +31,10 @@ const FeaturedServices = () => {
                 grabCursor={true}
                 centeredSlides={true}
                 slidesPerView={'auto'}
+                autoplay={{
+                    delay: 2000,
+                    disableOnInteraction: false,
+                }}
                 coverflowEffect={{
                     rotate: 50,
                     stretch: 0,
@@ -39,7 +43,7 @@ const FeaturedServices = () => {
                     slideShadows: true,
                 }}
                 pagination={true}
-                modules={[EffectCoverflow, Pagination]}
+                modules={[EffectCoverflow, Pagination, Autoplay]}
                 className=" mySwiper px-12 bg-blue-950 w-[100%] pb-32"
             >
                 <SwiperSlide className={`${styles.swiperSlide} shadow-lg`}>

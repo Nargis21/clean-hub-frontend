@@ -37,7 +37,7 @@ const AddServiceForm = () => {
             </h1>
             <hr />
             <div className="flex justify-center">
-                <div className="lg:w-[70%] md:[80%] w-[98%] shadow-xl bg-white mt-4">
+                <div className="lg:w-[70%] md:[80%] w-[98%] shadow-xl bg-white mt-4 rounded">
                     <Form
                         layout="vertical"
                         name="basic"

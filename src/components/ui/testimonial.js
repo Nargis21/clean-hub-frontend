@@ -12,9 +12,17 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Avatar } from 'antd';
 import { StarFilled } from "@ant-design/icons"
+import { useGetFeedbacksQuery } from '../../redux/slices/feedback/feedbackApi';
+import Loading from '../shared/Loading';
+import StarRating from './StarRating';
 
 
 const Testimonial = () => {
+    const { data: reviews, isLoading } = useGetFeedbacksQuery()
+    console.log(reviews);
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div className='bg-blue-950 pb-12'>
             <div className="lg:text-6xl md:text-5xl text-4xl py-16 bg-blue-950 text-center text-white font-semibold">
@@ -34,7 +42,28 @@ const Testimonial = () => {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper w-full h-full bg-blue-950 pb-12"
             >
-                <SwiperSlide className='flex justify-center items-center p-16  '>
+                {
+                    reviews?.map(review => (
+                        <SwiperSlide key={review?.id} className='flex justify-center items-center p-16  '>
+                            <div className='flex flex-col items-center lg:gap-0 gap-10 lg:flex-row lg:px-36 md:px-6 px-2 '>
+                                <div className='w-full text-center'>
+                                    <Avatar src={review?.img} size={300} />
+
+                                </div>
+                                <div className='w-full text-center font-semibold lg:text-left'>
+                                    <p className='mb-4  text-gray-500 font-italic text-xl'>{review?.comment}</p>
+
+                                    <StarRating rating={review?.rating} />
+
+                                    <h1 className='text-3xl my-3 text-white'>{review?.fullName}</h1>
+
+                                </div>
+
+                            </div>
+                        </SwiperSlide>
+                    ))
+                }
+                {/* <SwiperSlide className='flex justify-center items-center p-16  '>
                     <div className='flex flex-col items-center lg:gap-0 gap-10 lg:flex-row lg:px-36 md:px-6 px-2 '>
                         <div className='w-full text-center'>
                             <Avatar src="https://img.freepik.com/free-photo/amazing-cheerful-business-woman-standing-with-arms-crossed_171337-8487.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1697500800&semt=ais" size={300} />
@@ -96,7 +125,7 @@ const Testimonial = () => {
                         </div>
 
                     </div>
-                </SwiperSlide>
+                </SwiperSlide> */}
             </Swiper>
         </div>
     );

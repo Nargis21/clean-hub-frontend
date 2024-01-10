@@ -2,10 +2,10 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
 import { Avatar, Button, Image, Tooltip } from 'antd';
 import Link from 'next/link';
-import { RightCircleTwoTone, } from '@ant-design/icons'
+import { DoubleRightOutlined, RightCircleTwoTone, } from '@ant-design/icons'
 import StarRating from './StarRating';
 import { FaLocationDot } from 'react-icons/fa6';
 import { useRouter } from 'next/navigation';
@@ -22,6 +22,10 @@ const FeaturedServices = ({ services }) => {
                 className="flex justify-center items-center mySwiper bg-sky-900 px-16 py-20"
                 slidesPerView={1}
                 spaceBetween={5}
+                autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false,
+                }}
                 pagination={{
                     clickable: true,
                 }}
@@ -37,7 +41,7 @@ const FeaturedServices = ({ services }) => {
                         spaceBetween: 20,
                     },
                 }}
-                modules={[Pagination]}
+                modules={[Pagination, Autoplay]}
             >
                 {
                     services.map(service => (
@@ -74,11 +78,11 @@ const FeaturedServices = ({ services }) => {
                                             </Link></p>
 
                                         </div>
-                                        <Button type='primary' size='large' block onClick={() => router.push(`/booking/${service._id}`)}
-                                        ><div className='flex items-center justify-center gap-1'>
-                                                <p >Book Now</p> <RightCircleTwoTone className='text-xl' />
+                                        <Link href={`/booking/${service._id}`} className='no-underline'>
+                                            <div className='flex items-center justify-center gap-1 text-white px-4 py-3 hover:bg-yellow-500 bg-blue-500 rounded'>
+                                                <p >Book Now</p> <DoubleRightOutlined className='text-xl' />
                                             </div>
-                                        </Button>
+                                        </Link>
 
                                     </div>
                                 </Tooltip>

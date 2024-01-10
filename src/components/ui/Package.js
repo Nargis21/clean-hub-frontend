@@ -1,6 +1,7 @@
 'use client'
 import { Button } from "antd";
-import { RightCircleTwoTone } from "@ant-design/icons"
+import { DoubleRightOutlined, RightCircleTwoTone } from "@ant-design/icons"
+import Link from "next/link";
 
 const Package = () => {
     return (
@@ -21,15 +22,12 @@ const Package = () => {
                         <p className="py-4 font-semibold text-gray-500">Vacuming</p>
                         <p className="py-4 font-semibold text-gray-500">2 Bathroom Cleaning</p>
                         <p className="py-4 font-semibold text-gray-500">Window Cleaning</p>
-                        <p className="py-4 font-semibold text-gray-500">2 Livingroom Cleaning</p>
+                        <p className="pt-4 font-semibold text-gray-500">2 Livingroom Cleaning</p>
                     </div>
 
-                    <Button type='primary' block size='large' className="my-4 w-[50%]"
-                    >
-                        <div className='flex items-center gap-1 justify-center'>
-                            <p >Book Now</p> <RightCircleTwoTone className='text-xl' />
-                        </div>
-                    </Button>
+                    <div className='mb-2 flex items-center justify-center gap-1 text-white px-4 py-3 hover:bg-yellow-500 bg-blue-500 rounded'>
+                        <p >Book Now</p> <DoubleRightOutlined className='text-xl' />
+                    </div>
                 </div>
                 <div className="lg:mb-12 flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white pb-4 rounded-tr-none rounded-tl-3xl rounded-bl-3xl rounded-br-3xl">
                     <p className="rounded-tl-3xl p-4 font-semibold text-white bg-yellow-500 text-2xl w-full text-center">Standard Plan</p>
@@ -46,12 +44,9 @@ const Package = () => {
                         <p className="py-4 font-semibold text-gray-500">1 Livingroom Cleaning</p>
                     </div>
 
-                    <Button type='primary' block size='large' className="my-4 w-[50%]"
-                    >
-                        <div className='flex items-center gap-1 justify-center'>
-                            <p >Book Now</p> <RightCircleTwoTone className='text-xl' />
-                        </div>
-                    </Button>
+                    <div className='my-2 flex items-center justify-center gap-1 text-white px-4 py-3 hover:bg-yellow-500 bg-blue-500 rounded'>
+                        <p >Book Now</p> <DoubleRightOutlined className='text-xl' />
+                    </div>
                 </div>
                 <div className="lg:mt-12 flex flex-col items-center justify-between shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all bg-white pb-4 rounded-tr-none rounded-tl-3xl rounded-bl-3xl rounded-br-3xl">
 
@@ -64,15 +59,13 @@ const Package = () => {
                         <p className="py-4 font-semibold text-gray-500">Vacuming</p>
                         <p className="py-4 font-semibold text-gray-500">3 Bathroom Cleaning</p>
                         <p className="py-4 font-semibold text-gray-500">Window Cleaning</p>
-                        <p className="py-4 font-semibold text-gray-500">2 Livingroom Cleaning</p>
+                        <p className="pt-4  font-semibold text-gray-500">2 Livingroom Cleaning</p>
                     </div>
 
-                    <Button type='primary' block size='large' className="my-4 w-[50%]"
-                    >
-                        <div className='flex items-center gap-1 justify-center'>
-                            <p >Book Now</p> <RightCircleTwoTone className='text-xl' />
-                        </div>
-                    </Button>
+                    <div className='mb-2 flex items-center justify-center gap-1 text-white px-4 py-3 hover:bg-yellow-500 bg-blue-500 rounded'>
+                        <p >Book Now</p> <DoubleRightOutlined className='text-xl' />
+                    </div>
+
                 </div>
 
             </div>

@@ -20,7 +20,6 @@ const AddFeedbackForm = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
-    console.log(userInfo);
     const onFinish = async (values) => {
         setHasToasted(false);
         const options = {
@@ -43,14 +42,14 @@ const AddFeedbackForm = () => {
     return (
 
         <div className="flex justify-center py-12 bg-sky-900">
-            <div className="lg:w-[50%] md:[60%] w-[90%] shadow-xl bg-white text-white">
+            <div className="lg:w-[50%] md:[60%] w-[90%] shadow-xl bg-white text-white rounded">
                 <h1 className="text-center text-2xl py-6 bg-blue-950">Feedback Form</h1>
                 <Form
                     layout="vertical"
                     name="basic"
                     // labelCol={{ span: 8 }}
                     // wrapperCol={{ span: 18 }}
-                    initialValues={{ fullName: user?.displayName, email: user?.email }}
+                    initialValues={{ fullName: userInfo?.name || user?.displayName, email: user?.email }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                     autoComplete="off"
