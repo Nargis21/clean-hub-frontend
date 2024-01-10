@@ -16,7 +16,7 @@ const Services = ({ services }) => {
             {services?.map((service) => (
 
                 <div key={service._id} className="flex flex-col items-center justify-between p-5 shadow-md hover:shadow-2xl hover:scale-[102%] transition-all text-black underline-none bg-white rounded">
-                    <Tooltip title={service?.availabilityInfo} color='purple'>
+                    <Tooltip title={service?.availabilityInfo} color='gold'>
                         <div className='flex justify-between gap-4'>
                             <div>
                                 <p className='text-xl font-semibold mb-2 text-blue-950'>{service?.title}</p>
@@ -53,32 +53,6 @@ const Services = ({ services }) => {
                         </Button>
 
                     </Tooltip>
-
-
-                    {/* <Image
-                        onClick={() => router.push(`services/${service._id}`)}
-                        src={service?.image}
-                        width={300}
-                        height={200}
-                        responsive
-                        alt="service image"
-                        className='cursor-pointer'
-                    />
-                    <p className="text-xl font-semibold my-3 flex items-start w-full">{service?.title}</p>
-
-                    <div className='flex justify-between w-full items-center mb-2'>
-                        <p className="text-xl text-indigo-500 font-bold">{service?.pricing}</p>
-                        <StarRating rating={service?.rating} />
-                    </div>
-                    <div className='flex justify-between w-full items-center mb-4'>
-                        <p>Location: <span className='font-semibold'>{service?.location}</span></p>
-                        <Link className='text-sky-500' href={`/services/${service._id}`}>View Details</Link>
-                    </div>
-                    <p className='px-4 py-2 rounded-full bg-indigo-300 font-semibold mb-4'>{service?.availabilityInfo}</p>
-                    <Button type='primary' size='large' block onClick={() => router.push(`/booking/${service._id}`)}
-                    ><div className='flex items-center justify-center gap-1'>
-                            <p >Book Now</p> <RightCircleTwoTone className='text-xl' />
-                        </div></Button> */}
                 </div>
             ))}
         </div>
