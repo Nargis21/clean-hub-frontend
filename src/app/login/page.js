@@ -44,7 +44,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (token) {
-            router.push("/profile");
+            router.push("/overview");
         }
     }, [token, router])
 
