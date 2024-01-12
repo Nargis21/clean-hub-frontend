@@ -21,21 +21,21 @@ const UserOverview = () => {
             <div className="rounded-lg p-12 hover:shadow-2xl hover:scale-[102%] transition-all bg-gray-800 text-white flex justify-between gap-2 items-center">
                 <FileDoneOutlined className='text-6xl' />
                 <div className='flex flex-col justify-center items-center gap-2'>
-                    <p className='text-3xl'>{approvedBookingsCount}</p>
+                    <p className='text-3xl text-yellow-500'>{approvedBookingsCount}</p>
                     <p>Approved Booking</p>
                 </div>
             </div>
             <div className="rounded-lg p-12 hover:shadow-2xl hover:scale-[102%] transition-all bg-gray-800 text-white flex justify-between gap-2 items-center">
                 <UnorderedListOutlined className='text-6xl' />
                 <div className='flex flex-col justify-center items-center gap-2'>
-                    <p className='text-3xl'>{pendingBookingsCount}</p>
+                    <p className='text-3xl text-yellow-500'>{pendingBookingsCount}</p>
                     <p>Pending Booking</p>
                 </div>
             </div>
             <div className="rounded-lg p-12 hover:shadow-2xl hover:scale-[102%] transition-all bg-gray-800 text-white flex justify-between gap-2 items-center">
                 <SafetyOutlined className='text-6xl' />
                 <div className='flex flex-col justify-center items-center gap-2'>
-                    <p className='text-3xl'>{approvedFeedbacksCount}</p>
+                    <p className='text-3xl text-yellow-500'>{approvedFeedbacksCount}</p>
                     <p>Approved Feedback</p>
                 </div>
             </div>
